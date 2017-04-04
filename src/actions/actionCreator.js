@@ -1,27 +1,19 @@
-//increment likes
-export function increment(index) {
-  return {
-    type: 'INCREMENT_LIKES',
-    index
-  }
-}
-
 //add first
-export function addComment(postId, author, comment) {
-  console.log("dispatching add comment");
+export function addMemory(userId, date, content) {
+  console.log("dispatching add first");
   return {
-    type: 'ADD_COMMENT',
-    postId,
-    author,
-    comment
+    type: 'ADD_FIRST',
+    userId,
+    date,
+    content
   }
 }
 
-// remove comment
-export function removeComment(postId, i) {
-  return {
-    type: 'REMOVE_COMMENT',
-    i,
-    postId
-  }
-}
+// // remove comment
+// export function removeComment(postId, i) {
+//   return {
+//     type: 'REMOVE_COMMENT',
+//     i,
+//     postId
+//   }
+// }

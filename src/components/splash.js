@@ -10,13 +10,13 @@ const Splash = React.createClass({
           <Link to="/login">Log In</Link>
         </nav>
         <div>
-          //pretty picture with title
+          {/*pretty picture with title*/}
         </div>
         <div>
-          //explanation of app
+          {/*explanation of app*/}
         </div>
         <div>
-          //button to signup
+          {/*button to signup*/}
         </div>
       </div>
     )
