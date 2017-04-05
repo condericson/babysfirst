@@ -1,16 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router';
 
 const Memory = React.createClass({
   render() {
-//    const { firsts, i, comments } = this.props;
+    const { first } = this.props;
     return (
-      <div>
-        <p>Date: {this.props.date}</p>
-        <p>{this.props.content}</p>
+      <div className="memory">
+        <p>{first.content}</p>
       </div>
     )
   }
 });
 
 export default Memory;
+
+
+ //{firsts.date.years} {firsts.date.months}

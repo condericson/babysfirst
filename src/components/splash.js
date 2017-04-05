@@ -8,6 +8,7 @@ const Splash = React.createClass({
         <nav>
           <Link to="/signup">Signup</Link>
           <Link to="/login">Log In</Link>
+          <Link to="/timeline">Timeline</Link>
         </nav>
         <div>
           {/*pretty picture with title*/}
