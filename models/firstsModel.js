@@ -4,7 +4,7 @@ const FirstsSchema = mongoose.Schema({
   userid: {
     type: String,
     required: true
-  }
+  },
   content: {
     type: String,
     required: true

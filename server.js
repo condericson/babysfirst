@@ -1,10 +1,11 @@
 const express = require('express');
+const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const app = express();
 
 const {DATABASE_URL, PORT} = require('./config');
-const {Recipes} = require('./models/recipeModel');
+const {Recipes} = require('./models/firstsModel');
 
 
 app.use(express.static('public'));
