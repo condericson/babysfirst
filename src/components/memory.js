@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Memory = React.createClass({
+class Memory extends Component{
   render() {
     const { first } = this.props;
     return (
@@ -9,7 +9,7 @@ const Memory = React.createClass({
       </div>
     )
   }
-});
+};
 
 export default Memory;
 

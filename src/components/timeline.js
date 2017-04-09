@@ -1,11 +1,7 @@
 import React from 'react';
 import Memory from './memory';
 
-const Timeline = React.createClass({
-
-  componentDidMount() {
-    console.log(this.props);
-  },
+class Timeline extends Component{
 
   render() {
     const {firsts} = this.props;

@@ -1,7 +1,6 @@
 import React from 'react';
 //imports go here
-
-const Login = React.createClass({
+class Login extends Component{
   render() {
     return (
       <div className="login-screen">
@@ -14,6 +13,6 @@ const Login = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Login;

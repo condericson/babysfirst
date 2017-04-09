@@ -1,7 +1,7 @@
 import React from 'react';
 //imports go here
 
-const Signup = React.createClass({
+class Signup extends Component{
   render() {
     return (
       <div className="signup-screen">
@@ -16,6 +16,6 @@ const Signup = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Signup;

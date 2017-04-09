@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const Splash = React.createClass({
+class Splash extends Component{
   render() {
     return (
       <div className="login-form">
@@ -22,6 +22,6 @@ const Splash = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Splash;
