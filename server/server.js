@@ -17,7 +17,6 @@ app.use('/firsts', firstRouter);
 
 let server;
 
-// this function connects to our database, then starts the server
 function runServer() {
   return new Promise((resolve, reject) => {
     mongoose.connect(DATABASE_URL, err => {

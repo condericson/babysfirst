@@ -23,7 +23,9 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   let image = '';
-  cloudinary.uploader.upload('req.body.image', (result) => {
+  console.log('posting');
+  console.log(req.body);
+  cloudinary.uploader.upload(req.body.image, (result) => {
     console.log(result);
     image = result;
   });
