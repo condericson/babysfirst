@@ -1,18 +1,18 @@
+/* eslint-disable no-console */
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cloudinary = require('cloudinary');
 
-const router = express.Router();
+require('./config/cloudinary');
 
-cloudinary.config({
-  cloud_name: 'babysfirst',
-  api_key: '149535471223848',
-  api_secret: '1WnNvoTn2z6nee3iGpnP1R8f8uA',
-});
+const router = express.Router();
 
 const { Firsts } = require('./models/firstsModel');
 
-router.get('/firsts', (req, res) => {
+// Here you don't need to pass /firsts cause you pass it in
+// server.js. Cause of this your route was /firsts/firsts
+router.get('/', (req, res) => {
   Firsts.find((err, first) => {
     if (err) {
       res.status(500).json({ message: 'Error!' });
@@ -21,7 +21,7 @@ router.get('/firsts', (req, res) => {
   });
 });
 
-router.post('/firsts', (req, res) => {
+router.post('/', (req, res) => {
   let image = '';
   cloudinary.uploader.upload('req.body.image', (result) => {
     console.log(result);
