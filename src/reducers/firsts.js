@@ -1,17 +1,16 @@
 function postFirst(state = [], action) {
-  switch(action.type){
+  switch (action.type) {
     case 'ADD_FIRST':
     // return the new state with the new comment
       return [...state, {
         userId: action.userId,
         date: action.date,
-        content: action.content
+        content: action.content,
+        image: action.image,
       }];
     default:
       return state;
   }
 }
-
-
 
 export default postFirst;

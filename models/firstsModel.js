@@ -3,21 +3,21 @@ const mongoose = require('mongoose');
 const FirstsSchema = mongoose.Schema({
   userid: {
     type: String,
-    required: true
+    required: true,
   },
   content: {
     type: String,
-    required: true
+    required: true,
   },
   date: {
     type: String,
-    required: true
+    required: true,
   },
   image: {
-    type: String
-  }
+    type: String,
+  },
 });
 
 const Firsts = mongoose.model('recipes', FirstsSchema);
 
-module.exports = {Firsts};
+module.exports = { Firsts };

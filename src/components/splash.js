@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-class Splash extends Component{
+class Splash extends Component {
   render() {
     return (
       <div className="login-form">
@@ -11,16 +11,16 @@ class Splash extends Component{
           <Link to="/timeline">Timeline</Link>
         </nav>
         <div>
-          {/*pretty picture with title*/}
+          {/* pretty picture with title*/}
         </div>
         <div>
-          {/*explanation of app*/}
+          {/* explanation of app*/}
         </div>
         <div>
-          {/*button to signup*/}
+          {/* button to signup*/}
         </div>
       </div>
-    )
+    );
   }
 }
 

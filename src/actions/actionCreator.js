@@ -1,12 +1,13 @@
-//add first
-export function addMemory(userId, date, content) {
-  console.log("dispatching add first");
+// add first
+export function addMemory(userId, date, content, image) {
+  console.log('dispatching add first');
   return {
     type: 'ADD_FIRST',
     userId,
     date,
-    content
-  }
+    content,
+    image,
+  };
 }
 
 // // remove comment

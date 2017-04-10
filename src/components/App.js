@@ -5,8 +5,8 @@ import Main from './Main';
 
 function mapStateToProps(state) {
   return {
-    firsts: state.firsts
-  }
+    firsts: state.firsts,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

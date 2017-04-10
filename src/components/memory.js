@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Memory extends Component{
+class Memory extends Component {
   render() {
     const { first } = this.props;
     return (
       <div className="memory">
         <p>{first.content}</p>
       </div>
-    )
+    );
   }
-};
+}
 
 export default Memory;
 
-
- //{firsts.date.years} {firsts.date.months}
+ // {firsts.date.years} {firsts.date.months}
