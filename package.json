@@ -5,6 +5,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
+    "cloudinary": "^1.8.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
     "mongoose": "^4.9.3",
@@ -28,6 +29,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "lint:fix": "eslint --fix src"
+    "lint:fix": "eslint --fix src",
+    "server": "nodemon server/server.js"
   }
 }
