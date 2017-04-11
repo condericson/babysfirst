@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 class Memory extends Component {
   render() {
-    const { first } = this.props;
+    const { content, date, image } = this.props;
     return (
       <div className="memory">
-        <p>{first.content}</p>
+        <h1 className="date">{date}</h1>
+        <p>{content}</p>
       </div>
     );
   }

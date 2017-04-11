@@ -19,6 +19,7 @@ let server;
 
 function runServer() {
   return new Promise((resolve, reject) => {
+    mongoose.Promise = global.Promise;
     mongoose.connect(DATABASE_URL, err => {
       if (err) {
         return reject(err);
@@ -34,6 +35,7 @@ function runServer() {
     });
   });
 }
+
 function closeServer() {
   return mongoose.disconnect().then(() => new Promise((resolve, reject) => {
     console.log('Closing server');

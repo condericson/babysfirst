@@ -21,25 +21,20 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
-  let image = '';
-  console.log('posting');
+router.post('/', async (req, res) => {
   console.log(req.body);
-  cloudinary.uploader.upload(req.body.image, (result) => {
-    console.log(result);
-    image = result;
-  });
-  Firsts.create({
+  const image = await cloudinary.uploader.upload(req.body.image);
+  return Firsts.create({
     date: req.body.date,
     content: req.body.content,
-    image,
+    image: image.url,
     userId: req.body.userId,
   }, (err, first) => {
     if (err) {
       console.log(err);
-      res.status(500).json({ message: 'Error with post' });
+      return res.status(500).json({ message: 'Error with post' });
     }
-    res.status(201).json(first);
+    return res.status(201).json(first);
   });
 });
 

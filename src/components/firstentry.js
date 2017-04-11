@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchAPI } from '../../server/utils/api';
+import { fetchAPI } from '../utils/api';
 // imports go here
 
 class FirstEntry extends Component {
@@ -22,10 +22,13 @@ class FirstEntry extends Component {
     const submittedFirst = {
       date: this.state.date,
       content: this.state.content,
-      imageurl: this.state.imageurl,
-      userid: this.state.userid,
+      image: this.state.imageurl,
+      userId: this.state.userid,
     };
-    // fetchAPI('firsts', 'POST', submittedFirst);
+    fetchAPI('firsts', 'POST', submittedFirst)
+      .then(res => res.json)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   }
 
   disabledButton() {
