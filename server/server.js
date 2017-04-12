@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const firstRouter = require('./firsts');
+const userRouter = require('./users');
 const middlewares = require('./config/middlewares');
 
 const app = express();
@@ -14,6 +15,7 @@ middlewares(app);
 // routers
 
 app.use('/firsts', firstRouter);
+app.use('/users', userRouter);
 
 let server;
 

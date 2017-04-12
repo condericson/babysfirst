@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
-// import '../styles/splash.css';
+import '../styles/splash.css';
 
 class Splash extends Component {
   componentDidMount() {
@@ -31,7 +31,7 @@ class Splash extends Component {
       <div className="login-form">
         <nav>
           <ul className="fullscreen">
-            <Link to="/signup" className="signupbutton button whiteglow"><li>Signup</li></Link>
+            <Link to="/signup" className="signupbutton button whiteglow"><li>Sign up</li></Link>
             <Link to="/login" className="loginbutton button whiteglow"><li>Log In</li></Link>
           </ul>
           <div className="menucontainer">
@@ -80,7 +80,7 @@ class Splash extends Component {
         <div className="splashSectionFour">
           <div className="center">
             <p className="neverforget">Never forget a single first.</p>
-            <Link to="/signup" className="signupbutton button2">Signup</Link>
+            <Link to="/signup" className="signupbutton button2">Sign up</Link>
             <Link to="/login" className="loginbutton button2">Log In</Link>
           </div>
         <div className="footer">

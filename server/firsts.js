@@ -10,9 +10,17 @@ const router = express.Router();
 
 const { Firsts } = require('./models/firstsModel');
 
-// Here you don't need to pass /firsts cause you pass it in
-// server.js. Cause of this your route was /firsts/firsts
 router.get('/', (req, res) => {
+  Firsts.find().sort({ date: -1 }).exec(function(err, first){ // eslint-disable-line
+    console.log(err, first);
+    if (err) {
+      res.status(500).json({ message: 'Error!' });
+    }
+    res.status(201).json(first);
+  });
+});
+
+router.get('/:id', (req, res) => {
   Firsts.find((err, first) => {
     if (err) {
       res.status(500).json({ message: 'Error!' });
