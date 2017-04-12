@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { fetchAPI } from '../utils/api';
+import Timeline from './timeline';
 // imports go here
 
 class Signup extends Component {
@@ -25,7 +27,7 @@ class Signup extends Component {
     };
     fetchAPI('users', 'POST', submittedUser)
       .then(res => res.json)
-      .then(res => console.log(res))
+      .then(res => ReactDOM.render(<Timeline />, document.getElementById('root')))
       .catch(err => console.log(err));
   }
 

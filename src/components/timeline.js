@@ -8,8 +8,6 @@ class Timeline extends Component {
     firsts: [],
   }
 
-  // TODO: on page load, pull all firsts from database, add them to the store, then organize them on the page
-
   componentDidMount() {
     fetch('http://localhost:8080/firsts')
       .then(res => res.json())
@@ -18,9 +16,6 @@ class Timeline extends Component {
   }
 
   render() {
-    // TODO: create array of objects from state to replace 'firsts' in forEach loop that is organized by date
-    // TODO: create loading component
-
     return (
       <div className="timelineEntry">
         <Link to="/firstentry">Enter a first</Link>
