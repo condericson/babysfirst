@@ -1,20 +1,15 @@
 
-const express = require('express');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
+const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 // const passport = require('passport');
 // const BasicStrategy = require('passport-http');
-const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
 const USER_COOKIE_NAME = 'babysfirst';
-const router = express.Router();
+const router = new Router();
 
-const { User } = require('./models/userModel');
+const User = require('./models/userModel');
 
-const jsonParser = bodyParser.json();
-router.use(morgan('common'));
 router.use(cookieParser());
 
 router.get('/', (req, res) => {
@@ -27,10 +22,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const _id = mongoose.Types.ObjectId(req.params.id);
-  User.findOne({
-    _id,
-  }, (err, user) => {
+  User.findById(req.params.id, (err, user) => {
     if (err) {
       res.status(500).json({ message: 'Username not found' });
     }
@@ -43,8 +35,9 @@ router.get('/logout', (req, res) => {
   res.status(201).json({ message: 'logging out' });
 });
 
-router.post('/', jsonParser, (req, res) => {
-  const password = req.body.password;
+router.post('/', (req, res) => {
+  console.log('BODY', req.body);
+  const { password } = req.body;
   if (password.length < 3) {
     return res.status(500).json({ message: 'Invalid username or password' });
   }
@@ -72,7 +65,7 @@ router.post('/', jsonParser, (req, res) => {
   });
 });
 
-router.post('/login', jsonParser, (req, res) => {
+router.post('/login', (req, res) => {
   const enteredpassword = req.body.password;
   User.findOne({
     username: req.body.username,
@@ -93,17 +86,12 @@ router.post('/login', jsonParser, (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  const _id = mongoose.Types.ObjectId(req.params.id);
-  User.remove({
-    _id,
-  }, (err, user) => {
+  User.findByIdAndRemove(req.params.id, (err, user) => {
     if (err || !user) {
-      console.error('Could not delete user', req.body.username);
-      mongoose.disconnect();
-      return;
+      return console.error('Could not delete user', req.body.username);
     }
     console.log('Deleted user', user.result);
-    res.status(201).json(user);
+    return res.status(201).json(user);
   });
 });
 
