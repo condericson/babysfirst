@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const FirstsSchema = mongoose.Schema({
-  userid: {
-    type: String,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
   },
   content: {
     type: String,
@@ -15,6 +16,4 @@ const FirstsSchema = mongoose.Schema({
   },
 });
 
-const Firsts = mongoose.model('firsts', FirstsSchema);
-
-module.exports = { Firsts };
+module.exports = mongoose.model('firsts', FirstsSchema);
