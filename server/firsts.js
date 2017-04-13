@@ -8,7 +8,14 @@ const Firsts = require('./models/firstsModel');
 
 const router = new Router();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  // try {
+  //   const first = await Firsts.find({}).sort({ date: -1 }).populate('userId', 'username').exec(err, first);
+  //   res.status(201).json(first);
+  // } catch (e) {
+  //   res.status(201).json(first);
+  // }
+
   // populate('where the id is', 'which part of the object you want to see')
   Firsts.find({}).sort({ date: -1 }).populate('userId', 'username').exec((err, first) => {
     console.log(err, first);
@@ -21,6 +28,7 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
   const { date, content, userId } = req.body;
+  console.log(req.body);
   try {
     const image = await cloudinary.uploader.upload(req.body.image);
     const first = await Firsts.create({ date, content, image: image.url, userId });
