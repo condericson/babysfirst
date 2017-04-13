@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { Route, browserHistory } from 'react-router';
 import { fetchAPI } from '../utils/api';
-import Timeline from './timeline';
 // imports go here
 
 class Signup extends Component {
@@ -27,7 +26,7 @@ class Signup extends Component {
     };
     fetchAPI('users', 'POST', submittedUser)
       .then(res => res.json)
-      .then(res => ReactDOM.render(<Timeline />, document.getElementById('root')))
+      .then(res => browserHistory.push('/login'))
       .catch(err => console.log(err));
   }
 
