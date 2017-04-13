@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { fetchAPI } from '../utils/api';
 // imports go here
 
 class FirstEntry extends Component {
+
   state = {
     date: '',
     content: '',
@@ -11,7 +13,7 @@ class FirstEntry extends Component {
   }
 
   changeValue = e => {
-    this.setState({
+    this.props.dispatchsetState({
       [e.target.id]: e.target.value,
     });
   }
@@ -55,4 +57,8 @@ class FirstEntry extends Component {
   }
 }
 
-export default FirstEntry;
+const mapStateToProps = state => ({
+
+});
+
+export default connect()(FirstEntry);

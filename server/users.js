@@ -36,7 +36,6 @@ router.get('/logout', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log('BODY', req.body);
   const { password } = req.body;
   if (password.length < 3) {
     return res.status(500).json({ message: 'Invalid username or password' });

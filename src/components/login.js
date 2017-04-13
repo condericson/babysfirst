@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Route, browserHistory } from 'react-router';
 import { fetchAPI } from '../utils/api';
+import * as actions from '../actions/actionCreator';
 // imports go here
 class Login extends Component {
 
@@ -24,9 +26,12 @@ class Login extends Component {
     console.log(loggingUser);
     fetchAPI('users/login', 'POST', loggingUser)
       .then(res => res.json)
-      .then(res => console.log(res.json, res))
+      .then(res => actions.addUserIdOnLogIn(res._id))
+      .then(() => browserHistory.push('/timeline'))
       .catch(err => console.log(err));
   }
+
+// browserHistory.push('/login')
 
   disabledButton() {
     const { username, password, confirmPassword } = this.state;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, browserHistory } from 'react-router';
+import { connect } from 'react-redux';
 import { fetchAPI } from '../utils/api';
+import * as actions from '../actions/actionCreator';
 // imports go here
 
 class Signup extends Component {
@@ -25,10 +27,14 @@ class Signup extends Component {
       password: this.state.password,
     };
     fetchAPI('users', 'POST', submittedUser)
-      .then(res => res.json)
-      .then(res => browserHistory.push('/login'))
+      .then(res1 => res1.json())
+      // .then(res2 => console.log(res2._id))
+      .then(res => actions.addUserIdOnLogIn(res._id))
+      .then(() => browserHistory.push('/timeline'))
       .catch(err => console.log(err));
   }
+
+  // browserHistory.push('/login')
 
   disabledButton() {
     const { username, password, confirmPassword, birthday } = this.state;

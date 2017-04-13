@@ -4,11 +4,16 @@ import Memory from './memory';
 
 class Timeline extends Component {
 
+  // connect to store
+  // get state from store
+
   state = {
     firsts: [],
   }
 
   componentDidMount() {
+    console.log(this);
+    console.log(this.props);
     fetch('http://localhost:8080/firsts')
       .then(res => res.json())
       .then(res => this.setState({ firsts: res }))

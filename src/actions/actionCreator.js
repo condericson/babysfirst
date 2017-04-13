@@ -10,11 +10,10 @@ export function addMemory(userId, date, content, image) {
   };
 }
 
-// // remove comment
-// export function removeComment(postId, i) {
-//   return {
-//     type: 'REMOVE_COMMENT',
-//     i,
-//     postId
-//   }
-// }
+export function addUserIdOnLogIn(userId) {
+  console.log('adding userId on login');
+  return {
+    type: 'RECORD_USER',
+    userId,
+  };
+}
