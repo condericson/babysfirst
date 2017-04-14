@@ -57,7 +57,7 @@ class Splash extends Component {
                   </div>
               </li>
               <li className="hoverview2">
-                <img src="./images/Picture-50.png" alt="pictureframe" />
+                <img src="./images/Camera-80.png" alt="pictureframe" />
 
                   <div className="smallscreen_instructions pictureframe_smallscreen">
                     <p>Add a picture.</p>

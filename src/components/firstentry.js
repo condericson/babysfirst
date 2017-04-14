@@ -77,4 +77,4 @@ class FirstEntry extends Component {
   }
 }
 
-export default connect()(FirstEntry);
+export default FirstEntry;
