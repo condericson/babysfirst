@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchAPI } from '../utils/api';
+import * as actions from '../actions/actionCreator';
 // imports go here
 
 class FirstEntry extends Component {
@@ -9,7 +11,7 @@ class FirstEntry extends Component {
     date: '',
     content: '',
     imageurl: '',
-    userid: 'test',
+    userId: 'test',
   }
 
   changeValue = e => {
@@ -25,11 +27,12 @@ class FirstEntry extends Component {
       date: this.state.date,
       content: this.state.content,
       image: this.state.imageurl,
-      userId: this.state.userid,
+      userId: this.state.userId,
     };
     fetchAPI('firsts', 'POST', submittedFirst)
       .then(res => res.json)
       .then(res => console.log(res))
+      .then(res => actions.addMemory(res))
       .catch(err => console.log(err));
   }
 
@@ -56,9 +59,5 @@ class FirstEntry extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-
-});
 
 export default connect()(FirstEntry);

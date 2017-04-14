@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Memory from './memory';
+import * as actions from '../actions/actionCreator';
 
 class Timeline extends Component {
 
-  // connect to store
-  // get state from store
-
-  state = {
-    firsts: [],
-  }
-
   componentDidMount() {
-    console.log(this);
-    console.log(this.props);
     fetch('http://localhost:8080/firsts')
       .then(res => res.json())
-      .then(res => this.setState({ firsts: res }))
+      .then(res => console.log(res))
+      .then(res => actions.getFirsts(res))
       .catch(err => console.log(err));
   }
 
@@ -24,14 +19,25 @@ class Timeline extends Component {
     return (
       <div className="timelineEntry">
         <Link to="/firstentry">Enter a first</Link>
-        {this.state.firsts.map((first, i) => <Memory key={i} i={i} {...first} />)}
+        {/* {this.props.firsts.map((first, i) => <Memory key={i} i={i} {...first} />)}*/}
         {/* //on page load, loop over the firstentries in state. The one that has the highest age, take that number and make the timeline that long*/}
       </div>
     );
   }
 }
 
-export default Timeline;
+function mapStateToProps(state) {
+  return {
+    firsts: state.firsts,
+    userId: state.userId,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ getFirsts: actions.getFirsts }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Timeline);
 
 // odds get "left" className, evens get "right" className
 // line is border

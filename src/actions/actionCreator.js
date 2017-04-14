@@ -1,4 +1,12 @@
 // add first
+export function getFirsts(firsts) {
+  console.log('finding firsts');
+  return {
+    type: 'GET_FIRSTS',
+    firsts,
+  };
+}
+
 export function addMemory(userId, date, content, image) {
   console.log('dispatching add first');
   return {

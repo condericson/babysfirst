@@ -1,4 +1,4 @@
-function recordUserId(state = [], action) {
+function usersReducers(state = [], action) {
   switch (action.type) {
     case 'RECORD_USER':
     // return the new state with the new comment
@@ -10,4 +10,4 @@ function recordUserId(state = [], action) {
   }
 }
 
-export default recordUserId;
+export default usersReducers;

@@ -38,11 +38,11 @@ router.post('/', async (req, res) => {
 });
 
 // update content
-router.put('/:id', (req, res) => {
-  const {content} = req.body;
+router.put('/:id', async (req, res) => {
+  const { content } = req.body;
   try {
-    const first = await Firsts.findByIdAndUpdate(req.params.id, {content: req.body.content});
-    return res.status(201).json(first)
+    const first = await Firsts.findByIdAndUpdate(req.params.id, { content: req.body.content });
+    return res.status(201).json(first);
   } catch (e) {
     return res.status(500).json({ message: 'Error with update' });
   }

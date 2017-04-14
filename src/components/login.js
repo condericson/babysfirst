@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Route, browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { fetchAPI } from '../utils/api';
+import $ from 'jquery';
 import * as actions from '../actions/actionCreator';
 // imports go here
 class Login extends Component {
@@ -36,21 +37,29 @@ class Login extends Component {
   disabledButton() {
     const { username, password, confirmPassword } = this.state;
     if (username.length < 3 || password.length < 3 || (password !== confirmPassword)) {
+      $('.login_button').removeClass('loginbutton_hover');
       return true;
     }
+    $('.login_button').addClass('loginbutton_hover');
     return false;
   }
 
   render() {
     return (
       <div className="login-screen">
-        <form className="loginform" onSubmit={this.submitForm}>
-          <header>Log in</header>
-          <input type="text" id="username" placeholder="username" value={this.state.username} onChange={this.changeValue} />
-          <input type="password" id="password" placeholder="password" value={this.state.password} onChange={this.changeValue} />
-          <input type="password" id="confirmPassword" placeholder="confirm password" value={this.state.confirmPassword} onChange={this.changeValue} />
-          <button type="submit" disabled={this.disabledButton()} >Log in</button>
-        </form>
+        <nav className="login_nav">
+          <Link to="/" className="login_tohome">Home</Link>
+        </nav>
+        <div className="loginform_container">
+          <form className="loginform" onSubmit={this.submitForm}>
+            <header className="loginheader">Log in</header>
+            <input className="login_input" type="text" id="username" placeholder="username" value={this.state.username} onChange={this.changeValue} />
+            <input className="login_input" type="password" id="password" placeholder="password" value={this.state.password} onChange={this.changeValue} />
+            <input className="login_input" type="password" id="confirmPassword" placeholder="confirm password" value={this.state.confirmPassword} onChange={this.changeValue} />
+            <button className="login_button" type="submit" disabled={this.disabledButton()} >Log in</button>
+          </form>
+        </div>
+
       </div>
     );
   }

@@ -31,16 +31,16 @@ class Splash extends Component {
       <div className="login-form">
         <nav className="splashNav">
           <ul className="fullscreen">
-            <Link to="/signup" className="signupbutton button whiteglow"><li>Sign up</li></Link>
-            <Link to="/login" className="loginbutton button whiteglow"><li>Log In</li></Link>
+            <Link to="/signup" className="signupbutton button darken_hover"><li>Sign up</li></Link>
+            <Link to="/login" className="loginbutton button darken_hover"><li>Log In</li></Link>
           </ul>
           <div className="menucontainer">
             <div className="menuButtonContainer">
               <img src="./images/Brick-64.png" alt="menuimage" />
             </div>
             <ul className="animated dropdown fadeOut">
-              <Link to="/signup" className="signupbutton button whiteglow"><li>Signup</li></Link>
-              <Link to="/login" className="loginbutton button whiteglow"><li>Log In</li></Link>
+              <Link to="/signup" className="signupbutton button darken_hover"><li>Signup</li></Link>
+              <Link to="/login" className="loginbutton button darken_hover"><li>Log In</li></Link>
             </ul>
           </div>
         </nav>
@@ -55,11 +55,17 @@ class Splash extends Component {
                   <div className="animated hidden fadeOut pencildiv">
                     <p>Record a moment in your own words.</p>
                   </div>
+                  <div className="smallscreen_instructions pencildiv_smallscreen">
+                    <p>Record a moment in your own words.</p>
+                  </div>
               </li>
               <li className="hoverview2">
                 <img src="./images/Picture-50.png" alt="pictureframe" />
                   <div className="animated hidden fadeOut pictureframediv">
                     <p>Add a picture of the amazing event</p>
+                  </div>
+                  <div className="smallscreen_instructions pictureframe_smallscreen">
+                    <p>Record a moment in your own words.</p>
                   </div>
               </li>
               <li className="hoverview3">
@@ -67,8 +73,12 @@ class Splash extends Component {
                   <div className="animated hidden fadeOut playgrounddiv">
                     <p>Relive the experiences on a personalized timeline.</p>
                   </div>
+                  <div className="smallscreen_instructions playground_smallscreen">
+                    <p>Record a moment in your own words.</p>
+                  </div>
               </li>
             </ul>
+
         </div>
         <div className="splashSectionThree">
           <div className="sectionThreeContainer">
@@ -78,8 +88,8 @@ class Splash extends Component {
         <div className="splashSectionFour">
           <div className="center">
             <p className="neverforget">Never forget a single first.</p>
-              <Link to="/signup" className="signupbutton button2">Sign up</Link>
-              <Link to="/login" className="loginbutton button2">Log In</Link>
+              <Link to="/signup" className="signupbutton button2 bluehover">Sign up</Link>
+              <Link to="/login" className="loginbutton button2 pinkhover">Log In</Link>
 
           </div>
 

@@ -20,12 +20,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const user = await User.find({});
     res.status(201).json(user);
   } catch (e) {
-    res.status(500).json(user);
+    res.status(500).json(e);
   }
   User.findById(req.params.id, (err, user) => {
     if (err) {
