@@ -53,6 +53,7 @@ class Signup extends Component {
       <div className="signup-screen">
         <nav className="signup_nav">
           <Link to="/" className="signup_tohome">Home</Link>
+          <Link to="/login" className="signup_tologin">Log in</Link>
         </nav>
         <div className="signupform_container">
           <form className="signupform" onSubmit={this.submitForm}>

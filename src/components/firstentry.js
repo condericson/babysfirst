@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import $ from 'jquery';
 import { fetchAPI } from '../utils/api';
 import * as actions from '../actions/actionCreator';
 // imports go here
@@ -38,23 +40,38 @@ class FirstEntry extends Component {
 
   disabledButton() {
     if (this.state.content.length < 1 || this.state.date < 10) {
+      $('.firstEntryUrlButton').removeClass('firstEntryUrlButton_hoverr');
       return true;
     }
+    $('.firstEntryUrlButton').addClass('firstEntryUrlButton_hover');
     return false;
   }
 
   render() {
     return (
       <div className="firstEntry-screen">
-        <form className="firstEntry-form" onSubmit={this.submitForm}>
-          <header>Record a first moment!</header>
-          <p>When did it happen?</p>
-          <input type="date" id="date" value={this.state.date} onChange={this.changeValue} />
-          <textarea rows="10" cols="50" placeholder="What happened?" id="content" value={this.state.content} onChange={this.changeValue} />
-          <p>Optional: upload a picture of the moment!</p>
-          <input id="image" value={this.state.imageurl} onChange={this.changeValue} id="imageurl" />
-        <button type="submit" disabled={this.disabledButton()} >Record!</button>
-        </form>
+        <nav className="login_nav">
+          <Link to="/timeline" className="backToTimeline">Back</Link>
+        </nav>
+        <div className="firstEntryForm_container">
+          <form className="firstEntryForm" onSubmit={this.submitForm}>
+            <header className="firstEntryHeader">Record a first!</header>
+            <div className="whenEntry">
+              <p className="whenP">When did it happen?</p>
+              <input className="firstEntryDate" type="date" id="date" value={this.state.date} onChange={this.changeValue} />
+            </div>
+            <div className="whatEntry">
+              <p className="whatP">Describe the moment!</p>
+              <textarea rows="13" cols="90" className="contentTextarea" placeholder="How did it happen? How did you feel?" id="content" value={this.state.content} onChange={this.changeValue} />
+            </div>
+            <div className="imageUploadEntry">
+              <p className="imageP">Upload a picture of the moment! (optional)</p>
+              <input className="firstEntryImage" placeholder="Paste in a URL or a picture from your computer." id="image" value={this.state.imageurl} onChange={this.changeValue} id="imageurl" />
+            </div>
+            <button className="firstEntryUrlButton" type="submit" disabled={this.disabledButton()} >Record!</button>
+          </form>
+        </div>
+
       </div>
     );
   }

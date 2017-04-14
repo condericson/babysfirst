@@ -52,31 +52,35 @@ class Splash extends Component {
             <ul className="icons">
               <li className="hoverview1">
                 <img src="./images/Pencil-48.png" alt="pencil" />
-                  <div className="animated hidden fadeOut pencildiv">
-                    <p>Record a moment in your own words.</p>
-                  </div>
                   <div className="smallscreen_instructions pencildiv_smallscreen">
                     <p>Record a moment in your own words.</p>
                   </div>
               </li>
               <li className="hoverview2">
                 <img src="./images/Picture-50.png" alt="pictureframe" />
-                  <div className="animated hidden fadeOut pictureframediv">
-                    <p>Add a picture of the amazing event</p>
-                  </div>
+
                   <div className="smallscreen_instructions pictureframe_smallscreen">
-                    <p>Record a moment in your own words.</p>
+                    <p>Add a picture.</p>
                   </div>
               </li>
               <li className="hoverview3">
                 <img src="./images/Playground-50.png" alt="playground" />
-                  <div className="animated hidden fadeOut playgrounddiv">
+
+                  <div className="smallscreen_instructions playground_smallscreen">
                     <p>Relive the experiences on a personalized timeline.</p>
                   </div>
-                  <div className="smallscreen_instructions playground_smallscreen">
-                    <p>Record a moment in your own words.</p>
-                  </div>
               </li>
+              <div className="bottomInstructionContainer">
+              <div className="animated hidden fadeOut pencildiv">
+                <p>Record a moment in your own words.</p>
+              </div>
+              <div className="animated hidden fadeOut pictureframediv">
+                <p>Add a picture.</p>
+              </div>
+              <div className="animated hidden fadeOut playgrounddiv">
+                <p>Relive the experiences on a personalized timeline.</p>
+              </div>
+            </div>
             </ul>
 
         </div>
@@ -99,7 +103,9 @@ class Splash extends Component {
             <p className="built">
               <span className="by">Built by Connor Ericson</span>
               <div className="githubcontainer">
-                <i className="fa fa-github fa-2x githubLogo" aria-hidden="true" />
+                 <a href="https://github.com/condericson/babysfirst" className="nostyle" rel="githublink" target="_blank">
+                  <i className="fa fa-github fa-2x githubLogo" aria-hidden="true" />
+                 </a>
               </div>
             </p>
           </div>

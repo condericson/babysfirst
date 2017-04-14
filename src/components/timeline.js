@@ -19,6 +19,7 @@ class Timeline extends Component {
     return (
       <div className="timelineEntry">
         <Link to="/firstentry">Enter a first</Link>
+        <Link to="/">Log out</Link>
         {/* {this.props.firsts.map((first, i) => <Memory key={i} i={i} {...first} />)}*/}
         {/* //on page load, loop over the firstentries in state. The one that has the highest age, take that number and make the timeline that long*/}
       </div>
