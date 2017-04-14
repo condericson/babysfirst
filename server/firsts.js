@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     const first = await Firsts.find({}).sort({ date: -1 }).populate('userId', 'username');
     res.status(201).json(first);
   } catch (e) {
-    res.status(201).json(first);
+    res.status(500).json({ message: 'Error!' });
   }
 
   // populate('where the id is', 'which part of the object you want to see')
@@ -37,40 +37,15 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {
-  Firsts.find((err, first) => {
-    if (err) {
-      res.status(500).json({ message: 'Error!' });
-    }
-    return res.status(201).json(first);
-  });
-});
-
+// update content
 router.put('/:id', (req, res) => {
-  Firsts.findByIdAndUpdate(req.params.id,
-    {
-      $set: {
-        date: req.body.date,
-        content: req.body.content,
-        image: req.body.image,
-        userId: req.body.userId,
-      },
-    },
-    {
-      new: true,
-    },
-    (err, first) => {
-      if (err || !first) {
-        console.error('Could not update first', req.body.name);
-        if (err) {
-          return res.status(500).json({
-            message: 'Internal Server Error',
-          });
-        }
-      }
-      console.log('Updated first on ', first.date);
-      res.status(201).json(first);
-    });
+  const {content} = req.body;
+  try {
+    const first = await Firsts.findByIdAndUpdate(req.params.id, {content: req.body.content});
+    return res.status(201).json(first)
+  } catch (e) {
+    return res.status(500).json({ message: 'Error with update' });
+  }
 });
 
 router.patch('/:id', async (req, res) => {

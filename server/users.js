@@ -5,23 +5,28 @@ const bcryptjs = require('bcryptjs');
 // const BasicStrategy = require('passport-http');
 const cookieParser = require('cookie-parser');
 
-const USER_COOKIE_NAME = 'babysfirst';
 const router = new Router();
 
 const User = require('./models/userModel');
 
 router.use(cookieParser());
 
-router.get('/', (req, res) => {
-  User.find((err, user) => {
-    if (err) {
-      res.status(500).json({ message: 'Error!' });
-    }
-    return res.status(201).json(user);
-  });
+router.get('/', async (req, res) => {
+  try {
+    const user = await User.find({});
+    res.status(201).json(user);
+  } catch (e) {
+    res.status(500).json(e);
+  }
 });
 
 router.get('/:id', (req, res) => {
+  try {
+    const user = await User.find({});
+    res.status(201).json(user);
+  } catch (e) {
+    res.status(500).json(user);
+  }
   User.findById(req.params.id, (err, user) => {
     if (err) {
       res.status(500).json({ message: 'Username not found' });
@@ -31,7 +36,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  res.clearCookie('babysfirst');
+  // res.clearCookie('babysfirst');
   res.status(201).json({ message: 'logging out' });
 });
 
