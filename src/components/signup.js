@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import $ from 'jquery';
-import { fetchAPI } from '../utils/api';
-import * as actions from '../actions/actionCreator';
+
+import { signup } from '../actions/user';
 // imports go here
 
 class Signup extends Component {
-
   state = {
     birthday: '',
     username: '',
     password: '',
     confirmPassword: '',
-  }
+  };
 
   changeValue = e => {
     this.setState({
       [e.target.id]: e.target.value,
     });
-  }
+  };
 
   submitForm = e => {
     e.preventDefault();
@@ -29,18 +27,19 @@ class Signup extends Component {
       username: this.state.username,
       password: this.state.password,
     };
-    fetchAPI('users', 'POST', submittedUser)
-      .then(res => res.json())
-      .then(res => actions.addUserIdOnLogIn(res._id))
-      .then(() => browserHistory.push('/timeline'))
-      .catch(err => console.log(err));
-  }
+    this.props.signup(submittedUser);
+  };
 
   // browserHistory.push('/login')
 
   disabledButton() {
     const { username, password, confirmPassword, birthday } = this.state;
-    if (username.length < 3 || password.length < 3 || birthday.length < 10 || (password !== confirmPassword)) {
+    if (
+      username.length < 3 ||
+      password.length < 3 ||
+      birthday.length < 10 ||
+      password !== confirmPassword
+    ) {
       // react add class next time
       // $('.signup_button').removeClass('signupbutton_hover');
       return true;
@@ -50,6 +49,9 @@ class Signup extends Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return <h1>Loading...</h1>;
+    }
     return (
       <div className="signup-screen">
         <nav className="signup_nav">
@@ -59,12 +61,48 @@ class Signup extends Component {
         <div className="signupform_container">
           <form className="signupform" onSubmit={this.submitForm}>
             <header className="signupheader">Sign up!</header>
-            <p className="enterbdayinstructions">Enter your child's birthday!</p>
-            <input className="signup_input bday_input" type="date" placeholder="mm/dd/yyyy" id="birthday" value={this.state.birthday} onChange={this.changeValue} />
-            <input className="signup_input" type="text" id="username" placeholder="username" value={this.state.username} onChange={this.changeValue} />
-            <input className="signup_input" type="password" id="password" placeholder="password" value={this.state.password} onChange={this.changeValue} />
-            <input className="signup_input" type="password" id="confirmPassword" placeholder="confirm password" value={this.state.confirmPassword} onChange={this.changeValue} />
-            <button className="signup_button" type="submit" disabled={this.disabledButton()} >Sign up!</button>
+            <p className="enterbdayinstructions">
+              Enter your child's birthday!
+            </p>
+            <input
+              className="signup_input bday_input"
+              type="date"
+              placeholder="mm/dd/yyyy"
+              id="birthday"
+              value={this.state.birthday}
+              onChange={this.changeValue}
+            />
+            <input
+              className="signup_input"
+              type="text"
+              id="username"
+              placeholder="username"
+              value={this.state.username}
+              onChange={this.changeValue}
+            />
+            <input
+              className="signup_input"
+              type="password"
+              id="password"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.changeValue}
+            />
+            <input
+              className="signup_input"
+              type="password"
+              id="confirmPassword"
+              placeholder="confirm password"
+              value={this.state.confirmPassword}
+              onChange={this.changeValue}
+            />
+            <button
+              className="signup_button"
+              type="submit"
+              disabled={this.disabledButton()}
+            >
+              Sign up!
+            </button>
           </form>
         </div>
       </div>
@@ -72,14 +110,9 @@ class Signup extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    userId: state.userId,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ addUserIdOnLogIn: actions.addUserIdOnLogIn }, dispatch);
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(Signup);
+export default connect(
+  state => ({
+    loading: state.user.loading,
+  }),
+  { signup },
+)(Signup);
