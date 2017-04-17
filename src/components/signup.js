@@ -8,6 +8,7 @@ import * as actions from '../actions/actionCreator';
 // imports go here
 
 class Signup extends Component {
+
   state = {
     birthday: '',
     username: '',
@@ -29,8 +30,7 @@ class Signup extends Component {
       password: this.state.password,
     };
     fetchAPI('users', 'POST', submittedUser)
-      .then(res1 => res1.json())
-      // .then(res2 => console.log(res2._id))
+      .then(res => res.json())
       .then(res => actions.addUserIdOnLogIn(res._id))
       .then(() => browserHistory.push('/timeline'))
       .catch(err => console.log(err));
@@ -41,10 +41,11 @@ class Signup extends Component {
   disabledButton() {
     const { username, password, confirmPassword, birthday } = this.state;
     if (username.length < 3 || password.length < 3 || birthday.length < 10 || (password !== confirmPassword)) {
-      $('.signup_button').removeClass('signupbutton_hover');
+      // react add class next time
+      // $('.signup_button').removeClass('signupbutton_hover');
       return true;
     }
-    $('.signup_button').addClass('signupbutton_hover');
+    // $('.signup_button').addClass('signupbutton_hover');
     return false;
   }
 

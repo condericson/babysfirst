@@ -82,21 +82,26 @@ router.post('/login', (req, res) => {
       res.status(500).json({ message: 'Incorrect username or password' });
     }
     if (bcryptjs.compareSync(enteredpassword, user.password)) {
-      res.cookie(USER_COOKIE_NAME, user._id, {});
-      // console.log(document.cookie);
+      // return the userId for frontend to store in state
       res.status(201).json({ message: 'Password accepted' });
     }
   });
 });
 
-router.delete('/:id', (req, res) => {
-  User.findByIdAndRemove(req.params.id, (err, user) => {
-    if (err || !user) {
-      return console.error('Could not delete user', req.body.username);
-    }
-    console.log('Deleted user', user.result);
+router.delete('/:id', async (req, res) => {
+  try {
+    const user = User.findByIdAndRemove(req.params.id);
     return res.status(201).json(user);
-  });
+  } catch (e) {
+    res.status(500).json({ message: `Could not delete user ${req.body.username}` });
+  }
+  // User.findByIdAndRemove(req.params.id, (err, user) => {
+  //   if (err || !user) {
+  //     return console.error('Could not delete user', req.body.username);
+  //   }
+  //   console.log('Deleted user', user.result);
+  //   return res.status(201).json(user);
+  // });
 });
 
 module.exports = router;

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
-import { fetchAPI } from '../utils/api';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import $ from 'jquery';
+import { fetchAPI } from '../utils/api';
 import * as actions from '../actions/actionCreator';
 // imports go here
 class Login extends Component {
@@ -31,8 +33,6 @@ class Login extends Component {
       .then(() => browserHistory.push('/timeline'))
       .catch(err => console.log(err));
   }
-
-// browserHistory.push('/login')
 
   disabledButton() {
     const { username, password, confirmPassword } = this.state;
@@ -66,4 +66,14 @@ class Login extends Component {
   }
 }
 
-export default Login;
+function mapStateToProps(state) {
+  return {
+    userId: state.userId,
+  };
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ addUserIdOnLogIn: actions.addUserIdOnLogIn }, dispatch);
+}
+
+export default connect()(Login);

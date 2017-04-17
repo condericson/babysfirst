@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import './animate.css';
 
 // import components
-import App from './components/App';
+import Main from './components/Main';
 import Splash from './components/splash';
 import Login from './components/login';
 import Signup from './components/signup';
@@ -19,7 +19,7 @@ import store from './store';
 const router = (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
+      <Route path="/" component={Main}>
         <IndexRoute component={Splash} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
