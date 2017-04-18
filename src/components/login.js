@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
-import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import $ from 'jquery';
-import { fetchAPI } from '../utils/api';
-import * as actions from '../actions/actionCreator';
+import { login } from '../actions/user';
 // imports go here
 class Login extends Component {
 
@@ -27,11 +25,7 @@ class Login extends Component {
       password: this.state.password,
     };
     console.log(loggingUser);
-    fetchAPI('users/login', 'POST', loggingUser)
-      .then(res => res.json)
-      .then(res => actions.addUserIdOnLogIn(res._id))
-      .then(() => browserHistory.push('/timeline'))
-      .catch(err => console.log(err));
+    this.props.login(loggingUser);
   }
 
   disabledButton() {
@@ -45,6 +39,11 @@ class Login extends Component {
   }
 
   render() {
+    const errorMessageP = <p className="errorMessage">Invalid entry</p>;
+    let errorMessage = null;
+    if (this.props.error !== undefined) {
+      errorMessage = errorMessageP;
+    }
     return (
       <div className="login-screen">
         <nav className="login_nav">
@@ -58,6 +57,7 @@ class Login extends Component {
             <input className="login_input" type="password" id="password" placeholder="password" value={this.state.password} onChange={this.changeValue} />
             <input className="login_input" type="password" id="confirmPassword" placeholder="confirm password" value={this.state.confirmPassword} onChange={this.changeValue} />
             <button className="login_button" type="submit" disabled={this.disabledButton()} >Log in</button>
+            {errorMessage}
           </form>
         </div>
 
@@ -66,14 +66,8 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    userId: state.userId,
-  };
-}
-
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ addUserIdOnLogIn: actions.addUserIdOnLogIn }, dispatch);
-}
-
-export default connect()(Login);
+export default connect(state => ({
+  loading: state.user.loading,
+}),
+  { login },
+)(Login);

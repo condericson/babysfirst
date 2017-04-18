@@ -10,20 +10,20 @@ const router = new Router();
 
 router.get('/', async (req, res) => {
   try {
-    const first = await Firsts.find({}).sort({ date: -1 }).populate('userId', 'username');
+    const first = await Firsts.find({}).sort({ date: -1 });
     res.status(201).json(first);
   } catch (e) {
     res.status(500).json({ message: 'Error!' });
   }
+});
 
-  // populate('where the id is', 'which part of the object you want to see')
-  // Firsts.find({}).sort({ date: -1 }).populate('userId', 'username').exec((err, first) => {
-  //   console.log(err, first);
-  //   if (err) {
-  //     res.status(500).json({ message: 'Error!' });
-  //   }
-  //   res.status(201).json(first);
-  // });
+router.get('/:id', async (req, res) => {
+  try {
+    const firsts = await Firsts.find({ userId: req.params.id }).sort({ date: -1 });
+    res.status(201).json(firsts);
+  } catch (e) {
+    res.status(500).json({ message: 'Error!' });
+  }
 });
 
 router.post('/', async (req, res) => {
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const { content } = req.body;
   try {
-    const first = await Firsts.findByIdAndUpdate(req.params.id, { content: req.body.content });
+    const first = await Firsts.findByIdAndUpdate(req.params.id, { content });
     return res.status(201).json(first);
   } catch (e) {
     return res.status(500).json({ message: 'Error with update' });

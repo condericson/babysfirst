@@ -26,6 +26,31 @@ class UserApi {
       return e;
     }
   }
+
+  async login(user) {
+    try {
+      const { data } = await axios.post(`${this.path}/login`, user);
+      return data;
+    } catch (e) {
+      return e;
+    }
+  }
+}
+
+class FirstsApi {
+  constructor() {
+    this.path = '/firsts';
+  }
+
+  async getFirsts(userId) {
+    try {
+      const { data } = await axios.get(`${this.path}/${userId}`);
+      return data;
+    } catch (e) {
+      return e;
+    }
+  }
 }
 
 export const User = new UserApi();
+export const Firsts = new FirstsApi();

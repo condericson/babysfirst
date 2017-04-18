@@ -70,20 +70,18 @@ router.post('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  const enteredpassword = req.body.password;
+  const enteredPassword = req.body.password;
   User.findOne({
     username: req.body.username,
   }, (err, user) => {
     if (err) {
-      res.status(500).json({ message: 'Invalid....' });
-      return;
+      return res.status(500).json({ message: 'Error with post' });
     }
     if (!user) {
-      res.status(500).json({ message: 'Incorrect username or password' });
+      return res.status(500).json({ message: 'Incorrect username or password' });
     }
-    if (bcryptjs.compareSync(enteredpassword, user.password)) {
-      // return the userId for frontend to store in state
-      res.status(201).json({ message: 'Password accepted' });
+    if (bcryptjs.compareSync(enteredPassword, user.password)) {
+      return res.status(201).json(user);
     }
   });
 });

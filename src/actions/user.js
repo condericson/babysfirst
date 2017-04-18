@@ -3,14 +3,40 @@ import { browserHistory } from 'react-router';
 import { User } from '../utils/api';
 
 export const LOGIN = 'LOGIN';
-export const LOGOUT = 'LOGOUT';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
 
-export function login(userId) {
+function loginSuccess(user) {
   return {
-    type: LOGIN,
-    userId,
+    type: LOGIN_SUCCESS,
+    user,
   };
 }
+
+function loginError(error) {
+  return {
+    type: LOGIN_ERROR,
+    error,
+  };
+}
+
+export function login(user) {
+  return async dispatch => {
+    dispatch({ type: LOGIN });
+    try {
+      const response = await User.login(user);
+      if (response instanceof Error) {
+        console.log(response);
+        return dispatch(loginError(response));
+      }
+      await dispatch(loginSuccess(response));
+    } catch (e) {
+      return dispatch(loginError(e));
+    }
+  };
+}
+
+export const LOGOUT = 'LOGOUT';
 
 export function logout() {
   return {
