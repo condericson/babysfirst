@@ -43,12 +43,13 @@ class FirstsApi {
   }
 
   async getFirsts(userId) {
-    try {
-      const { data } = await axios.get(`${this.path}/${userId}`);
-      return data;
-    } catch (e) {
-      return e;
-    }
+    const { data } = await axios.get(`${this.path}/${userId}`);
+    return data;
+  }
+
+  async addFirsts(firstInfo) {
+    const { data } = await axios.post(`${this.path}`, firstInfo);
+    return data;
   }
 }
 

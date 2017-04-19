@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import $ from 'jquery';
-import { fetchAPI } from '../utils/api';
-import * as actions from '../actions/actionCreator';
+import { addFirsts } from '../actions/firsts';
 // imports go here
 
 class FirstEntry extends Component {
@@ -13,11 +11,11 @@ class FirstEntry extends Component {
     date: '',
     content: '',
     imageurl: '',
-    userId: 'test',
+    userId: this.props.currentUserId || '58f4e7217e71112a302fe39e',
   }
 
   changeValue = e => {
-    this.props.dispatchsetState({
+    this.setState({
       [e.target.id]: e.target.value,
     });
   }
@@ -31,16 +29,12 @@ class FirstEntry extends Component {
       image: this.state.imageurl,
       userId: this.state.userId,
     };
-    fetchAPI('firsts', 'POST', submittedFirst)
-      .then(res => res.json)
-      .then(res => console.log(res))
-      .then(res => actions.addMemory(res))
-      .catch(err => console.log(err));
+    addFirsts(submittedFirst);
   }
 
   disabledButton() {
     if (this.state.content.length < 1 || this.state.date < 10) {
-      $('.firstEntryUrlButton').removeClass('firstEntryUrlButton_hoverr');
+      $('.firstEntryUrlButton').removeClass('firstEntryUrlButton_hover');
       return true;
     }
     $('.firstEntryUrlButton').addClass('firstEntryUrlButton_hover');
@@ -77,4 +71,7 @@ class FirstEntry extends Component {
   }
 }
 
-export default FirstEntry;
+export default connect(
+  state => ({
+    currentUserId: state.user.currentUserId,
+  }), { addFirsts })(FirstEntry);

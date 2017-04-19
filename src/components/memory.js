@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 
 class Memory extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
 
   render() {
-    const { content, date, image } = this.props;
+    const { content, date, image, i } = this.props;
+    let side = 'rightMemory';
+    if (i % 2 == 0) {
+      side = 'leftMemory';
+    }
+    let imageTag;
+    if (image.length > 0) {
+      imageTag = <div className="memoryImageDiv"><img src={image} alt="" /></div>;
+    }
     return (
-      <div className="memory">
-        <h1 className="date">{date}</h1>
+      <div className={side}>
+        {imageTag}
+        <p className="date">{date}</p>
         <p>{content}</p>
       </div>
     );
@@ -19,7 +25,9 @@ class Memory extends Component {
 export default Memory;
 
 // for testing:
-// https://www.pexels.com/photo/wood-bridge-cute-sitting-39369/
-// https://www.pexels.com/photo/full-length-of-boy-sitting-on-floor-315265/
-// https://www.pexels.com/photo/portrait-of-baby-boy-sitting-on-table-247185/
-// https://www.pexels.com/photo/child-baby-newborn-arms-47219/
+// Today was the first time he ever saw a caterpillar. He plopped right down on the bridge over the railroad and just stared at it. Teddy was intrigued as well!
+// https://static.pexels.com/photos/39369/baby-teddy-bear-cute-39369.jpeg
+// Having fun picking up toys!
+// https://static.pexels.com/photos/315265/pexels-photo-315265.jpeg
+// https://static.pexels.com/photos/247185/pexels-photo-247185.jpeg
+// https://static.pexels.com/photos/47219/baby-child-newborn-arms-47219.jpeg

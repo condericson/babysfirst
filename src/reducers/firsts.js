@@ -3,6 +3,8 @@ import {
   GET_FIRSTS_SUCCESS,
   GET_FIRSTS_ERROR,
   ADD_FIRST,
+  ADD_FIRST_SUCCESS,
+  ADD_FIRST_ERROR,
 } from '../actions/firsts';
 
 const initialState = {
@@ -30,10 +32,20 @@ export default (state = initialState, action) => {
       };
     case ADD_FIRST:
       return {
-        userId: action.userId,
-        date: action.date,
-        content: action.content,
-        image: action.image,
+        ...state,
+        loading: true,
+      };
+    case ADD_FIRST_SUCCESS:
+      return {
+        ...state,
+        firsts: action.firsts,
+        loading: false,
+      };
+    case ADD_FIRST_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
       };
 
     default:

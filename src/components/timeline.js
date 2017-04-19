@@ -7,19 +7,25 @@ import { getFirsts } from '../actions/firsts';
 class Timeline extends Component {
 
   componentDidMount() {
-    // this.props.getFirsts('58f4e7217e71112a302fe39e');
-    console.log(this.props.firsts);
+    this.props.getFirsts(this.props.currentUserId || '58f4e7217e71112a302fe39e');
+    console.log('Current user', this.props.currentUserId);
   }
 
   render() {
-    const numbers = [1, 2, 3];
+    if (!this.props.firsts.length) {
+      return (
+        <div className="getStarted">
+          <h1 className="welcomeHeader">Welcome to First Memories!</h1>
+          <p className="">Click "Enter a first" to start recording!</p>
+          <Link className="getStartedFirstEntry" to="/firstentry">Enter a first</Link>
+        </div>
+      );
+    }
     return (
-      <div className="timelineEntry">
+      <div className="timeline">
         <Link to="/firstentry">Enter a first</Link>
         <Link to="/">Log out</Link>
-        {numbers.map((n) => <p>{n}</p>)}
-        {/* {this.props.firsts.map((first, i) => <Memory key={i} i={i} {...first} />)}*/}
-          {/* {this.props.firsts.map((first, i) => <Memory key={i} i={i} {...first} />)};*/}
+         {this.props.firsts.map((first, i) => <Memory key={i} i={i} {...first} />)}
       </div>
     );
   }
@@ -28,8 +34,7 @@ class Timeline extends Component {
 
 export default connect(
   state => ({
-    loading: state.user.loading,
-    firsts: state.firsts,
+    firsts: state.firsts.firsts,
     currentUserId: state.user.currentUserId,
   }),
   { getFirsts },

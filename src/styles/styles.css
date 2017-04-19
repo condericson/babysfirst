@@ -757,3 +757,70 @@ p {
     margin-left: 30px
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*TIMELINE*/
+.timeline {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  background-image: url(http://i.imgur.com/NJkCZYV.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 20%;
+  position: relative;
+}
+
+
+@media only screen and (max-width: 700px) {
+.leftMemory, .rightMemory {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 5px solid rgba(255, 255, 255, 0.8);
+  min-height: 200px;
+  margin-bottom: 10px;
+}
+
+.leftMemory {
+  text-align: left;
+  position: relative;
+}
+
+.memoryImageDiv {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.memoryImageDiv > img {
+  max-width: 90%;
+  max-height: 40%;
+  width: 100%;
+  border: 5px solid white;
+  border-radius: 5%;
+  box-shadow: 0px 1px 8px black;
+}
+
+.date {
+  text-align: right;
+  margin-bottom: 10px;
+  right: 0px;
+  position: relative;
+  color: #5f5f5f;
+  font-weight: bold;
+}
+
+
+
+}
+
+

@@ -29,8 +29,11 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const { date, content, userId } = req.body;
   try {
-    const image = await cloudinary.uploader.upload(req.body.image);
-    const first = await Firsts.create({ date, content, image: image.url, userId });
+    const image = await cloudinary.uploader.upload(req.body.image, (result) => { console.log(result); }, { width: 1000, height: 1000, crop: 'limit' });
+    if (image.state == 'rejected') {
+      return console.log('Invalid image pathway');
+    }
+    const first = await Firsts.create({ date, content, userId, image: image.url });
     return res.status(201).json(first);
   } catch (e) {
     return res.status(500).json({ message: 'Error with post' });

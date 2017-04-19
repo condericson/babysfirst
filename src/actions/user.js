@@ -25,11 +25,8 @@ export function login(user) {
     dispatch({ type: LOGIN });
     try {
       const response = await User.login(user);
-      if (response instanceof Error) {
-        console.log(response);
-        return dispatch(loginError(response));
-      }
-      await dispatch(loginSuccess(response));
+      dispatch(loginSuccess(response));
+      return browserHistory.push('/timeline');
     } catch (e) {
       return dispatch(loginError(e));
     }
