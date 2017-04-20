@@ -11,6 +11,8 @@ class Signup extends Component {
     username: '',
     password: '',
     confirmPassword: '',
+    signupButtonState: 'signup_button',
+
   };
 
   changeValue = e => {
@@ -39,11 +41,14 @@ class Signup extends Component {
       birthday.length < 10 ||
       password !== confirmPassword
     ) {
-      // react add class next time
-      // $('.signup_button').removeClass('signupbutton_hover');
+      if (this.state.signupButtonState === 'signup_button signupbutton_hover') {
+        this.setState({ signupButtonState: 'signup_button' });
+      }
       return true;
     }
-    // $('.signup_button').addClass('signupbutton_hover');
+    if (this.state.signupButtonState === 'signup_button') {
+      this.setState({ signupButtonState: 'signup_button signupbutton_hover' });
+    }
     return false;
   }
 
@@ -96,7 +101,7 @@ class Signup extends Component {
               onChange={this.changeValue}
             />
             <button
-              className="signup_button"
+              className={this.state.signupButtonState}
               type="submit"
               disabled={this.disabledButton()}
             >
