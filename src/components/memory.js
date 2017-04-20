@@ -4,9 +4,9 @@ class Memory extends Component {
 
   render() {
     const { content, date, image, i } = this.props;
-    let side = 'rightMemory';
-    if (i % 2 == 0) {
-      side = 'leftMemory';
+    let side = 'leftMemory';
+    if (i % 2 === 0) {
+      side = 'rightMemory';
     }
     let imageTag;
     if (image.length > 0) {
@@ -14,9 +14,12 @@ class Memory extends Component {
     }
     return (
       <div className={side}>
-        {imageTag}
-        <p className="date">{date}</p>
-        <p>{content}</p>
+        <div className="description">
+          {imageTag}
+          <p className="date">{date}</p>
+        <p className="content">{content}</p>
+        </div>
+
       </div>
     );
   }

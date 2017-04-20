@@ -772,55 +772,251 @@ p {
 /*TIMELINE*/
 .timeline {
   width: 100%;
-  height: auto;
   min-height: 100%;
-  background-image: url(http://i.imgur.com/NJkCZYV.jpg);
+  background-color: #f3f3f3;
+  /*background-image: url(http://i.imgur.com/NJkCZYV.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: 20%;
+  background-position: 20%;*/
   position: relative;
 }
 
-
-@media only screen and (max-width: 700px) {
-.leftMemory, .rightMemory {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 5px solid rgba(255, 255, 255, 0.8);
-  min-height: 200px;
-  margin-bottom: 10px;
+/*Nav and Buttons*/
+.timelineNav {
+  height: 60px;
+  background-color: #f3f3f3;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0px 1px 5px #c1c1c1;
 }
 
-.leftMemory {
-  text-align: left;
-  position: relative;
-}
-
-.memoryImageDiv {
-  margin: 10px auto;
+.enterAFirstButtonDesktop {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 40px;
+  width: 120px;
+  line-height: 40px;
+  border: none;
+  text-decoration: none;
+  color: #656565;
+  font-size: 18px;
+  background-color: white;
   text-align: center;
 }
 
-.memoryImageDiv > img {
-  max-width: 90%;
+.timelineLogout {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 40px;
+  width: 110px;
+  line-height: 40px;
+  border: none;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  background-color: white;
+  text-align: center;
+}
+
+.enterAFirstButtonDesktop:hover, .timelineLogout:hover {
+  color: white;
+  background-color: #656565;
+  transition-duration: 0.5s;
+}
+
+.enterAFirstButtonMobile {
+  display: none;
+}
+
+@media only screen and (max-width: 818px) {
+  .enterAFirstButtonMobile {
+    position: fixed;
+    bottom: 5%;
+    right: 10%;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    background-color: #3a8ff5;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    text-decoration: none;
+    box-shadow: 0px 2px 12px black;
+  }
+
+  .enterAFirstButtonDesktop {
+    display: none;
+  }
+}
+
+.timelineContainer {
+  padding-top: 75px;
+  width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 75px;
+}
+
+
+.leftMemory, .rightMemory {
+  background-color: white;
+  border: 5px solid white;
+  margin: 0px 10px 10px 10px;
+  position: relative;
+  box-shadow: 0px 1px 5px #c1c1c1;
+
+}
+
+.memoryImageDiv {
+  display: inline-block;
+  margin: 10px;
+  max-width: 550px;
   max-height: 40%;
+  width: 95%;
+  text-align: center;
+}
+
+
+.memoryImageDiv > img {
+  height: 100%;
   width: 100%;
   border: 5px solid white;
   border-radius: 5%;
   box-shadow: 0px 1px 8px black;
+  position: relative;
+}
+
+.description {
+  display: inline-block;
+  vertical-align: top;
+  padding: 15px;
+  width: 100%;
 }
 
 .date {
   text-align: right;
-  margin-bottom: 10px;
+  margin: 0px 10px 20px 10px;
   right: 0px;
   position: relative;
-  color: #5f5f5f;
+  color: #656565;
   font-weight: bold;
 }
 
+@media only screen and (min-width: 1018px) {
+  .leftMemory > .description > .memoryImageDiv {
+    float: left;
+    margin-right: 20px;
+  }
+
+  .rightMemory > .description > .memoryImageDiv {
+    float: right;
+    margin-left: 20px;
+  }
+
+  .rightMemory > .description > .date {
+    text-align: left;
+  }
 
 
 }
+
+
+
+
+
+@media only screen and (max-width: 1018px) {
+  .timelineContainer {
+    width: 100%;
+  }
+
+  .leftMemory, .rightMemory {
+    text-align: center;
+  }
+
+  .memoryImageDiv {
+    display: block;
+    margin: 10px auto;
+    max-height: 40%;
+  }
+
+  .content {
+    text-align: left;
+    margin: 10px;
+  }
+
+  .description {
+    display: block;
+  }
+
+
+
+
+}
+
+@media only screen and (max-width: 818px) {
+  .enterAFirstButtonMobile {
+    position: fixed;
+    bottom: 5%;
+    right: 10%;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    background-color: #3a8ff5;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    text-decoration: none;
+    box-shadow: 0px 2px 12px black;
+  }
+
+
+
+  .enterAFirstButtonDesktop {
+    display: none;
+  }
+
+}
+
+.buttonDiv {
+  position: relative;
+  top: 60px;
+  width: 100%;
+  text-align: center;
+  height: 100px;
+}
+.loadMore {
+  display: inline-block;
+  height: 40px;
+  width: 120px;
+  border: none;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  background-color: white;
+  text-align: center;
+  outline: none;
+}
+
+.loadMore:hover {
+  color: white;
+  background-color: #656565;
+  transition-duration: 0.5s;
+}
+
+
+
+
+
+
+
 
 

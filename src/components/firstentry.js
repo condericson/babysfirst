@@ -10,7 +10,7 @@ class FirstEntry extends Component {
   state = {
     date: '',
     content: '',
-    imageurl: '',
+    imageurl: undefined,
     userId: this.props.currentUserId || '58f4e7217e71112a302fe39e',
   }
 
@@ -29,7 +29,7 @@ class FirstEntry extends Component {
       image: this.state.imageurl,
       userId: this.state.userId,
     };
-    addFirsts(submittedFirst);
+    this.props.addFirsts(submittedFirst);
   }
 
   disabledButton() {
@@ -60,7 +60,7 @@ class FirstEntry extends Component {
             </div>
             <div className="imageUploadEntry">
               <p className="imageP">Upload a picture of the moment! (optional)</p>
-              <input className="firstEntryImage" placeholder="Paste in a URL or a picture from your computer." id="image" value={this.state.imageurl} onChange={this.changeValue} id="imageurl" />
+              <input className="firstEntryImage" placeholder="Paste in a URL" id="image" value={this.state.imageurl} onChange={this.changeValue} id="imageurl" />
             </div>
             <button className="firstEntryUrlButton" type="submit" disabled={this.disabledButton()} >Record!</button>
           </form>

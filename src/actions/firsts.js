@@ -20,15 +20,47 @@ function getFirstsError(error) {
   };
 }
 
-export function getFirsts(userId) {
+export function getFirsts(userId, offset) {
   return async dispatch => {
     dispatch({ type: GET_FIRSTS });
     try {
-      const { data } = await axios.get(`/firsts/${userId}`);
+      const { data } = await axios.get(`/firsts/${userId}?offset=${offset || 0}`);
       console.log('Data from axios get firsts', data);
       dispatch(getFirstsSuccess(data));
     } catch (e) {
       return dispatch(getFirstsError(e));
+    }
+    return browserHistory.push('/timeline');
+  };
+}
+
+export const LOAD_MORE = 'LOAD_MORE';
+export const LOAD_MORE_SUCCESS = 'LOAD_MORE_SUCCESS';
+export const LOAD_MORE_ERROR = 'LOAD_MORE_ERROR';
+
+function loadMoreSuccess(firsts) {
+  return {
+    type: LOAD_MORE_SUCCESS,
+    firsts,
+  };
+}
+
+function loadMoreError(error) {
+  return {
+    type: LOAD_MORE_ERROR,
+    error,
+  };
+}
+
+export function loadMore(userId, offset) {
+  return async dispatch => {
+    dispatch({ type: LOAD_MORE });
+    try {
+      const { data } = await axios.get(`/firsts/${userId}?offset=${offset || 0}`);
+      console.log('Data from axios load more', data);
+      dispatch(loadMoreSuccess(data));
+    } catch (e) {
+      return dispatch(loadMoreError(e));
     }
     return browserHistory.push('/timeline');
   };

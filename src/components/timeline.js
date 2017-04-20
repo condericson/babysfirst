@@ -2,16 +2,29 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import Memory from './memory';
-import { getFirsts } from '../actions/firsts';
+import { getFirsts, loadMore } from '../actions/firsts';
 
 class Timeline extends Component {
+
+  state = {
+    offset: 0,
+  }
 
   componentDidMount() {
     this.props.getFirsts(this.props.currentUserId || '58f4e7217e71112a302fe39e');
     console.log('Current user', this.props.currentUserId);
   }
 
+  callLoadMore = () => {
+    this.setState({
+      offset: this.state.offset + 2,
+    }, () => {
+      this.props.loadMore(this.props.currentUserId || '58f4e7217e71112a302fe39e', this.state.offset);
+    });
+  }
+
   render() {
+    console.log(this.props.firsts);
     if (!this.props.firsts.length) {
       return (
         <div className="getStarted">
@@ -23,9 +36,20 @@ class Timeline extends Component {
     }
     return (
       <div className="timeline">
-        <Link to="/firstentry">Enter a first</Link>
-        <Link to="/">Log out</Link>
-         {this.props.firsts.map((first, i) => <Memory key={i} i={i} {...first} />)}
+        <nav className="timelineNav">
+          <Link className="enterAFirstButtonDesktop" to="/firstentry">Enter a First</Link>
+          <Link className="timelineLogout" to="/">Log out</Link>
+        </nav>
+
+        <Link className="enterAFirstButtonMobile" to="/firstentry">+</Link>
+
+        <div className="timelineContainer">
+          {this.props.firsts.map((first, i) => <Memory key={i} i={i} {...first} />)}
+          <div className="buttonDiv">
+            <button className="loadMore" onClick={this.callLoadMore}>Load more</button>
+          </div>
+        </div>
+
       </div>
     );
   }
@@ -37,7 +61,7 @@ export default connect(
     firsts: state.firsts.firsts,
     currentUserId: state.user.currentUserId,
   }),
-  { getFirsts },
+  { getFirsts, loadMore },
 )(Timeline);
 
 // odds get "left" className, evens get "right" className

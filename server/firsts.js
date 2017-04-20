@@ -18,22 +18,30 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+  console.log(req.query.offset);
+  const skipNumber = parseInt(req.query.offset, 10);
   try {
-    const firsts = await Firsts.find({ userId: req.params.id }).sort({ date: -1 });
+    const firsts = await Firsts.find({ userId: req.params.id }).sort({ date: -1 }).skip(skipNumber).limit(2);
     res.status(201).json(firsts);
   } catch (e) {
-    res.status(500).json({ message: 'Error!' });
+    res.status(500).json({ message: e.message });
   }
 });
 
 router.post('/', async (req, res) => {
   const { date, content, userId } = req.body;
+  let image;
   try {
-    const image = await cloudinary.uploader.upload(req.body.image, (result) => { console.log(result); }, { width: 1000, height: 1000, crop: 'limit' });
-    if (image.state == 'rejected') {
-      return console.log('Invalid image pathway');
+    if (!req.body.image) {
+      image = 'http://www.rd.com/wp-content/uploads/sites/2/2016/04/01-cat-wants-to-tell-you-laptop.jpg';
+    } else {
+      image = await cloudinary.uploader.upload(req.body.image, (result) => { console.log(result); }, { width: 1000, height: 1000, crop: 'limit' });
+      if (image.state === 'rejected') {
+        return console.log('Invalid image pathway');
+      }
     }
-    const first = await Firsts.create({ date, content, userId, image: image.url });
+
+    const first = await Firsts.create({ date, content, userId, image: image.url || image });
     return res.status(201).json(first);
   } catch (e) {
     return res.status(500).json({ message: 'Error with post' });
