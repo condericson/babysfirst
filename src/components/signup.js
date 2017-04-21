@@ -12,7 +12,6 @@ class Signup extends Component {
     password: '',
     confirmPassword: '',
     signupButtonState: 'signup_button',
-
   };
 
   changeValue = e => {

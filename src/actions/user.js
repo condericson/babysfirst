@@ -6,14 +6,14 @@ export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 
-function loginSuccess(user) {
+export function loginSuccess(user) {
   return {
     type: LOGIN_SUCCESS,
     user,
   };
 }
 
-function loginError(error) {
+export function loginError(error) {
   return {
     type: LOGIN_ERROR,
     error,
