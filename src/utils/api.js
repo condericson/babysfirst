@@ -53,7 +53,5 @@ class FirstsApi {
   }
 }
 
-export default {
-  User: new UserApi(),
-  Firsts: new FirstsApi(),
-};
+export const User = new UserApi();
+export const Firsts = new FirstsApi();
