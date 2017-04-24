@@ -26,6 +26,7 @@
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
+    "nock": "^9.0.13",
     "react-dom": "^15.5.4",
     "react-scripts": "0.9.5",
     "react-test-renderer": "^15.5.4",
