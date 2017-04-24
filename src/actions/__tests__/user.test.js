@@ -1,8 +1,16 @@
-import { loginSuccess, loginError, logout, login } from '../user';
-import mockStore from '../../utils/mockstore';
-import { User } from '../../utils/api';
+jest.mock('../../utils/api');
 
-jest.mock('../../utils/api').User;
+import {
+  loginSuccess,
+  loginError,
+  logout,
+  login,
+  signupError,
+  signupSuccess,
+  signup,
+} from '../user';
+import mockStore from '../../utils/mockstore';
+import * as API from '../../utils/api';
 
 describe('user actions', () => {
   describe('#loginSuccess()', () => {
@@ -43,13 +51,14 @@ describe('user actions', () => {
   });
   describe('#login()', () => {
     const store = mockStore({});
-    it('Should', () => {
+    it('Should return payload and type of LOGIN and LOGIN_SUCCESS', () => {
       const payload = {
         userId: '123',
         birthday: '01-02-2020',
         password: 'password',
       };
-      User.login.mockImplementation(() => payload);
+      console.log(API.default.User.mockImplementation);
+      API.default.User.mockImplementation(() => payload);
       const expectedActions = [
         { type: 'LOGIN' },
         { type: 'LOGIN_SUCCESS', payload },
@@ -60,4 +69,51 @@ describe('user actions', () => {
         });
     });
   });
+  // describe('#signupSuccess()', () => {
+  //   it('Should return user and type of SIGNUP_SUCCESS', () => {
+  //     const expected = {
+  //       type: 'SIGNUP_SUCCESS',
+  //       user: {
+  //         name: 'test',
+  //       },
+  //     };
+  //     const user = {
+  //       name: 'test',
+  //     };
+  //     expect(signupSuccess(user)).toEqual(expected);
+  //   });
+  // });
+  // describe('#signupError()', () => {
+  //   it('Should return error and type of SIGNUP_ERROR', () => {
+  //     const expected = {
+  //       type: 'SIGNUP_ERROR',
+  //       error: {
+  //         message: 'error',
+  //       },
+  //     };
+  //     const error = {
+  //       message: 'error',
+  //     };
+  //     expect(signupError(error)).toEqual(expected);
+  //   });
+  // });
+  // describe('#signup()', () => {
+  //   const store = mockStore({});
+  //   it('Should return payload and type of SIGNUP and SIGNUP_SUCCESS', () => {
+  //     const payload = {
+  //       userId: '123',
+  //       birthday: '01-02-2020',
+  //       password: 'password',
+  //     };
+  //     User.signup.mockImplementation(() => payload);
+  //     const expectedActions = [
+  //       { type: 'SIGNUP' },
+  //       { type: 'SIGNUP_SUCCESS', payload },
+  //     ];
+  //     return store.dispatch(signup())
+  //       .then(() => {
+  //         expect(store.getActions()).toEqual(expectedActions);
+  //       });
+  //   });
+  // });
 });
