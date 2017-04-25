@@ -1,0 +1,15 @@
+exports[`firsts actions #getFirsts() should get a lists of firsts 1`] = `
+Object {
+  "errorMessage": false,
+  "firsts": Array [
+    Object {
+      "content": "Lorem whatever",
+      "date": "01-01-1999",
+      "image": "baby.jpg",
+      "userId": "123abc",
+    },
+  ],
+  "loading": false,
+  "noMore": false,
+}
+`;

@@ -6,14 +6,14 @@ export const GET_FIRSTS = 'GET_FIRSTS';
 export const GET_FIRSTS_SUCCESS = 'GET_FIRSTS_SUCCESS';
 export const GET_FIRSTS_ERROR = 'GET_FIRSTS_ERROR';
 
-function getFirstsSuccess(firsts) {
+export function getFirstsSuccess(firsts) {
   return {
     type: GET_FIRSTS_SUCCESS,
     firsts,
   };
 }
 
-function getFirstsError(error) {
+export function getFirstsError(error) {
   return {
     type: GET_FIRSTS_ERROR,
     error,

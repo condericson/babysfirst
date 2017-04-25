@@ -16,16 +16,14 @@ import {
 
 const initialState = {
   firsts: [],
+  loading: false,
+  errorMessage: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_FIRSTS:
-      return {
-        ...state,
-        loading: true,
-        errorMessage: false,
-      };
+      return initialState;
     case GET_FIRSTS_SUCCESS:
       return {
         ...state,
