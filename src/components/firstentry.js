@@ -42,6 +42,10 @@ class FirstEntry extends Component {
   }
 
   render() {
+    let errMessage = '';
+    if (this.props.errorMessage) {
+      errMessage = <p className="firstEntryOops">Oops! Something went wrong. Try checking your picture's url.</p>;
+    }
     return (
       <div className="firstEntry-screen">
         <nav className="login_nav">
@@ -64,6 +68,7 @@ class FirstEntry extends Component {
             </div>
             <button className="firstEntryUrlButton" type="submit" disabled={this.disabledButton()} >Record!</button>
           </form>
+          {errMessage}
         </div>
 
       </div>
@@ -74,4 +79,5 @@ class FirstEntry extends Component {
 export default connect(
   state => ({
     currentUserId: state.user.currentUserId,
+    errorMessage: state.firsts.errorMessage,
   }), { addFirsts })(FirstEntry);

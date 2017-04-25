@@ -37,11 +37,13 @@ export function getFirsts(userId, offset) {
 export const LOAD_MORE = 'LOAD_MORE';
 export const LOAD_MORE_SUCCESS = 'LOAD_MORE_SUCCESS';
 export const LOAD_MORE_ERROR = 'LOAD_MORE_ERROR';
+export const NO_MORE_FIRSTS = 'NO_MORE_FIRSTS';
 
 function loadMoreSuccess(firsts) {
   return {
     type: LOAD_MORE_SUCCESS,
     firsts,
+    noMore: false,
   };
 }
 
@@ -52,13 +54,24 @@ function loadMoreError(error) {
   };
 }
 
+function noMoreFirsts() {
+  return {
+    type: NO_MORE_FIRSTS,
+    noMore: true,
+  };
+}
+
 export function loadMore(userId, offset) {
   return async dispatch => {
     dispatch({ type: LOAD_MORE });
     try {
       const { data } = await axios.get(`/firsts/${userId}?offset=${offset || 0}`);
       console.log('Data from axios load more', data);
-      dispatch(loadMoreSuccess(data));
+      if (data.length === 0) {
+        dispatch(noMoreFirsts(data));
+      } else {
+        dispatch(loadMoreSuccess(data));
+      }
     } catch (e) {
       return dispatch(loadMoreError(e));
     }
@@ -87,7 +100,6 @@ function addFirstsError(error) {
 export function addFirsts(first) {
   return async dispatch => {
     dispatch({ type: ADD_FIRST });
-    console.log('REACHED HERE');
     try {
       const { data } = await axios.post('/firsts', first);
       console.log('Data from axios first post', data);
@@ -98,3 +110,38 @@ export function addFirsts(first) {
     return browserHistory.push('/timeline');
   };
 }
+
+export const DELETE_FIRST = 'DELETE_FIRST';
+export const DELETE_FIRST_SUCCESS = 'DELETE_FIRST_SUCCESS';
+export const DELETE_FIRST_ERROR = 'DELETE_FIRST_ERROR';
+
+function deleteFirstsSuccess(data) {
+  return {
+    type: DELETE_FIRST_SUCCESS,
+    data,
+  };
+}
+
+function deleteFirstsError(error) {
+  return {
+    type: DELETE_FIRST_ERROR,
+    error,
+  };
+}
+
+export function deleteFirsts(firstId) {
+  console.log(firstId);
+  return async dispatch => {
+    dispatch({ type: DELETE_FIRST });
+    try {
+      const { data } = await axios.delete(`/firsts/${firstId}`);
+      console.log('Deleted post', data);
+      console.log('Deleted post id', data._id);
+      return dispatch(deleteFirstsSuccess(data));
+    } catch (e) {
+      return dispatch(deleteFirstsError(e));
+    }
+    // return browserHistory.push('/timeline');
+  };
+}
+

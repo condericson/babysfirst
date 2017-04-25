@@ -8,6 +8,10 @@ import {
   ADD_FIRST,
   ADD_FIRST_SUCCESS,
   ADD_FIRST_ERROR,
+  NO_MORE_FIRSTS,
+  DELETE_FIRST,
+  DELETE_FIRST_SUCCESS,
+  DELETE_FIRST_ERROR,
 } from '../actions/firsts';
 
 const initialState = {
@@ -20,12 +24,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        errorMessage: false,
       };
     case GET_FIRSTS_SUCCESS:
       return {
         ...state,
         firsts: [...action.firsts],
         loading: false,
+        noMore: false,
       };
     case GET_FIRSTS_ERROR:
       return {
@@ -50,18 +56,46 @@ export default (state = initialState, action) => {
         loading: false,
         error: action.error,
       };
+    case NO_MORE_FIRSTS:
+      return {
+        ...state,
+        noMore: true,
+        error: action.error,
+      };
     case ADD_FIRST:
       return {
         ...state,
         loading: true,
+        errorMessage: false,
       };
     case ADD_FIRST_SUCCESS:
       return {
         ...state,
         firsts: action.firsts,
         loading: false,
+        errorMessage: false,
       };
     case ADD_FIRST_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+        errorMessage: true,
+      };
+    case DELETE_FIRST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case DELETE_FIRST_SUCCESS:
+      const firstId = action.data._id;
+      const firsts = state.firsts.filter((first) => first._id !== firstId);
+      return {
+        ...state,
+        firsts,
+        loading: false,
+      };
+    case DELETE_FIRST_ERROR:
       return {
         ...state,
         loading: false,

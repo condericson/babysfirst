@@ -9,7 +9,7 @@ html, body {
 }
 
 .hidden {
-  display:none
+  display:none !important;
 }
 
 .animated {
@@ -67,6 +67,22 @@ p {
   margin: 0px;
   padding: 0;
   right: 0px;
+}
+
+.menuicon {
+  width: 40px;
+  position: relative;
+  top: 7px;
+  cursor: pointer;
+
+}
+
+.menulabel {
+  font-size: 24px;
+  display: inline-block;
+  margin-bottom: 10px;
+  cursor: pointer;
+
 }
 
 .button {
@@ -148,6 +164,7 @@ p {
     display: block;
     z-index: 10;
     background-color: white;
+    position: relative;
   }
 
   .menucontainer > img {
@@ -185,7 +202,7 @@ p {
     left: 0px;
     width: 100%;
     position relative:;
-    top: 68px;
+    top: 50px;
     z-index: 5;
   }
 
@@ -745,6 +762,11 @@ p {
   transition-duration: 0.5s;
 }
 
+.firstEntryOops {
+  color: red;
+  margin-top: 10px;
+}
+
 @media only screen and (max-width: 815px) {
   .contentTextarea, .firstEntryImage {
     width: 95%;
@@ -773,7 +795,7 @@ p {
 .timeline {
   width: 100%;
   min-height: 100%;
-  background-color: #f3f3f3;
+  background-color: #efeeee;
   /*background-image: url(http://i.imgur.com/NJkCZYV.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -785,11 +807,11 @@ p {
 /*Nav and Buttons*/
 .timelineNav {
   height: 60px;
-  background-color: #f3f3f3;
+  background-color: #8af3ff;
   position: fixed;
   width: 100%;
   z-index: 10;
-  box-shadow: 0px 1px 5px #c1c1c1;
+  box-shadow: 0px 1px 5px #6f6f6f;
 }
 
 .enterAFirstButtonDesktop {
@@ -908,6 +930,12 @@ p {
   font-weight: bold;
 }
 
+.age {
+  font-size: 30px;
+  color: #00d7ef;
+}
+
+
 @media only screen and (min-width: 1018px) {
   .leftMemory > .description > .memoryImageDiv {
     float: left;
@@ -1012,7 +1040,9 @@ p {
   transition-duration: 0.5s;
 }
 
-
+.noMore {
+  margin-top: 10px;
+}
 
 
 

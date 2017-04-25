@@ -36,7 +36,7 @@ class Splash extends Component {
           </ul>
           <div className="menucontainer">
             <div className="menuButtonContainer">
-              <img src="./images/Brick-64.png" alt="menuimage" />
+              <img className="menuicon" src="./images/lego.png" alt="menuimage" /><span className="menulabel">Menu</span>
             </div>
             <ul className="animated dropdown fadeOut">
               <Link to="/signup" className="signupbutton button darken_hover"><li>Signup</li></Link>
@@ -57,14 +57,14 @@ class Splash extends Component {
                   </div>
               </li>
               <li className="hoverview2">
-                <img src="./images/Camera-80.png" alt="pictureframe" />
+                <img src="./images/camera2.png" alt="pictureframe" />
 
                   <div className="smallscreen_instructions pictureframe_smallscreen">
                     <p>Add a picture.</p>
                   </div>
               </li>
               <li className="hoverview3">
-                <img src="./images/Playground-50.png" alt="playground" />
+                <img src="./images/beach-ball-clipart.jpg" alt="playground" />
 
                   <div className="smallscreen_instructions playground_smallscreen">
                     <p>Relive the experiences on a personalized timeline.</p>
