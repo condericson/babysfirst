@@ -1,11 +1,86 @@
-exports[`firsts actions #getFirsts() should get a lists of firsts 1`] = `
+exports[`firsts actions #addFirstsSuccess(): should add a first to list of firsts 1`] = `
 Object {
   "errorMessage": false,
   "firsts": Array [
     Object {
+      "_id": 12345,
       "content": "Lorem whatever",
       "date": "01-01-1999",
       "image": "baby.jpg",
+      "userId": "123abc",
+    },
+  ],
+  "loading": false,
+  "noMore": false,
+}
+`;
+
+exports[`firsts actions #deleteFirstsSuccess(): should add a first to list of firsts 1`] = `
+Object {
+  "errorMessage": false,
+  "firsts": Array [
+    Object {
+      "_id": 12345,
+      "content": "Lorem whatever",
+      "date": "01-01-1999",
+      "image": "baby.jpg",
+      "userId": "123abc",
+    },
+  ],
+  "loading": false,
+  "noMore": false,
+}
+`;
+
+exports[`firsts actions #getFirstsSuccess(): should get a lists of firsts 1`] = `
+Object {
+  "errorMessage": false,
+  "firsts": Array [
+    Object {
+      "_id": 12345,
+      "content": "Lorem whatever",
+      "date": "01-01-1999",
+      "image": "baby.jpg",
+      "userId": "123abc",
+    },
+  ],
+  "loading": false,
+  "noMore": false,
+}
+`;
+
+exports[`firsts actions #loadMoreSuccess(): should get another list of firsts 1`] = `
+Object {
+  "errorMessage": false,
+  "firsts": Array [
+    Object {
+      "_id": 12345,
+      "content": "Lorem whatever",
+      "date": "01-01-1999",
+      "image": "baby.jpg",
+      "userId": "123abc",
+    },
+  ],
+  "loading": false,
+  "noMore": false,
+}
+`;
+
+exports[`firsts actions #loadMoreSuccess(): should get another list of firsts 2`] = `
+Object {
+  "errorMessage": false,
+  "firsts": Array [
+    Object {
+      "_id": 12345,
+      "content": "Lorem whatever",
+      "date": "01-01-1999",
+      "image": "baby.jpg",
+      "userId": "123abc",
+    },
+    Object {
+      "content": "Lorem etc",
+      "date": "12-12-2000",
+      "image": "babys.jpg",
       "userId": "123abc",
     },
   ],

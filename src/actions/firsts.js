@@ -39,7 +39,7 @@ export const LOAD_MORE_SUCCESS = 'LOAD_MORE_SUCCESS';
 export const LOAD_MORE_ERROR = 'LOAD_MORE_ERROR';
 export const NO_MORE_FIRSTS = 'NO_MORE_FIRSTS';
 
-function loadMoreSuccess(firsts) {
+export function loadMoreSuccess(firsts) {
   return {
     type: LOAD_MORE_SUCCESS,
     firsts,

@@ -1,0 +1,18 @@
+exports[`#loginSuccess() should record the userId 1`] = `
+Object {
+  "currentUserBirthday": undefined,
+  "currentUserId": undefined,
+  "error": null,
+  "loading": false,
+  "logged": true,
+}
+`;
+
+exports[`logout() should restore initialState 1`] = `
+Object {
+  "currentUserId": null,
+  "error": null,
+  "loading": false,
+  "logged": false,
+}
+`;

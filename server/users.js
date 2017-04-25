@@ -63,6 +63,9 @@ router.post('/', (req, res) => {
         if (err) {
           return res.status(500).json({ message: 'Error with user creation' });
         }
+        console.log(user);
+        console.log(user.username);
+        console.log(user.birthday);
         return res.status(201).json(user);
       });
     });

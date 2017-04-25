@@ -26,9 +26,12 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
+    "mocha": "^3.3.0",
     "nock": "^9.0.13",
     "react-dom": "^15.5.4",
     "react-scripts": "0.9.5",
@@ -40,6 +43,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "mochatest": "mocha",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
