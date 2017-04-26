@@ -83,7 +83,7 @@ export const ADD_FIRST = 'ADD_FIRST';
 export const ADD_FIRST_SUCCESS = 'ADD_FIRST_SUCCESS';
 export const ADD_FIRST_ERROR = 'ADD_FIRST_ERROR';
 
-function addFirstsSuccess(firsts) {
+export function addFirstsSuccess(firsts) {
   return {
     type: ADD_FIRST_SUCCESS,
     firsts,
@@ -115,7 +115,7 @@ export const DELETE_FIRST = 'DELETE_FIRST';
 export const DELETE_FIRST_SUCCESS = 'DELETE_FIRST_SUCCESS';
 export const DELETE_FIRST_ERROR = 'DELETE_FIRST_ERROR';
 
-function deleteFirstsSuccess(data) {
+export function deleteFirstsSuccess(data) {
   return {
     type: DELETE_FIRST_SUCCESS,
     data,

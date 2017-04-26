@@ -16,3 +16,13 @@ Object {
   "logged": false,
 }
 `;
+
+exports[`signupSuccess() should record the userId 1`] = `
+Object {
+  "currentUserBirthday": undefined,
+  "currentUserId": undefined,
+  "error": null,
+  "loading": false,
+  "logged": true,
+}
+`;

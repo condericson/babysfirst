@@ -26,27 +26,39 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-register": "^6.24.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "cross-env": "^4.0.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
+    "faker": "^4.1.0",
     "mocha": "^3.3.0",
     "nock": "^9.0.13",
     "react-dom": "^15.5.4",
     "react-scripts": "0.9.5",
     "react-test-renderer": "^15.5.4",
     "redux-logger": "^3.0.1",
-    "redux-mock-store": "^1.2.3"
+    "redux-mock-store": "^1.2.3",
+    "rimraf": "^2.6.1",
+    "supertest": "^3.0.0"
   },
   "scripts": {
+    "clean": "rimraf dist",
+    "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist ./server",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "dev:watch": "babel -w --out-dir=dist --ignore=./server/test/* ./server",
     "test": "react-scripts test --env=jsdom",
+    "test:watch": "cross-env NODE_ENV=test mocha -w --colors --compilers js:babel-register $(find server/test -name '*.test.js')",
     "mochatest": "mocha",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "server": "nodemon server/server.js"
+    "dev": "cross-env NODE_ENV=development nodemon dist"
   }
 }

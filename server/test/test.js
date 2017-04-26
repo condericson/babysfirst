@@ -1,36 +1,32 @@
-const mocha = require('mocha');
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const { app } = require('../server');
-
-const should = chai.should();
-
-chai.use(chaiHttp);
+import { expect } from 'chai';
+import server from '../mockServer/server.mock';
+import User from '../models/userModel';
+import UserFactory from '../factories/user.factory';
 
 // User GET:id, GET/logout, POST, POST/login, DELETE:id
 
-describe('creation of user', () => {
-  const newUser = {
-    username: 'stevebot',
-    password: 'password01',
-    birthday: '01-01-2012',
-  };
-  return chai.request(app)
-    .post('/users')
-    .send(newUser)
-    .then((res) => {
-      res.should.have.status(201);
-      // res.should.be.json;
-      // res.body.should.be.a('object');
-      // res.body.should.include.keys(
-      //   'username',
-      //   'password',
-      //   'birthday',
-      // );
-      // res.body._id.should.not.be.null;
-      // workingId = res.body._id;
-    })
-    .catch((err) => {
-      console.log('RECIPE POST TEST ERR', err);
+const ENDPOINT = '/users';
+
+let testUser;
+
+describe(`POST ${ENDPOINT}`, () => {
+  before(async () => {
+    await User.remove();
+    testUser = await User.create(UserFactory.generate());
+  });
+  describe('Creating user', () => {
+    it('should...', done => {
+      server.post(ENDPOINT).send(UserFactory.generate()).end((err, res) => {
+        const { status, body } = res;
+        expect(status).to.equal(201);
+        expect(body).to.haveOwnProperty('_id');
+        expect(body).to.haveOwnProperty('username');
+        expect(body).to.haveOwnProperty('birthday');
+        done();
+      });
     });
+  });
+  describe('Logging in user', () => {
+    it('should');
+  });
 });
