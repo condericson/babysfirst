@@ -49,16 +49,16 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist ./server",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dev:watch": "babel -w --out-dir=dist --ignore=./server/test/* ./server",
+    "eject": "react-scripts eject",
     "test": "react-scripts test --env=jsdom",
     "test:watch": "cross-env NODE_ENV=test mocha -w --colors --compilers js:babel-register $(find server/test -name '*.test.js')",
     "mochatest": "mocha",
-    "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "dev": "cross-env NODE_ENV=development nodemon dist/server"
+    "dev:watch": "babel -w --out-dir=dist --ignore=./server/test/* ./server/server",
+    "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist ./server/server",
+    "server": "cross-env NODE_ENV=development nodemon ./dist/server.js"
   }
 }
