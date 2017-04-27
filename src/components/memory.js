@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { deleteFirsts } from '../actions/firsts';
 
+const moment = require('moment');
+
 class Memory extends Component {
 
   deleteClickedMemory = () => {
@@ -19,13 +21,27 @@ class Memory extends Component {
     if (image.length > 0) {
       imageTag = <div className="memoryImageDiv"><img src={image} alt="" /></div>;
     }
-    const birthday = this.props.birthday || '2017-02-07';
+    const birthday = this.props.birthday || '2015-06-07';
+    const postDate = moment(date);
+    const userBirthday = moment(birthday);
+    const age =
+      (postDate.diff(userBirthday, 'years', true) > 2) ?
+        postDate.from(userBirthday, 'years') :
+       `${postDate.diff(userBirthday, 'months')}`;
+    let formattedAge = `${age} months`;
+    if (age.length > 2) {
+      formattedAge = age;
+    }
+    if (age == '1') {
+      formattedAge = `${age} month`;
+    }
+    console.log(age);
     return (
       <div className={side} id={_id}>
         <div className="description">
           {imageTag}
           <p className="date">{date}</p>
-        <p className="content"><span className="age"><Moment from={date} ago>{birthday}</Moment> </span>{content}</p>
+        <p className="content"><span className="age">{formattedAge} </span>{content}</p>
         </div>
         <div className="deleteButton" onClick={this.deleteClickedMemory}>&times;</div>
       </div>

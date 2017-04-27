@@ -41,7 +41,7 @@ class Login extends Component {
   render() {
     const errorMessageP = <p className="errorMessage">Invalid entry</p>;
     let errorMessage = null;
-    if (this.props.error !== undefined) {
+    if (this.props.error !== null) {
       errorMessage = errorMessageP;
     }
     return (
@@ -68,6 +68,7 @@ class Login extends Component {
 
 export default connect(state => ({
   loading: state.user.loading,
+  error: state.user.error,
 }),
   { login },
 )(Login);

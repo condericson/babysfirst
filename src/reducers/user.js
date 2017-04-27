@@ -2,10 +2,12 @@ import {
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
+  LOGIN_INCORRECT_INFO,
   LOGOUT,
   SIGNUP,
   SIGNUP_ERROR,
   SIGNUP_SUCCESS,
+  SIGNUP_INCORRECT_INFO,
 } from '../actions/user';
 
 const initialState = {
@@ -21,6 +23,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: null,
       };
     case LOGIN_SUCCESS:
       return {
@@ -34,7 +37,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.error,
+        error: action,
+      };
+    case LOGIN_INCORRECT_INFO:
+      return {
+        ...state,
+        loading: false,
+        error: action.message,
       };
     case LOGOUT:
       return initialState;
@@ -56,6 +65,12 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.error,
+      };
+    case SIGNUP_INCORRECT_INFO:
+      return {
+        ...state,
+        loading: false,
+        error: action.message,
       };
     default:
       return state;

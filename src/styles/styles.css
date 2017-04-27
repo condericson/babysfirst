@@ -553,6 +553,14 @@ p {
   transition-duration: 0.5s;
 }
 
+.birthdayError {
+  color: #ff4242;
+  position: absolute;
+  top: 126px;
+  width: 100%;
+  text-shadow: 0px 0px 10px #000000;
+}
+
 
 
 
@@ -657,6 +665,12 @@ p {
   transition-duration: 0.5s;
 }
 
+.errorMessage {
+  color: #ff4242;
+  position: relative;
+  bottom: 28px;
+  text-shadow: 0px 0px 10px #000000;
+}
 
 
 
@@ -908,7 +922,7 @@ p {
   top: 10px;
   right: 10px;
   height: 40px;
-  width: 120px;
+  width: 110px;
   line-height: 40px;
   border: none;
   text-decoration: none;
@@ -1133,7 +1147,19 @@ p {
   margin-top: 10px;
 }
 
+.loading {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
 
+.loadingIcon {
+  width: 100%;
+  position: relative;
+  top: 40%;
+  color: #0b6380;
+}
 
 
 

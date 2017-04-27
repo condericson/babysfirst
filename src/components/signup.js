@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { signup } from '../actions/user';
 
-// imports go here
+const moment = require('moment');
 
 class Signup extends Component {
   state = {
@@ -38,6 +38,7 @@ class Signup extends Component {
       username.length < 3 ||
       password.length < 3 ||
       birthday.length < 10 ||
+      moment(this.state.birthday).isAfter() ||
       password !== confirmPassword
     ) {
       if (this.state.signupButtonState === 'signup_button signupbutton_hover') {
@@ -54,6 +55,16 @@ class Signup extends Component {
   render() {
     if (this.props.loading) {
       return <h1>Loading...</h1>;
+    }
+    const errorMessageP = <p className="errorMessage">Invalid username or username already taken</p>;
+    let errorMessage = null;
+    if (this.props.error !== null) {
+      errorMessage = errorMessageP;
+    }
+    const birthdayErrorMessageP = <p className="birthdayError">Birthday must be prior to today</p>;
+    let birthdayErrorMessage = null;
+    if (moment(this.state.birthday).isAfter()) {
+      birthdayErrorMessage = birthdayErrorMessageP;
     }
     return (
       <div className="signup-screen">
@@ -75,6 +86,7 @@ class Signup extends Component {
               value={this.state.birthday}
               onChange={this.changeValue}
             />
+            {birthdayErrorMessage}
             <input
               className="signup_input"
               type="text"
@@ -106,6 +118,7 @@ class Signup extends Component {
             >
               Sign up!
             </button>
+            {errorMessage}
           </form>
         </div>
       </div>
@@ -116,6 +129,7 @@ class Signup extends Component {
 export default connect(
   state => ({
     loading: state.user.loading,
+    error: state.user.error,
   }),
   { signup },
 )(Signup);

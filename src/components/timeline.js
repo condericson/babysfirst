@@ -11,7 +11,7 @@ class Timeline extends Component {
   }
 
   componentDidMount() {
-    this.props.getFirsts(this.props.currentUserId || '58f4e7217e71112a302fe39e');
+    this.props.getFirsts(this.props.currentUserId || '5902262f43e63c2ea4338588');
     console.log('Current user', this.props.currentUserId);
     console.log("user's birthday", this.props.birthday);
   }
@@ -20,15 +20,21 @@ class Timeline extends Component {
     this.setState({
       offset: this.state.offset + 5,
     }, () => {
-      this.props.loadMore(this.props.currentUserId || '58f4e7217e71112a302fe39e', this.state.offset);
+      this.props.loadMore(this.props.currentUserId || '5902262f43e63c2ea4338588', this.state.offset);
     });
   }
 
   render() {
-    console.log(this.props.firsts);
     let loadMoreButton = <button className="loadMore" onClick={this.callLoadMore}>Load more</button>;
     if (this.props.noMore === true) {
       loadMoreButton = <button className="hidden loadMore" onClick={this.callLoadMore}>Load more</button>;
+    }
+    if (this.props.loading) {
+      return (
+        <div className="loading">
+          <i className="fa fa-hourglass-o fa-5x loadingIcon" aria-hidden="true" />
+        </div>
+      );
     }
     if (!this.props.firsts.length) {
       return (
@@ -72,6 +78,7 @@ export default connect(
     currentUserId: state.user.currentUserId,
     birthday: state.user.currentUserBirthday,
     noMore: state.firsts.noMore,
+    loading: state.firsts.loading,
   }),
   { getFirsts, loadMore },
 )(Timeline);

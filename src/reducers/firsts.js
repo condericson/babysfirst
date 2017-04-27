@@ -23,7 +23,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_FIRSTS:
-      return initialState;
+      return {
+        loading: true,
+      };
     case GET_FIRSTS_SUCCESS:
       return {
         ...state,
@@ -59,6 +61,7 @@ export default (state = initialState, action) => {
         ...state,
         noMore: true,
         error: action.error,
+        loading: false,
       };
     case ADD_FIRST:
       return {

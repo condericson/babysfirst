@@ -72,7 +72,7 @@ Applications can always improve upon themselves. Areas that [First Memories] can
 
 
 ## Credits
-Photos from [Pexels](https://www.pexels.com/) under [Creative Commons Zero (CC0) license](https://www.pexels.com/photo-license/)
+Photos from [Pexels](https://www.pexels.com/) and other graphics obtained under the [Creative Commons Zero (CC0) license](https://www.pexels.com/photo-license/)
 
 
 
