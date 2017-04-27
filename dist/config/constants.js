@@ -25,6 +25,7 @@ const defaultConfig = {
 };
 
 function envConfig(env) {
+  console.log('This is the defaultConfig', defaultConfig);
   switch (env) {
     case 'development':
       return devConfig;

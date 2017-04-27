@@ -201,7 +201,6 @@ p {
   .menucontainer > ul {
     left: 0px;
     width: 100%;
-    position relative:;
     top: 50px;
     z-index: 5;
   }
@@ -804,21 +803,100 @@ p {
   position: relative;
 }
 
-/*Welcome screen*/
-.welcomeContainer {
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 10%;
+.backgroundBlurredImageTimeline {
+  background-image: url(http://i.imgur.com/WuWJxD8.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50%;
+  position: fixed;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  height: 100%;
+  width: 100%;
+}
 
+/*Welcome screen*/
+.getStarted {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.backgroundBlurredImage {
+  height: 100%;
+  width: 100%;
+  background-image: url(http://i.imgur.com/oPAcKHr.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50%;
+  position: fixed;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.welcomeContainer {
+  position: relative;
+  top: 30%;
+  margin: 0px auto;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 10px;
 }
 .welcomeHeader {
-  font-size: 32px;
+  font-size: 50px;
+  color: white;
+  text-shadow: 0px 0px 8px #6b6b6b;
+  margin-top: 0px;
+}
+
+.welcomep {
+  color: white;
+  margin-bottom: 50px;
+  font-size: 20px;
+  text-shadow: 0px 0px 8px #6b6b6b;
+}
+
+@media only screen and (max-width: 600px) {
+  .welcomeHeader {
+    font-size: 32px;
+  }
+
+  .welcomep {
+    font-size: 18px;
+  }
+}
+
+.journalButton {
+  height: 40px;
+  width: 110px;
+  line-height: 40px;
+  border: none;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  background-color: #61773a;
+  text-align: center;
+  display: inline-block;
+}
+
+.journalButton:hover {
+  color: black;
+  background-color: #fdefdc;
+  transition-duration: 0.5s;
 }
 
 /*Nav and Buttons*/
 .timelineNav {
   height: 60px;
-  background-color: #8af3ff;
+  background-color: #3faed2;
   position: fixed;
   width: 100%;
   z-index: 10;
@@ -857,36 +935,12 @@ p {
 
 .enterAFirstButtonDesktop:hover, .timelineLogout:hover {
   color: white;
-  background-color: #656565;
+  background-color: #0b6380;
   transition-duration: 0.5s;
 }
 
 .enterAFirstButtonMobile {
   display: none;
-}
-
-@media only screen and (max-width: 818px) {
-  .enterAFirstButtonMobile {
-    position: fixed;
-    bottom: 5%;
-    right: 10%;
-    z-index: 10;
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
-    background-color: #3a8ff5;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-    text-decoration: none;
-    box-shadow: 0px 2px 12px black;
-  }
-
-  .enterAFirstButtonDesktop {
-    display: none;
-  }
 }
 
 .timelineContainer {
@@ -943,7 +997,31 @@ p {
 
 .age {
   font-size: 30px;
-  color: #00d7ef;
+  color: #ff3439;
+}
+
+.deleteButton {
+  position: absolute;
+  bottom: 0px;
+  right: 1px;
+  height: 29px;
+  width: 29px;
+  border: none;
+  text-decoration: none;
+  color: black;
+  font-size: 40px;
+  text-align: center;
+  vertical-align: top;
+  line-height: 0.6;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.deleteButton:hover {
+  background-color: #ff3439;
+  color: white;
+  transition-duration: 0.5s;
+  border-radius: 5px;
 }
 
 
@@ -986,7 +1064,7 @@ p {
 
   .content {
     text-align: left;
-    margin: 10px;
+    margin: 10px 10px 30px 10px;
   }
 
   .description {
@@ -1007,7 +1085,7 @@ p {
     height: 40px;
     width: 40px;
     border-radius: 20px;
-    background-color: #3a8ff5;
+    background-color: #3faed2;
     color: white;
     display: flex;
     justify-content: center;

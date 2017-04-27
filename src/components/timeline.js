@@ -11,7 +11,7 @@ class Timeline extends Component {
   }
 
   componentDidMount() {
-    // this.props.getFirsts(this.props.currentUserId || '58f4e7217e71112a302fe39e');
+    this.props.getFirsts(this.props.currentUserId || '58f4e7217e71112a302fe39e');
     console.log('Current user', this.props.currentUserId);
     console.log("user's birthday", this.props.birthday);
   }
@@ -33,19 +33,21 @@ class Timeline extends Component {
     if (!this.props.firsts.length) {
       return (
         <div className="getStarted">
+          <div className="backgroundBlurredImage" />
           <Link className="timelineLogout" to="/">Log out</Link>
           <div className="welcomeContainer">
-            <h1 className="welcomeHeader">Welcome to First Memories!</h1>
-            <p className="">Click "Enter a first" to start recording!</p>
-            <Link className="getStartedFirstEntry" to="/firstentry">Enter a first</Link>
+            <h1 className="welcomeHeader">Welcome!</h1>
+            <p className="welcomep">Saving precious childhood memories starts right here.</p>
+            <Link className="journalButton" to="/firstentry">Journal</Link>
           </div>
         </div>
       );
     }
     return (
       <div className="timeline">
+        <div className="backgroundBlurredImageTimeline" />
         <nav className="timelineNav">
-          <Link className="enterAFirstButtonDesktop" to="/firstentry">Enter a First</Link>
+          <Link className="enterAFirstButtonDesktop" to="/firstentry">Journal</Link>
           <Link className="timelineLogout" to="/">Log out</Link>
         </nav>
 

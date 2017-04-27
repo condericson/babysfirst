@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
+import constants from './config/constants';
 
 const express = require('express');
 
 const firstRouter = require('./firsts');
 const userRouter = require('./users');
 const middlewares = require('./config/middlewares');
-const constants = require('./config/constants');
 
 require('./config/database');
 
@@ -19,6 +19,7 @@ app.use('/users', userRouter);
 
 if (!module.parent) {
   app.listen(constants.PORT, err => {
+    console.log('THESE ARE THE CONSTANTS', constants);
     if (err) {
       console.error('Cannot run');
     } else {

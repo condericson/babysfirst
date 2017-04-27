@@ -27,7 +27,7 @@ class Memory extends Component {
           <p className="date">{date}</p>
         <p className="content"><span className="age"><Moment from={date} ago>{birthday}</Moment> </span>{content}</p>
         </div>
-        <button className="delete" onClick={this.deleteClickedMemory}>delete</button>
+        <div className="deleteButton" onClick={this.deleteClickedMemory}>&times;</div>
       </div>
     );
   }
@@ -45,6 +45,7 @@ export default connect(
 // https://static.pexels.com/photos/39369/baby-teddy-bear-cute-39369.jpeg
 // Having fun picking up toys!
 // https://static.pexels.com/photos/315265/pexels-photo-315265.jpeg
+// Getting ready for Santa! Someone didn't quite get the whole 'leave' cookies part.
 // https://static.pexels.com/photos/247185/pexels-photo-247185.jpeg
 // https://static.pexels.com/photos/47219/baby-child-newborn-arms-47219.jpeg
 
