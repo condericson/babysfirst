@@ -15,7 +15,7 @@ describe(`POST ${ENDPOINT}`, () => {
     testUser = await User.create(UserFactory.generate());
   });
   describe('Creating user', () => {
-    it('should...', done => {
+    it('should create a user and return a 201 status, have an id, a username, and a birthday', done => {
       server.post(ENDPOINT).send(UserFactory.generate()).end((err, res) => {
         const { status, body } = res;
         expect(status).to.equal(201);
@@ -26,7 +26,18 @@ describe(`POST ${ENDPOINT}`, () => {
       });
     });
   });
-  describe('Logging in user', () => {
-    it('should');
-  });
+  // describe('Logging in user', () => {
+  //   it('should log the user in a return a 201 status, have an id, a username, and a birthday', done => {
+  //     const testUser = UserFactory.generate();
+  //     server.post(ENDPOINT).send(testUser);
+  //     server.post(`${ENDPOINT}/login`).send(testUser).end((err, res) => {
+  //       const { status, body } = res;
+  //       expect(status).to.equal(201);
+  //       expect(body).to.haveOwnProperty('_id');
+  //       expect(body).to.haveOwnProperty('username');
+  //       expect(body).to.haveOwnProperty('birthday');
+  //       done();
+  //     });
+  //   });
+  // });
 });

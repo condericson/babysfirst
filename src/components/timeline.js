@@ -11,7 +11,7 @@ class Timeline extends Component {
   }
 
   componentDidMount() {
-    this.props.getFirsts(this.props.currentUserId || '58f4e7217e71112a302fe39e');
+    // this.props.getFirsts(this.props.currentUserId || '58f4e7217e71112a302fe39e');
     console.log('Current user', this.props.currentUserId);
     console.log("user's birthday", this.props.birthday);
   }
@@ -36,6 +36,7 @@ class Timeline extends Component {
           <h1 className="welcomeHeader">Welcome to First Memories!</h1>
           <p className="">Click "Enter a first" to start recording!</p>
           <Link className="getStartedFirstEntry" to="/firstentry">Enter a first</Link>
+          <Link className="timelineLogout" to="/">Log out</Link>
         </div>
       );
     }

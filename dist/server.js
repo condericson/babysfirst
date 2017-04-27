@@ -7,11 +7,11 @@ const express = require('express');
 const firstRouter = require('./firsts');
 const userRouter = require('./users');
 const middlewares = require('./config/middlewares');
+const constants = require('./config/constants');
 
-require('./config/db');
+require('./config/database');
 
 const app = express();
-const PORT = require('./config/config').PORT;
 
 middlewares(app);
 
@@ -19,12 +19,18 @@ middlewares(app);
 app.use('/firsts', firstRouter);
 app.use('/users', userRouter);
 
-app.listen(PORT, err => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(`App listening on port ${PORT}`);
-  }
-});
+if (!module.parent) {
+  app.listen(constants.PORT, err => {
+    if (err) {
+      console.error('Cannot run');
+    } else {
+      console.log(`
+          Yep this is working 🍺
+          App listen on port: ${constants.PORT} 🍕
+          Env: ${process.env.NODE_ENV} 🦄
+        `);
+    }
+  });
+}
 
 module.exports = app;

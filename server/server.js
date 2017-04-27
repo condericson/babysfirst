@@ -5,12 +5,11 @@ const express = require('express');
 const firstRouter = require('./firsts');
 const userRouter = require('./users');
 const middlewares = require('./config/middlewares');
-const constants = require('./mockServer/constants');
+const constants = require('./config/constants');
 
-require('./config/db');
+require('./config/database');
 
 const app = express();
-const PORT = require('./config/config').PORT;
 
 middlewares(app);
 

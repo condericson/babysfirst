@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 
 const router = new Router();
 
-const User = require('./models/userModel');
+import User from './models/userModel';
 
 router.use(cookieParser());
 
@@ -58,15 +58,15 @@ router.post('/', (req, res) => {
         password: hash,
         birthday: req.body.birthday,
       }, (err, user) => {
-        console.log(err);
-        console.log(user);
         if (err) {
           return res.status(500).json({ message: 'Error with user creation' });
         }
-        console.log(user);
-        console.log(user.username);
-        console.log(user.birthday);
-        return res.status(201).json(user);
+        const returnedValues = {
+          username: user.username,
+          birthday: user.birthday,
+          _id: user._id,
+        };
+        return res.status(201).json(returnedValues);
       });
     });
   });
@@ -78,9 +78,11 @@ router.post('/login', (req, res) => {
     username: req.body.username,
   }, (err, user) => {
     if (err) {
+      console.log('error with post');
       return res.status(500).json({ message: 'Error with post' });
     }
     if (!user) {
+      console.log("user wasn't found");
       return res.status(500).json({ message: 'Incorrect username or password' });
     }
     if (bcryptjs.compareSync(enteredPassword, user.password)) {

@@ -1,3 +1,5 @@
+/* eslint-disable import/no-mutable-exports */
+
 const mongoose = require('mongoose');
 
 const UserSchema = mongoose.Schema({
@@ -13,4 +15,12 @@ const UserSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('users', UserSchema);
+let User;
+
+try {
+  User = mongoose.model('User');
+} catch (e) {
+  User = mongoose.model('User', UserSchema);
+}
+
+export default User;

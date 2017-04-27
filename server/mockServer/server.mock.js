@@ -5,6 +5,7 @@
 import supertest from 'supertest';
 
 import server from '../server';
-import './database';
+import '../config/database';
 
 export default supertest(server);
+

@@ -16,7 +16,7 @@ const prodConfig = {
 };
 
 const defaultConfig = {
-  PORT: process.env.PORT || 3000,
+  PORT: process.env.PORT || 8080,
 };
 
 function envConfig(env) {
@@ -34,3 +34,12 @@ export default {
   ...defaultConfig,
   ...envConfig(process.env.NODE_ENV),
 };
+
+// exports.DATABASE_URL = process.env.DATABASE_URL ||
+//                        global.DATABASE_URL ||
+//                       'mongodb://localhost/babysfirst';
+
+// exports.TEST_DATABASE_URL = (
+// 	process.env.TEST_DATABASE_URL ||
+// 	'mongodb://localhost/test-babysfirst');
+// exports.PORT = process.env.PORT || 8080;

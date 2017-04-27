@@ -1,5 +1,11 @@
 'use strict';
 
+var _userModel = require('./models/userModel');
+
+var _userModel2 = _interopRequireDefault(_userModel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var _require = require('express');
@@ -13,14 +19,12 @@ const cookieParser = require('cookie-parser');
 
 const router = new Router();
 
-const User = require('./models/userModel');
-
 router.use(cookieParser());
 
 router.get('/', (() => {
   var _ref = _asyncToGenerator(function* (req, res) {
     try {
-      const user = yield User.find({});
+      const user = yield _userModel2.default.find({});
       res.status(201).json(user);
     } catch (e) {
       res.status(500).json(e);
@@ -35,12 +39,12 @@ router.get('/', (() => {
 router.get('/:id', (() => {
   var _ref2 = _asyncToGenerator(function* (req, res) {
     try {
-      const user = yield User.find({});
+      const user = yield _userModel2.default.find({});
       res.status(201).json(user);
     } catch (e) {
       res.status(500).json(e);
     }
-    User.findById(req.params.id, function (err, user) {
+    _userModel2.default.findById(req.params.id, function (err, user) {
       if (err) {
         res.status(500).json({ message: 'Username not found' });
       }
@@ -72,20 +76,20 @@ router.post('/', (req, res) => {
       if (err) {
         return res.status(500).json({ message: 'Error with encryption' });
       }
-      User.create({
+      _userModel2.default.create({
         username: req.body.username,
         password: hash,
         birthday: req.body.birthday
       }, (err, user) => {
-        console.log(err);
-        console.log(user);
         if (err) {
           return res.status(500).json({ message: 'Error with user creation' });
         }
-        console.log(user);
-        console.log(user.username);
-        console.log(user.birthday);
-        return res.status(201).json(user);
+        const returnedValues = {
+          username: user.username,
+          birthday: user.birthday,
+          _id: user._id
+        };
+        return res.status(201).json(returnedValues);
       });
     });
   });
@@ -93,13 +97,15 @@ router.post('/', (req, res) => {
 
 router.post('/login', (req, res) => {
   const enteredPassword = req.body.password;
-  User.findOne({
+  _userModel2.default.findOne({
     username: req.body.username
   }, (err, user) => {
     if (err) {
+      console.log('error with post');
       return res.status(500).json({ message: 'Error with post' });
     }
     if (!user) {
+      console.log("user wasn't found");
       return res.status(500).json({ message: 'Incorrect username or password' });
     }
     if (bcryptjs.compareSync(enteredPassword, user.password)) {
@@ -111,7 +117,7 @@ router.post('/login', (req, res) => {
 router.delete('/:id', (() => {
   var _ref3 = _asyncToGenerator(function* (req, res) {
     try {
-      const user = User.findByIdAndRemove(req.params.id);
+      const user = _userModel2.default.findByIdAndRemove(req.params.id);
       return res.status(201).json(user);
     } catch (e) {
       res.status(500).json({ message: `Could not delete user ${req.body.username}` });
