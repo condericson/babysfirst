@@ -33,10 +33,12 @@ class Timeline extends Component {
     if (!this.props.firsts.length) {
       return (
         <div className="getStarted">
-          <h1 className="welcomeHeader">Welcome to First Memories!</h1>
-          <p className="">Click "Enter a first" to start recording!</p>
-          <Link className="getStartedFirstEntry" to="/firstentry">Enter a first</Link>
           <Link className="timelineLogout" to="/">Log out</Link>
+          <div className="welcomeContainer">
+            <h1 className="welcomeHeader">Welcome to First Memories!</h1>
+            <p className="">Click "Enter a first" to start recording!</p>
+            <Link className="getStartedFirstEntry" to="/firstentry">Enter a first</Link>
+          </div>
         </div>
       );
     }

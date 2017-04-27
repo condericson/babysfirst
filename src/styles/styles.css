@@ -804,6 +804,17 @@ p {
   position: relative;
 }
 
+/*Welcome screen*/
+.welcomeContainer {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 10%;
+
+}
+.welcomeHeader {
+  font-size: 32px;
+}
+
 /*Nav and Buttons*/
 .timelineNav {
   height: 60px;

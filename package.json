@@ -57,8 +57,8 @@
     "mochatest": "mocha",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "dev:watch": "babel -w --out-dir=dist --ignore=./server/test/* ./server/server",
-    "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist ./server/server",
+    "dev:watch": "babel -w --out-dir=dist --ignore=./server/test/* ./server/server.js",
+    "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist ./server/server.js",
     "server": "cross-env NODE_ENV=development nodemon ./dist/server.js"
   }
 }
