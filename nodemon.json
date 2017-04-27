@@ -1,3 +1,7 @@
 {
-  "ignore": ["src/*"]
+  "ignore": [
+    "src/*",
+    "dist/*",
+    "public/*"
+  ]
 }
