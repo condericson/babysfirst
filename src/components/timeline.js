@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+
+import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Memory from './memory';
 import { getFirsts, loadMore } from '../actions/firsts';
@@ -11,16 +12,19 @@ class Timeline extends Component {
   }
 
   componentDidMount() {
-    this.props.getFirsts(this.props.currentUserId || '5902262f43e63c2ea4338588');
     console.log('Current user', this.props.currentUserId);
     console.log("user's birthday", this.props.birthday);
+    if (this.props.currentUserId == null) {
+      return browserHistory.push('/login');
+    }
+    this.props.getFirsts(this.props.currentUserId);
   }
 
   callLoadMore = () => {
     this.setState({
       offset: this.state.offset + 5,
     }, () => {
-      this.props.loadMore(this.props.currentUserId || '5902262f43e63c2ea4338588', this.state.offset);
+      this.props.loadMore(this.props.currentUserId, this.state.offset);
     });
   }
 

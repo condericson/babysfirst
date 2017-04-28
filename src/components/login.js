@@ -68,7 +68,7 @@ class Login extends Component {
 
 export default connect(state => ({
   loading: state.user.loading,
-  error: state.user.error,
+  error: state.user.loginError,
 }),
   { login },
 )(Login);

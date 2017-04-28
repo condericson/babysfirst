@@ -15,6 +15,8 @@ const initialState = {
   currentUserId: null,
   logged: false,
   error: null,
+  signupError: null,
+  loginError: null,
 };
 
 export default (state = initialState, action) => {
@@ -23,7 +25,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: null,
+        loginError: null,
       };
     case LOGIN_SUCCESS:
       return {
@@ -37,13 +39,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action,
+        loginError: action,
       };
     case LOGIN_INCORRECT_INFO:
       return {
         ...state,
         loading: false,
-        error: action.message,
+        loginError: action.message,
       };
     case LOGOUT:
       return initialState;
@@ -51,6 +53,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        signupError: null,
       };
     case SIGNUP_SUCCESS:
       return {
@@ -64,13 +67,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.error,
+        signupError: action.error,
       };
     case SIGNUP_INCORRECT_INFO:
       return {
         ...state,
         loading: false,
-        error: action.message,
+        signupError: action.message,
       };
     default:
       return state;

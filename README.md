@@ -3,10 +3,12 @@
 # First Memories
 [First Memories] is a online journaling application for parents that want an way to record pictures and journal entries about their child from anywhere.
 
-![screenshots](http://placekitten.com/400/400?image=12 "Screenshots")
+![screenshots](http://i.imgur.com/H1VfI4s.jpg "Screenshots")
 
 ## About
 There are few things parents treasure more than the ability to reflect on the happy memories of their child. Whether it's the first time she took a step, the first time he threw a ball, or graduation day from high school, these memories come with them a dialogue of experience that can be best expressed with the written word and pictures. [First Memories] brings that family photo album or the personal journal to the cloud, accessible anywhere.
+
+![mobile screenshots](http://i.imgur.com/xwClNb9.png "Mobile Screenshots")
 
 This application combines the use of the React front end framework with Node.js on the back end. 
 
@@ -36,6 +38,7 @@ Then open [`localhost:3000`](http://localhost:3000) in a browser.
 ```
 ### `Launch`
 ```
+>   npm run dev:watch
 >   npm run server
 ```
 Then open [`localhost:8080`](http://localhost:8080) in a browser.

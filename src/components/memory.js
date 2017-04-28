@@ -7,8 +7,22 @@ const moment = require('moment');
 
 class Memory extends Component {
 
+  state = {
+    areyousure: false,
+  }
+
   deleteClickedMemory = () => {
+    this.setState({
+      areyousure: false,
+    });
     this.props.deleteFirsts(this.props._id);
+  }
+
+  areyousureSetState = () => {
+    const areyousureState = this.state.areyousure !== true;
+    this.setState({
+      areyousure: areyousureState,
+    });
   }
 
   render() {
@@ -35,7 +49,21 @@ class Memory extends Component {
     if (age == '1') {
       formattedAge = `${age} month`;
     }
-    console.log(age);
+    let areyousurePopup = '';
+    let deleteButton = '';
+    if (this.state.areyousure === true) {
+      areyousurePopup =
+        (<div className="areyousureDiv">
+          <p className="areyousureP">Delete this memory?</p>
+          <button className="yes" onClick={this.deleteClickedMemory}>Yes</button>
+          <button className="no" onClick={this.areyousureSetState}>No</button>
+        </div>);
+      deleteButton = '';
+    }
+    if (this.state.areyousure === false) {
+      deleteButton = <div className="deleteButton" onClick={this.areyousureSetState}>x</div>;
+      areyousurePopup = '';
+    }
     return (
       <div className={side} id={_id}>
         <div className="description">
@@ -43,7 +71,8 @@ class Memory extends Component {
           <p className="date">{date}</p>
         <p className="content"><span className="age">{formattedAge} </span>{content}</p>
         </div>
-        <div className="deleteButton" onClick={this.deleteClickedMemory}>&times;</div>
+        {deleteButton}
+        {areyousurePopup}
       </div>
     );
   }

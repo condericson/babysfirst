@@ -15,6 +15,9 @@ const FirstsSchema = mongoose.Schema({
   },
   image: {
     type: String
+  },
+  cloudinaryId: {
+    type: String
   }
 });
 

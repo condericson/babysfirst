@@ -14,6 +14,9 @@ const FirstsSchema = mongoose.Schema({
   image: {
     type: String,
   },
+  cloudinaryId: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model('firsts', FirstsSchema);

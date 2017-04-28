@@ -503,6 +503,7 @@ p {
 @media only screen and (max-width: 500px) {
   .signupform_container {
     width: 300px;
+    top: 100px;
   }
 }
 
@@ -626,6 +627,7 @@ p {
 @media only screen and (max-width: 500px) {
   .loginform_container {
     width: 300px;
+    top: 100px;
   }
 }
 
@@ -1018,24 +1020,68 @@ p {
   position: absolute;
   bottom: 0px;
   right: 1px;
-  height: 29px;
-  width: 29px;
+  height: 20px;
+  width: 20px;
   border: none;
   text-decoration: none;
   color: black;
-  font-size: 40px;
+  font-size: 25px;
+  font-weight: bold;
   text-align: center;
   vertical-align: top;
   line-height: 0.6;
   cursor: pointer;
-  border-radius: 25px;
+  transition-duration: 0.5s;
+  border-radius: 5px;
 }
 
 .deleteButton:hover {
   background-color: #ff3439;
-  color: white;
   transition-duration: 0.5s;
-  border-radius: 5px;
+  color: white;
+}
+
+.areyousureDiv {
+  width: 100px;
+  height: 70px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #ff3439;
+  transition-duration: 0.5s;
+  text-align: center;
+}
+
+.areyousureP {
+  /*font-weight: bold;*/
+  color: white;
+  margin-top: 5px;
+
+}
+
+.yes {
+  border: none;
+  background-color: white;
+  margin-right: 5px;
+  outline: none;
+}
+
+.yes:hover {
+  transition-duration: 0.5s;
+  background-color: #fd686b;
+  color: white;
+}
+
+.no {
+  border: none;
+  background-color: white;
+  outline: none;
+}
+
+.no:hover {
+  transition-duration: 0.5s;
+  background-color: #3ba9d0;
+  color:white;
 }
 
 

@@ -42,9 +42,6 @@ router.get('/logout', (req, res) => {
 
 router.post('/', (req, res) => {
   const { password } = req.body;
-  if (password.length < 3) {
-    return res.status(500).json({ message: 'Invalid username or password' });
-  }
   bcryptjs.genSalt(10, (err, salt) => {
     if (err) {
       res.status(500).json({ message: 'Error with salt' });
@@ -59,6 +56,7 @@ router.post('/', (req, res) => {
         birthday: req.body.birthday,
       }, (err, user) => {
         if (err) {
+          console.log(err);
           return res.status(500).json({ message: 'Error with user creation' });
         }
         const returnedValues = {

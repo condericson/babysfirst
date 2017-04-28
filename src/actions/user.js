@@ -84,7 +84,7 @@ export function signup(user) {
     dispatch({ type: SIGNUP });
     try {
       const response = await User.signup(user);
-      if (response.response.status === 500) {
+      if (response.response) {
         dispatch(signupIncorrectInfo(response.response.data.message));
       } else {
         dispatch(signupSuccess(response));
