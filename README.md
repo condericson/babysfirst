@@ -10,7 +10,7 @@ There are few things parents treasure more than the ability to reflect on the ha
 
 ![mobile screenshots](http://i.imgur.com/xwClNb9.png "Mobile Screenshots")
 
-This application combines the use of the React front end framework with Node.js on the back end. 
+This application combines the use of the React front end framework with Node.js and MongoDB on the back end. 
 
 ## Getting started
 ### `Install`
@@ -21,6 +21,8 @@ This application combines the use of the React front end framework with Node.js 
 ```
 ### `Launch`
 ```
+>   npm run dev:watch
+>   npm run server
 >   npm run start
 ```
 Then open [`localhost:3000`](http://localhost:3000) in a browser.
@@ -28,21 +30,6 @@ Then open [`localhost:3000`](http://localhost:3000) in a browser.
 ```
 >   npm run test
 ```
-
-## Server instructions:
-### `Install`
-```
->   git clone https://github.com/condericson/babysfirst.git
->   cd babysfirst
->   npm install
-```
-### `Launch`
-```
->   npm run dev:watch
->   npm run server
-```
-Then open [`localhost:8080`](http://localhost:8080) in a browser.
-
 
 
 

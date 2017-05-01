@@ -99,16 +99,15 @@ class Splash extends Component {
 
         </div>
         <div className="splashFooter">
-            <a href="https://icons8.com/web-app/1106/Picture" className="hidden">Picture icon credits</a>
-            <p className="built">
-              <span className="by">Built by Connor Ericson</span>
-              <div className="githubcontainer">
-                 <a href="https://github.com/condericson/babysfirst" className="nostyle" rel="githublink" target="_blank">
-                  <i className="fa fa-github fa-2x githubLogo" aria-hidden="true" />
-                 </a>
-              </div>
-            </p>
-          </div>
+          <p className="built">
+            <span className="by">Built by Connor Ericson</span>
+            <div className="githubcontainer">
+                <a href="https://github.com/condericson/babysfirst" className="nostyle" rel="githublink" target="_blank">
+                <i className="fa fa-github fa-2x githubLogo" aria-hidden="true" />
+                </a>
+            </div>
+          </p>
+        </div>
       </div>
     );
   }
