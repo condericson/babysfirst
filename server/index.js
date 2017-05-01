@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
+
+import express from 'express';
+import { join } from 'path';
+
 import constants from './config/constants';
 
-const express = require('express');
-
-const firstRouter = require('./firsts');
-const userRouter = require('./users');
-const middlewares = require('./config/middlewares');
+import firstRouter from './firsts';
+import userRouter from './users';
+import middlewares from './config/middlewares';
 
 require('./config/database');
 
@@ -16,6 +18,13 @@ middlewares(app);
 // routers
 app.use('/firsts', firstRouter);
 app.use('/users', userRouter);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'));
+  app.get('/*', (req, res) => {
+    res.sendFile(join(__dirname, '../build/index.html'));
+  });
+}
 
 if (!module.parent) {
   app.listen(constants.PORT, err => {
@@ -34,4 +43,4 @@ if (!module.parent) {
   });
 }
 
-module.exports = app;
+export default app;

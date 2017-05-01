@@ -1,32 +1,75 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import $ from 'jquery';
+// import $ from 'jquery';
 import '../styles/styles.css';
 
 class Splash extends Component {
-  componentDidMount() {
-    $('.hoverview1').hover(() => {
-      $('.pencildiv').removeClass('hidden');
-      $('.pencildiv').toggleClass('fadeIn fadeOut');
-    });
-    $('.hoverview2').hover(() => {
-      $('.pictureframediv').removeClass('hidden');
-      $('.pictureframediv').toggleClass('fadeIn fadeOut');
-    });
-    $('.hoverview3').hover(() => {
-      $('.playgrounddiv').removeClass('hidden');
-      $('.playgrounddiv').toggleClass('fadeIn fadeOut');
-    });
-    $('.menucontainer').click(() => {
-      if ($('.dropdown').hasClass('dropdownopen')) {
-        setTimeout(() => { $('.dropdown').removeClass('dropdownopen'); }, 300);
-      }
-      $('.dropdown').addClass('dropdownopen');
-      $('.dropdown').toggleClass('fadeIn fadeOut');
-    });
+
+  state = {
+    hoverview1: false,
+    hoverZone2: false,
+    hoverZone3: false,
   }
 
+  onMouseEnterHandler() {
+    console.log('enter');
+    this.setState({
+      hover: true,
+    });
+    console.log('enter');
+  }
+
+  onMouseLeaveHandler() {
+    this.setState({
+      hover: false,
+    });
+    console.log('leave');
+  }
+
+  // componentDidMount() {
+  //   $('.hoverview1').hover(() => {
+  //     $('.pencildiv').removeClass('hidden');
+  //     $('.pencildiv').toggleClass('fadeIn fadeOut');
+  //   });
+  //   $('.hoverview2').hover(() => {
+  //     $('.pictureframediv').removeClass('hidden');
+  //     $('.pictureframediv').toggleClass('fadeIn fadeOut');
+  //   });
+  //   $('.hoverview3').hover(() => {
+  //     $('.playgrounddiv').removeClass('hidden');
+  //     $('.playgrounddiv').toggleClass('fadeIn fadeOut');
+  //   });
+  //   $('.menucontainer').click(() => {
+  //     if ($('.dropdown').hasClass('dropdownopen')) {
+  //       setTimeout(() => { $('.dropdown').removeClass('dropdownopen'); }, 300);
+  //     }
+  //     $('.dropdown').addClass('dropdownopen');
+  //     $('.dropdown').toggleClass('fadeIn fadeOut');
+  //   });
+  // }
+
   render() {
+    let pencilDescription;
+    if (this.state.hoverview1) {
+      pencilDescription = <div className="animated fadeIn pencildiv"><p>Record a moment in your own words.</p></div>;
+    }
+    if (!this.state.hoverview1) {
+      pencilDescription = '';
+    }
+    let cameraDescription;
+    if (this.state.hoverview1) {
+      cameraDescription = <div className="animated hidden fadeIn pictureframediv"><p>Add a picture.</p></div>;
+    }
+    if (!this.state.hoverview1) {
+      cameraDescription = '';
+    }
+    let ballDescription;
+    if (this.state.hoverview1) {
+      ballDescription = <div className="animated hidden fadeIn playgrounddiv"><p>Relive the experiences on a personalized timeline.</p></div>;
+    }
+    if (!this.state.hoverview1) {
+      ballDescription = '';
+    }
     return (
       <div className="login-form">
         <nav className="splashNav">
@@ -50,20 +93,20 @@ class Splash extends Component {
         <div className="splashSectionTwo">
           <p className="journal">A new kind of journal.</p>
             <ul className="icons">
-              <li className="hoverview1">
+              <li className="hoverview1" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
                 <img src="./images/Pencil-48.png" alt="pencil" />
                   <div className="smallscreen_instructions pencildiv_smallscreen">
                     <p>Record a moment in your own words.</p>
                   </div>
               </li>
-              <li className="hoverview2">
+              <li className="hoverview2" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
                 <img src="./images/camera2.png" alt="pictureframe" />
 
                   <div className="smallscreen_instructions pictureframe_smallscreen">
                     <p>Add a picture.</p>
                   </div>
               </li>
-              <li className="hoverview3">
+              <li className="hoverview3" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
                 <img src="./images/beach-ball-clipart.jpg" alt="playground" />
 
                   <div className="smallscreen_instructions playground_smallscreen">
@@ -71,16 +114,10 @@ class Splash extends Component {
                   </div>
               </li>
               <div className="bottomInstructionContainer">
-              <div className="animated hidden fadeOut pencildiv">
-                <p>Record a moment in your own words.</p>
+                {pencilDescription}
+                {cameraDescription}
+                {ballDescription}
               </div>
-              <div className="animated hidden fadeOut pictureframediv">
-                <p>Add a picture.</p>
-              </div>
-              <div className="animated hidden fadeOut playgrounddiv">
-                <p>Relive the experiences on a personalized timeline.</p>
-              </div>
-            </div>
             </ul>
 
         </div>

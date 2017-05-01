@@ -9,6 +9,7 @@
     "body-parser": "^1.17.1",
     "cloudinary": "^1.8.0",
     "cookie-parser": "^1.4.3",
+    "cross-env": "^4.0.0",
     "express": "^4.15.2",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
@@ -32,7 +33,6 @@
     "babel-register": "^6.24.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "cross-env": "^4.0.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
@@ -48,8 +48,10 @@
     "supertest": "^3.0.0"
   },
   "scripts": {
+    "dev:fe": "react-scripts start",
+    "now-build": "npm run build:server",
     "clean": "rimraf dist",
-    "start": "react-scripts start",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "react-scripts test --env=jsdom",
@@ -58,7 +60,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "dev:watch": "babel -w --out-dir=dist --ignore=./server/test/* ./server",
-    "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist ./server/server.js",
+    "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist --ignore=./server/test/* ./server",
     "server": "cross-env NODE_ENV=development nodemon ./dist/server.js"
   }
 }
