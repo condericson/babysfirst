@@ -54,7 +54,7 @@
     "dev:fe": "react-scripts start",
     "build": "react-scripts build",
     "clean": "rimraf dist",
-    "start": "npm run build && cross-env NODE_ENV=production node dist/index.js",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "eject": "react-scripts eject",
     "test": "react-scripts test --env=jsdom",
     "test:watch": "cross-env NODE_ENV=test mocha -w --colors --compilers js:babel-register $(find server/test -name '*.test.js')",
@@ -63,6 +63,6 @@
     "lint:fix": "eslint --fix src",
     "dev:watch": "babel -w --out-dir=dist --ignore=./server/test/* ./server",
     "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist --ignore=./server/test/* ./server",
-    "server": "cross-env NODE_ENV=development nodemon ./dist/server.js"
+    "server": "cross-env NODE_ENV=development nodemon ./server/index.js"
   }
 }
