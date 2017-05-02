@@ -24,6 +24,7 @@
     "react-redux": "^5.0.3",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.8",
+    "react-scripts": "^0.9.5",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },
@@ -50,10 +51,9 @@
   },
   "scripts": {
     "dev:fe": "react-scripts start",
-    "build": "npm run build:server",
+    "build": "react-scripts build",
     "clean": "rimraf dist",
     "start": "npm run build && cross-env NODE_ENV=production node dist/index.js",
-    "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "react-scripts test --env=jsdom",
     "test:watch": "cross-env NODE_ENV=test mocha -w --colors --compilers js:babel-register $(find server/test -name '*.test.js')",
