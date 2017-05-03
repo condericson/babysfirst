@@ -11,20 +11,20 @@ class Splash extends Component {
     hoverZone3: false,
   }
 
-  onMouseEnterHandler() {
-    console.log('enter');
-    this.setState({
-      hover: true,
-    });
-    console.log('enter');
-  }
+  // onMouseEnterHandler() {
+  //   console.log('enter');
+  //   this.setState({
+  //     hover: true,
+  //   });
+  //   console.log('enter');
+  // }
 
-  onMouseLeaveHandler() {
-    this.setState({
-      hover: false,
-    });
-    console.log('leave');
-  }
+  // onMouseLeaveHandler() {
+  //   this.setState({
+  //     hover: false,
+  //   });
+  //   console.log('leave');
+  // }
 
   // componentDidMount() {
   //   $('.hoverview1').hover(() => {
@@ -49,27 +49,27 @@ class Splash extends Component {
   // }
 
   render() {
-    let pencilDescription;
-    if (this.state.hoverview1) {
-      pencilDescription = <div className="animated fadeIn pencildiv"><p>Record a moment in your own words.</p></div>;
-    }
-    if (!this.state.hoverview1) {
-      pencilDescription = '';
-    }
-    let cameraDescription;
-    if (this.state.hoverview1) {
-      cameraDescription = <div className="animated hidden fadeIn pictureframediv"><p>Add a picture.</p></div>;
-    }
-    if (!this.state.hoverview1) {
-      cameraDescription = '';
-    }
-    let ballDescription;
-    if (this.state.hoverview1) {
-      ballDescription = <div className="animated hidden fadeIn playgrounddiv"><p>Relive the experiences on a personalized timeline.</p></div>;
-    }
-    if (!this.state.hoverview1) {
-      ballDescription = '';
-    }
+    // let pencilDescription;
+    // if (this.state.hoverview1) {
+    //   pencilDescription = <div className="animated fadeIn pencildiv"><p>Record a moment in your own words.</p></div>;
+    // }
+    // if (!this.state.hoverview1) {
+    //   pencilDescription = '';
+    // }
+    // let cameraDescription;
+    // if (this.state.hoverview1) {
+    //   cameraDescription = <div className="animated hidden fadeIn pictureframediv"><p>Add a picture.</p></div>;
+    // }
+    // if (!this.state.hoverview1) {
+    //   cameraDescription = '';
+    // }
+    // let ballDescription;
+    // if (this.state.hoverview1) {
+    //   ballDescription = <div className="animated hidden fadeIn playgrounddiv"><p>Relive the experiences on a personalized timeline.</p></div>;
+    // }
+    // if (!this.state.hoverview1) {
+    //   ballDescription = '';
+    // }
     return (
       <div className="login-form">
         <nav className="splashNav">
@@ -93,20 +93,20 @@ class Splash extends Component {
         <div className="splashSectionTwo">
           <p className="journal">A new kind of journal.</p>
             <ul className="icons">
-              <li className="hoverview1" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+              <li className="hoverview1" >
                 <img src="./images/Pencil-48.png" alt="pencil" />
                   <div className="smallscreen_instructions pencildiv_smallscreen">
                     <p>Record a moment in your own words.</p>
                   </div>
               </li>
-              <li className="hoverview2" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+              <li className="hoverview2">
                 <img src="./images/camera2.png" alt="pictureframe" />
 
                   <div className="smallscreen_instructions pictureframe_smallscreen">
                     <p>Add a picture.</p>
                   </div>
               </li>
-              <li className="hoverview3" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+              <li className="hoverview3">
                 <img src="./images/beach-ball-clipart.jpg" alt="playground" />
 
                   <div className="smallscreen_instructions playground_smallscreen">
@@ -114,9 +114,9 @@ class Splash extends Component {
                   </div>
               </li>
               <div className="bottomInstructionContainer">
-                {pencilDescription}
+                {/* {pencilDescription}
                 {cameraDescription}
-                {ballDescription}
+                {ballDescription}*/}
               </div>
             </ul>
 
@@ -139,7 +139,7 @@ class Splash extends Component {
           <p className="built">
             <span className="by">Built by Connor Ericson</span>
             <div className="githubcontainer">
-                <a href="https://github.com/condericson/babysfirst" className="nostyle" rel="githublink" target="_blank">
+                <a href="https://github.com/condericson/babysfirst" className="nostyle" rel="noopener noreferrer" target="_blank">
                 <i className="fa fa-github fa-2x githubLogo" aria-hidden="true" />
                 </a>
             </div>
@@ -152,3 +152,4 @@ class Splash extends Component {
 
 export default Splash;
 
+// onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}
