@@ -5,11 +5,11 @@ import '../styles/styles.css';
 
 class Splash extends Component {
 
-  state = {
-    hoverview1: false,
-    hoverZone2: false,
-    hoverZone3: false,
-  }
+  // state = {
+  //   hoverview1: false,
+  //   hoverZone2: false,
+  //   hoverZone3: false,
+  // }
 
   // onMouseEnterHandler() {
   //   console.log('enter');
@@ -71,7 +71,16 @@ class Splash extends Component {
     //   ballDescription = '';
     // }
     return (
-      <div className="login-form">
+      <h1>"Hello"</h1>
+    );
+  }
+}
+
+export default Splash;
+
+// onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}
+
+{ /* <div className="login-form">
         <nav className="splashNav">
           <ul className="fullscreen">
             <Link to="/signup" className="signupbutton button darken_hover"><li>Sign up</li></Link>
@@ -113,11 +122,11 @@ class Splash extends Component {
                     <p>Relive the experiences on a personalized timeline.</p>
                   </div>
               </li>
-              <div className="bottomInstructionContainer">
-                {/* {pencilDescription}
+<div className="bottomInstructionContainer">*/ }
+{ /* {pencilDescription}
                 {cameraDescription}
-                {ballDescription}*/}
-              </div>
+{ballDescription}*/ }
+{ /* </div>
             </ul>
 
         </div>
@@ -145,11 +154,4 @@ class Splash extends Component {
             </div>
           </p>
         </div>
-      </div>
-    );
-  }
-}
-
-export default Splash;
-
-// onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}
+</div>*/ }
