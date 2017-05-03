@@ -41,9 +41,9 @@ app.use('/firsts', _firsts2.default);
 app.use('/users', _users2.default);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(_express2.default.static('build'));
-  app.get('/*', (req, res) => {
-    res.sendFile((0, _path.join)(__dirname, '../build/index.html'));
+  app.use(_express2.default.static((0, _path.resolve)(__dirname, '..', 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile((0, _path.resolve)(__dirname, '..', 'build', 'index.html'));
   });
 }
 

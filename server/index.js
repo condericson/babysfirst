@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 import express from 'express';
-import { join } from 'path';
+import { resolve } from 'path';
 
 import constants from './config/constants';
 
@@ -20,9 +20,9 @@ app.use('/firsts', firstRouter);
 app.use('/users', userRouter);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'));
-  app.get('/*', (req, res) => {
-    res.sendFile(join(__dirname, '../build/index.html'));
+  app.use(express.static(resolve(__dirname, '..', 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile(resolve(__dirname, '..', 'build', 'index.html'));
   });
 }
 
@@ -32,13 +32,11 @@ if (!module.parent) {
     if (err) {
       console.error('Cannot run');
     } else {
-      console.log(
-        `
+      console.log(`
           Yep this is working 🍺
           App listen on port: ${constants.PORT} 🍕
           Env: ${process.env.NODE_ENV} 🦄
-        `,
-      );
+        `);
     }
   });
 }

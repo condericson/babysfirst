@@ -21,7 +21,10 @@ router.get('/:id', async (req, res) => {
   console.log(req.query.offset);
   const skipNumber = parseInt(req.query.offset, 10);
   try {
-    const firsts = await Firsts.find({ userId: req.params.id }).sort({ date: -1 }).skip(skipNumber).limit(5);
+    const firsts = await Firsts.find({ userId: req.params.id })
+      .sort({ date: -1 })
+      .skip(skipNumber)
+      .limit(5);
     res.status(201).json(firsts);
   } catch (e) {
     res.status(500).json({ message: e.message });
@@ -34,12 +37,16 @@ router.post('/', async (req, res) => {
   let cloudinaryId = '';
   try {
     if (req.body.image) {
-      image = await cloudinary.uploader.upload(req.body.image, (result) => {
-        console.log(result);
-      },
+      image = await cloudinary.uploader.upload(
+        req.body.image,
+        result => {
+          console.log(result);
+        },
         {
-          width: 1000, height: 1000, crop: 'limit',
-        }
+          width: 1000,
+          height: 1000,
+          crop: 'limit',
+        },
       );
       if (image.state === 'rejected') {
         return console.log('Invalid image pathway');
@@ -47,7 +54,13 @@ router.post('/', async (req, res) => {
       cloudinaryId = image.public_id;
       image = image.url;
     }
-    const first = await Firsts.create({ date, content, userId, image, cloudinaryId });
+    const first = await Firsts.create({
+      date,
+      content,
+      userId,
+      image,
+      cloudinaryId,
+    });
     return res.status(201).json(first);
   } catch (e) {
     return res.status(500).json({ message: 'Error with post' });
@@ -80,7 +93,9 @@ router.delete('/:id', (req, res) => {
       console.error('Could not delete first on ', req.body.date);
       return;
     }
-    cloudinary.uploader.destroy(first.cloudinaryId, (result) => { console.log(result); });
+    cloudinary.uploader.destroy(first.cloudinaryId, result => {
+      console.log(result);
+    });
     return res.status(201).json(first);
   });
 });

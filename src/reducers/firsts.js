@@ -90,7 +90,7 @@ export default (state = initialState, action) => {
       };
     case DELETE_FIRST_SUCCESS:
       const firstId = action.data._id;
-      const firsts = state.firsts.filter((first) => first._id !== firstId);
+      const firsts = state.firsts.filter(first => first._id !== firstId);
       return {
         ...state,
         firsts,

@@ -5,16 +5,13 @@ import { createLogger } from 'redux-logger';
 // import the root reducer
 import rootReducer from './reducers/indexReducer';
 
-const middlewares = [
-  thunk,
-  createLogger(),
-];
+const middlewares = [thunk, createLogger()];
 
 export default createStore(
   rootReducer,
   undefined,
   compose(
     applyMiddleware(...middlewares),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-  )
+    window.devToolsExtension ? window.devToolsExtension() : f => f,
+  ),
 );

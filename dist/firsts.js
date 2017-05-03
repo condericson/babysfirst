@@ -61,7 +61,9 @@ router.post('/', (() => {
         image = yield cloudinary.uploader.upload(req.body.image, function (result) {
           console.log(result);
         }, {
-          width: 1000, height: 1000, crop: 'limit'
+          width: 1000,
+          height: 1000,
+          crop: 'limit'
         });
         if (image.state === 'rejected') {
           return console.log('Invalid image pathway');
@@ -69,7 +71,13 @@ router.post('/', (() => {
         cloudinaryId = image.public_id;
         image = image.url;
       }
-      const first = yield Firsts.create({ date, content, userId, image, cloudinaryId });
+      const first = yield Firsts.create({
+        date,
+        content,
+        userId,
+        image,
+        cloudinaryId
+      });
       return res.status(201).json(first);
     } catch (e) {
       return res.status(500).json({ message: 'Error with post' });

@@ -4,30 +4,28 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // import components
-import Main from './components/Main';
+import App from './components/App';
 import Splash from './components/splash';
 import Login from './components/login';
 import Signup from './components/signup';
 import Timeline from './components/timeline';
 import FirstEntry from './components/firstentry';
-
-// import react router deps
-
+import Page404 from './components/Page404';
 import store from './store';
 
-const router = (
+const Root = () => (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Main}>
+      <Route path="/" component={App}>
         <IndexRoute component={Splash} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/timeline" component={Timeline} />
         <Route path="/firstentry" component={FirstEntry} />
+        <Route path="*" component={Page404} />
       </Route>
     </Router>
   </Provider>
-
 );
 
-render(router, document.getElementById('root'));
+render(<Root />, document.getElementById('root'));

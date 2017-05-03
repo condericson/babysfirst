@@ -8,4 +8,3 @@ import server from '../index';
 import '../config/database';
 
 export default supertest(server);
-

@@ -41,7 +41,6 @@ const firsts = [
     image: 'https://s-media-cache-ak0.pinimg.com/564x/a0/71/6c/a0716ce6fc9792f3a0ec2ae3cf67d256.jpg',
     id: 'oqjeoqjdiwejco8qw',
   },
-
 ];
 
 export default firsts;

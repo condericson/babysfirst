@@ -56,12 +56,16 @@ class Signup extends Component {
     if (this.props.loading) {
       return <h1>Loading...</h1>;
     }
-    const errorMessageP = <p className="errorMessage">Invalid username or username already taken</p>;
+    const errorMessageP = (
+      <p className="errorMessage">Invalid username or username already taken</p>
+    );
     let errorMessage = null;
     if (this.props.error !== null) {
       errorMessage = errorMessageP;
     }
-    const birthdayErrorMessageP = <p className="birthdayError">Birthday must be prior to today</p>;
+    const birthdayErrorMessageP = (
+      <p className="birthdayError">Birthday must be prior to today</p>
+    );
     let birthdayErrorMessage = null;
     if (moment(this.state.birthday).isAfter()) {
       birthdayErrorMessage = birthdayErrorMessageP;

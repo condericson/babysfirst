@@ -1,4 +1,3 @@
-
 const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 // const passport = require('passport');
@@ -50,43 +49,53 @@ router.post('/', (req, res) => {
       if (err) {
         return res.status(500).json({ message: 'Error with encryption' });
       }
-      User.create({
-        username: req.body.username,
-        password: hash,
-        birthday: req.body.birthday,
-      }, (err, user) => {
-        if (err) {
-          console.log(err);
-          return res.status(500).json({ message: 'Error with user creation' });
-        }
-        const returnedValues = {
-          username: user.username,
-          birthday: user.birthday,
-          _id: user._id,
-        };
-        return res.status(201).json(returnedValues);
-      });
+      User.create(
+        {
+          username: req.body.username,
+          password: hash,
+          birthday: req.body.birthday,
+        },
+        (err, user) => {
+          if (err) {
+            console.log(err);
+            return res
+              .status(500)
+              .json({ message: 'Error with user creation' });
+          }
+          const returnedValues = {
+            username: user.username,
+            birthday: user.birthday,
+            _id: user._id,
+          };
+          return res.status(201).json(returnedValues);
+        },
+      );
     });
   });
 });
 
 router.post('/login', (req, res) => {
   const enteredPassword = req.body.password;
-  User.findOne({
-    username: req.body.username,
-  }, (err, user) => {
-    if (err) {
-      console.log('error with post');
-      return res.status(500).json({ message: 'Error with post' });
-    }
-    if (!user) {
-      console.log("user wasn't found");
-      return res.status(500).json({ message: 'Incorrect username or password' });
-    }
-    if (bcryptjs.compareSync(enteredPassword, user.password)) {
-      return res.status(201).json(user);
-    }
-  });
+  User.findOne(
+    {
+      username: req.body.username,
+    },
+    (err, user) => {
+      if (err) {
+        console.log('error with post');
+        return res.status(500).json({ message: 'Error with post' });
+      }
+      if (!user) {
+        console.log("user wasn't found");
+        return res
+          .status(500)
+          .json({ message: 'Incorrect username or password' });
+      }
+      if (bcryptjs.compareSync(enteredPassword, user.password)) {
+        return res.status(201).json(user);
+      }
+    },
+  );
 });
 
 router.delete('/:id', async (req, res) => {
@@ -94,7 +103,9 @@ router.delete('/:id', async (req, res) => {
     const user = User.findByIdAndRemove(req.params.id);
     return res.status(201).json(user);
   } catch (e) {
-    res.status(500).json({ message: `Could not delete user ${req.body.username}` });
+    res
+      .status(500)
+      .json({ message: `Could not delete user ${req.body.username}` });
   }
   // User.findByIdAndRemove(req.params.id, (err, user) => {
   //   if (err || !user) {
