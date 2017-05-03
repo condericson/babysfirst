@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080';
-
-// axios.defaults.baseURL = 'https://firstmemories.herokuapp.com/';
+// axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = 'https://firstmemories.herokuapp.com/';
 
 export function fetchAPI(path, method, args) {
   return fetch(`https://firstmemories.herokuapp.com/${path}`, {
