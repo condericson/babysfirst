@@ -63,6 +63,6 @@
     "lint:fix": "eslint --fix src",
     "dev:watch": "babel -w --out-dir=dist --ignore=./server/test/* ./server",
     "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist --ignore=./server/test/* ./server",
-    "server": "cross-env NODE_ENV=development nodemon ./server/index.js"
+    "server": "cross-env NODE_ENV=development nodemon ./dist/index.js"
   }
 }
