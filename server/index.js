@@ -22,7 +22,7 @@ app.use('/users', userRouter);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
   app.get('/*', (req, res) => {
-    res.sendFile(join(__dirname, 'build/index.html'));
+    res.sendFile(join(__dirname, '../build/index.html'));
   });
 }
 
