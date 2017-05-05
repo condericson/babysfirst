@@ -54,7 +54,14 @@ class Signup extends Component {
 
   render() {
     if (this.props.loading) {
-      return <h1>Loading...</h1>;
+      return (
+        <div className="loading">
+          <i
+            className="fa fa-hourglass-o fa-5x loadingIcon"
+            aria-hidden="true"
+          />
+        </div>
+      );
     }
     const errorMessageP = (
       <p className="errorMessage">Invalid username or username already taken</p>
