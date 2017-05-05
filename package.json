@@ -58,6 +58,7 @@
   },
   "scripts": {
     "dev:fe": "react-scripts start",
+    "deploy:fe": "npm run build && surge ./build -d http://firstmemories.surge.sh/",
     "build": "react-scripts build",
     "clean": "rimraf dist",
     "start": "cross-env NODE_ENV=production node dist/index.js",
