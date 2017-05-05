@@ -62,7 +62,7 @@
   "lint-staged": {
     "*.js": [
       "npm run prettier",
-      // "eslint src server",
+      "eslint src server",
       "git add"
     ]
   },
