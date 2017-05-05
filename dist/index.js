@@ -8,8 +8,6 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _path = require('path');
-
 var _constants = require('./config/constants');
 
 var _constants2 = _interopRequireDefault(_constants);
@@ -28,9 +26,7 @@ var _middlewares2 = _interopRequireDefault(_middlewares);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable no-console */
-
-require('./config/database');
+require('./config/database'); /* eslint-disable no-console */
 
 const app = (0, _express2.default)();
 
@@ -39,13 +35,6 @@ const app = (0, _express2.default)();
 // routers
 app.use('/firsts', _firsts2.default);
 app.use('/users', _users2.default);
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(_express2.default.static((0, _path.resolve)(__dirname, '..', 'build')));
-  app.get('*', (req, res) => {
-    res.sendFile((0, _path.resolve)(__dirname, '..', 'build', 'index.html'));
-  });
-}
 
 if (!module.parent) {
   app.listen(_constants2.default.PORT, err => {

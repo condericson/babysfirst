@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 
 import express from 'express';
-import { resolve } from 'path';
 
 import constants from './config/constants';
 
@@ -18,13 +17,6 @@ middlewares(app);
 // routers
 app.use('/firsts', firstRouter);
 app.use('/users', userRouter);
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(resolve(__dirname, '..', 'build')));
-  app.get('*', (req, res) => {
-    res.sendFile(resolve(__dirname, '..', 'build', 'index.html'));
-  });
-}
 
 if (!module.parent) {
   app.listen(constants.PORT, err => {
