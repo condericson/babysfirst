@@ -10,18 +10,15 @@ class Splash extends Component {
   };
 
   onMouseEnterHandler() {
-    console.log('enter');
     this.setState({
       hover: true,
     });
-    console.log('enter');
   }
 
   onMouseLeaveHandler() {
     this.setState({
       hover: false,
     });
-    console.log('leave');
   }
 
   render() {

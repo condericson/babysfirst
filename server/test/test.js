@@ -7,12 +7,12 @@ import UserFactory from '../factories/user.factory';
 
 const ENDPOINT = '/users';
 
-let testUser;
+// let testUser;
 
 describe(`POST ${ENDPOINT}`, () => {
   before(async () => {
     await User.remove();
-    testUser = await User.create(UserFactory.generate());
+    // testUser = await User.create(UserFactory.generate());
   });
   describe('Creating user', () => {
     it('should create a user and return a 201 status, have an id, a username, and a birthday', done => {

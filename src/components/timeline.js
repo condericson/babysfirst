@@ -11,8 +11,6 @@ class Timeline extends Component {
   };
 
   componentDidMount() {
-    console.log('Current user', this.props.currentUserId);
-    console.log("user's birthday", this.props.birthday);
     if (this.props.currentUserId == null) {
       return browserHistory.push('/login');
     }

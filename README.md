@@ -21,9 +21,8 @@ This application combines the use of the React front end framework with Node.js 
 ```
 ### `Launch`
 ```
->   npm run dev:watch
->   npm run server
->   npm run start
+>   npm run dev:fe
+>   npm run dev
 ```
 Then open [`localhost:3000`](http://localhost:3000) in a browser.
 ### `Test`

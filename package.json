@@ -11,7 +11,6 @@
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.3",
-    "cross-env": "^4.0.0",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
     "helmet": "^3.5.0",
@@ -21,6 +20,8 @@
     "mongoose": "^4.9.3",
     "morgan": "^1.8.1",
     "nodemon": "^1.11.0",
+    "nps": "^5.1.0",
+    "nps-utils": "^1.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-moment": "^0.2.2",
@@ -45,33 +46,38 @@
     "eslint-config-prettier": "^1.7.0",
     "faker": "^4.1.0",
     "glob": "^7.1.1",
+    "lint-staged": "^3.4.1",
     "mocha": "^3.3.0",
     "nock": "^9.0.13",
+    "pre-commit": "^1.2.2",
     "prettier": "^1.3.0",
     "react-dom": "^15.5.4",
     "react-scripts": "0.9.5",
     "react-test-renderer": "^15.5.4",
     "redux-logger": "^3.0.1",
     "redux-mock-store": "^1.2.3",
-    "rimraf": "^2.6.1",
     "supertest": "^3.0.0"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": [
+      "npm run prettier",
+      "eslint src server",
+      "git add"
+    ]
   },
   "scripts": {
     "dev:fe": "react-scripts start",
-    "deploy:fe": "npm run build && surge ./build -d http://firstmemories.surge.sh/",
-    "build": "react-scripts build",
-    "clean": "rimraf dist",
+    "deploy:fe": "nps deployFE",
+    "dev": "nps dev",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "eject": "react-scripts eject",
     "test": "react-scripts test --env=jsdom",
     "test:watch": "cross-env NODE_ENV=test mocha -w --colors --compilers js:babel-register $(find server/test -name '*.test.js')",
     "mochatest": "mocha",
-    "lint": "eslint src",
-    "lint:fix": "eslint --fix src",
-    "dev:watch": "babel -w --out-dir=dist --ignore=./server/test/* ./server",
-    "build:server": "npm run clean && cross-env NODE_ENV=production babel --out-dir=dist --ignore=./server/test/* ./server",
-    "server": "cross-env NODE_ENV=development nodemon ./dist/index.js",
+    "build:server": "nps buildServer",
     "prettier": "node ./scripts/prettier.js write",
-    "hello": "rimraf node_modules && rimraf yarn.lock"
+    "hello": "rimraf node_modules && rimraf yarn.lock",
+    "lint-staged": "lint-staged"
   }
 }

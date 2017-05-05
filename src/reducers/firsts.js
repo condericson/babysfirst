@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import {
   GET_FIRSTS,
   GET_FIRSTS_SUCCESS,

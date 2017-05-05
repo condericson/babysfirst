@@ -1,3 +1,6 @@
+/* eslint-disable */
+import User from './models/userModel';
+
 const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
 // const passport = require('passport');
@@ -5,8 +8,6 @@ const bcryptjs = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 
 const router = new Router();
-
-import User from './models/userModel';
 
 router.use(cookieParser());
 

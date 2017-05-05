@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Moment from 'react-moment';
 import { deleteFirsts } from '../actions/firsts';
 
 const moment = require('moment');
@@ -46,7 +45,7 @@ class Memory extends Component {
     if (age.length > 2) {
       formattedAge = age;
     }
-    if (age == '1') {
+    if (age === 1) {
       formattedAge = `${age} month`;
     }
     let areyousurePopup = '';
@@ -93,7 +92,8 @@ export default connect(
 )(Memory);
 
 // for testing:
-// Today was the first time he ever saw a caterpillar. He plopped right down on the bridge over the railroad and just stared at it. Teddy was intrigued as well!
+// Today was the first time he ever saw a caterpillar.
+// He plopped right down on the bridge over the railroad and just stared at it. Teddy was intrigued as well!
 // https://static.pexels.com/photos/39369/baby-teddy-bear-cute-39369.jpeg
 // Having fun picking up toys!
 // https://static.pexels.com/photos/315265/pexels-photo-315265.jpeg

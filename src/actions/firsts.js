@@ -27,7 +27,6 @@ export function getFirsts(userId, offset) {
       const {
         data,
       } = await axios.get(`/firsts/${userId}?offset=${offset || 0}`);
-      console.log('Data from axios get firsts', data);
       dispatch(getFirstsSuccess(data));
     } catch (e) {
       return dispatch(getFirstsError(e));
@@ -70,7 +69,6 @@ export function loadMore(userId, offset) {
       const {
         data,
       } = await axios.get(`/firsts/${userId}?offset=${offset || 0}`);
-      console.log('Data from axios load more', data);
       if (data.length === 0) {
         dispatch(noMoreFirsts(data));
       } else {
@@ -106,7 +104,6 @@ export function addFirsts(first) {
     dispatch({ type: ADD_FIRST });
     try {
       const { data } = await axios.post('/firsts', first);
-      console.log('Data from axios first post', data);
       dispatch(addFirstsSuccess(data));
     } catch (e) {
       return dispatch(addFirstsError(e));
@@ -134,17 +131,13 @@ function deleteFirstsError(error) {
 }
 
 export function deleteFirsts(firstId) {
-  console.log(firstId);
   return async dispatch => {
     dispatch({ type: DELETE_FIRST });
     try {
       const { data } = await axios.delete(`/firsts/${firstId}`);
-      console.log('Deleted post', data);
-      console.log('Deleted post id', data._id);
       return dispatch(deleteFirstsSuccess(data));
     } catch (e) {
       return dispatch(deleteFirstsError(e));
     }
-    // return browserHistory.push('/timeline');
   };
 }

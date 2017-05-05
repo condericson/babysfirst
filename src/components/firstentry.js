@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import $ from 'jquery';
 import { addFirsts } from '../actions/firsts';
@@ -21,7 +21,6 @@ class FirstEntry extends Component {
 
   submitForm = e => {
     e.preventDefault();
-    console.log('Posting', JSON.stringify(this.state));
     const submittedFirst = {
       date: this.state.date,
       content: this.state.content,
