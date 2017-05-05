@@ -60,28 +60,21 @@ p {
 
 .dropdown {
   display: none;
+  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
 }
 
-.menucontainer > ul {
-  position: absolute;
-  margin: 0px;
-  padding: 0;
-  right: 0px;
-}
-
-.menuicon {
-  width: 40px;
-  position: relative;
-  top: 7px;
-  cursor: pointer;
-
+.fa {
+  font-size: 24px;
 }
 
 .menulabel {
   font-size: 24px;
   display: inline-block;
-  margin-bottom: 10px;
+  margin: 10px 0px;
   cursor: pointer;
+  padding-left: 5px;
 
 }
 
@@ -196,13 +189,6 @@ p {
      z-index: 10;
   }
 
-  .menucontainer > ul {
-    left: 0px;
-    width: 100%;
-    top: 50px;
-    z-index: 5;
-  }
-
   .button {
     display: block;
     margin: 0px;
@@ -259,7 +245,7 @@ p {
 
 }
 
-.pencildiv, .pictureframediv, .playgrounddiv {
+.fadingDescription {
   position: absolute;
   text-align: center;
   left: -400px;
@@ -300,7 +286,7 @@ p {
   .splashSectionTwo {
     height: 950px;
   }
-  .pencildiv, .pictureframediv, .playgrounddiv {
+  .fadingDescription {
     display: none;
   }
 
@@ -338,13 +324,22 @@ p {
   }
 
   .dropdown {
-    display: none;
+    display: block;
+    z-index: 5;
+    position: absolute;
+    margin: 0px;
+    padding: 0;
+    right: 0px;
+    left: 0px;
+    width: 100%;
+    top: -50px;
     z-index: 5;
   }
 
   .dropdownopen {
-    display: block;
+    top: 49px;
   }
+
 }
 
 .everymoment {
@@ -1212,7 +1207,6 @@ p {
 /*Fixed background-image: cover issue on iOS*/
 @media only screen and (max-width: 1100px) {
   .splashSectionOne, .splashSectionThree, .login-screen, .signup-screen, .backgroundBlurredImage, .firstEntry-screen, .backgroundBlurredImageTimeline {
-    background-size: auto;
     background-attachment: scroll;
   }
 }

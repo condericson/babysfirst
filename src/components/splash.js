@@ -4,56 +4,42 @@ import '../styles/styles.css';
 
 class Splash extends Component {
   state = {
-    hoverview1: false,
-    hoverZone2: false,
-    hoverZone3: false,
+    hoverview1: 'animated hidden fadingDescription',
+    hoverview2: 'animated hidden fadingDescription',
+    hoverview3: 'animated hidden fadingDescription',
+    menu: false,
   };
 
-  onMouseEnterHandler() {
+  onMouseEnterHandler = e => {
     this.setState({
-      hover: true,
+      [e.target.id]: 'animated fadeIn fadingDescription',
     });
   }
 
-  onMouseLeaveHandler() {
+  onMouseLeaveHandler = e => {
     this.setState({
-      hover: false,
+      [e.target.id]: 'animated fadeOut fadingDescription',
     });
   }
 
+  handleMenuDrop = () => {
+    if (this.state.menu === true) {
+      this.setState({
+        menu: false,
+      });
+    } else {
+      this.setState({
+        menu: true,
+      });
+    }
+  }
   render() {
-    let pencilDescription;
-    if (this.state.hoverview1) {
-      pencilDescription = (
-        <div className="animated fadeIn pencildiv">
-          <p>Record a moment in your own words.</p>
-        </div>
-      );
+    let dropdown;
+    if (this.state.menu === true) {
+      dropdown = 'dropdown dropdownopen';
     }
-    if (!this.state.hoverview1) {
-      pencilDescription = '';
-    }
-    let cameraDescription;
-    if (this.state.hoverview1) {
-      cameraDescription = (
-        <div className="animated hidden fadeIn pictureframediv">
-          <p>Add a picture.</p>
-        </div>
-      );
-    }
-    if (!this.state.hoverview1) {
-      cameraDescription = '';
-    }
-    let ballDescription;
-    if (this.state.hoverview1) {
-      ballDescription = (
-        <div className="animated hidden fadeIn playgrounddiv">
-          <p>Relive the experiences on a personalized timeline.</p>
-        </div>
-      );
-    }
-    if (!this.state.hoverview1) {
-      ballDescription = '';
+    if (!this.state.menu) {
+      dropdown = 'dropdown';
     }
     return (
       <div className="login-form">
@@ -66,16 +52,12 @@ class Splash extends Component {
               <li>Log In</li>
             </Link>
           </ul>
-          <div className="menucontainer">
+          <div className="menucontainer" onClick={this.handleMenuDrop}>
             <div className="menuButtonContainer">
-              <img
-                className="menuicon"
-                src="./images/lego.png"
-                alt="menuimage"
-              />
+              <i className="fa fa-bars" aria-hidden="true" />
               <span className="menulabel">Menu</span>
             </div>
-            <ul className="animated dropdown fadeOut">
+            <ul className={dropdown}>
               <Link to="/signup" className="signupbutton button darken_hover">
                 <li>Signup</li>
               </Link>
@@ -91,30 +73,36 @@ class Splash extends Component {
         <div className="splashSectionTwo">
           <p className="journal">A new kind of journal.</p>
           <ul className="icons">
-            <li className="hoverview1">
-              <img src="./images/Pencil-48.png" alt="pencil" />
+            <li className="hoverview1" id="hoverview1" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+              <img src="./images/Pencil-48.png" id="hoverview1" alt="pencil" />
               <div className="smallscreen_instructions pencildiv_smallscreen">
                 <p>Record a moment in your own words.</p>
               </div>
             </li>
-            <li className="hoverview2">
-              <img src="./images/camera2.png" alt="pictureframe" />
+            <li className="hoverview2" id="hoverview2" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+              <img src="./images/camera2.png" id="hoverview2" alt="pictureframe" />
 
               <div className="smallscreen_instructions pictureframe_smallscreen">
                 <p>Add a picture.</p>
               </div>
             </li>
-            <li className="hoverview3">
-              <img src="./images/beach-ball-clipart.jpg" alt="playground" />
+            <li className="hoverview3" id="hoverview3" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+              <img src="./images/beach-ball-clipart.jpg" id="hoverview3" alt="playground" />
 
               <div className="smallscreen_instructions playground_smallscreen">
                 <p>Relive the experiences on a personalized timeline.</p>
               </div>
             </li>
             <div className="bottomInstructionContainer">
-              {pencilDescription}
-              {cameraDescription}
-              {ballDescription}
+              <div className={this.state.hoverview1}>
+                <p>Record a moment in your own words.</p>
+              </div>
+              <div className={this.state.hoverview2}>
+                <p>Add a picture.</p>
+              </div>
+              <div className={this.state.hoverview3}>
+                <p>Relive the experiences on a personalized timeline.</p>
+              </div>
             </div>
           </ul>
 
