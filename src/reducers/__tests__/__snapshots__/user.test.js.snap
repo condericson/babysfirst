@@ -5,6 +5,8 @@ Object {
   "error": null,
   "loading": false,
   "logged": true,
+  "loginError": null,
+  "signupError": null,
 }
 `;
 
@@ -14,6 +16,8 @@ Object {
   "error": null,
   "loading": false,
   "logged": false,
+  "loginError": null,
+  "signupError": null,
 }
 `;
 
@@ -24,5 +28,7 @@ Object {
   "error": null,
   "loading": false,
   "logged": true,
+  "loginError": null,
+  "signupError": null,
 }
 `;
