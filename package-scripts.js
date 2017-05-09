@@ -32,7 +32,7 @@ module.exports = {
     },
     lintStaged: 'lint-staged',
     lint: {
-      // default: 'eslint src server',
+      default: 'eslint src server',
       fix: 'eslint --fix src',
     },
     linting: {
