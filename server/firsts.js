@@ -78,15 +78,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.patch('/:id', async (req, res) => {
-  try {
-    const first = await Firsts.findByIdAndUpdate(req.params.id, req.body);
-    return res.status(200).json(first);
-  } catch (e) {
-    return res.status(500).json({ message: 'Internal Server Error' });
-  }
-});
-
 router.delete('/:id', (req, res) => {
   Firsts.findByIdAndRemove(req.params.id, (err, first) => {
     if (err || !first) {

@@ -10,7 +10,7 @@ There are few things parents treasure more than the ability to reflect on the ha
 
 ![mobile screenshots](http://i.imgur.com/xwClNb9.png "Mobile Screenshots")
 
-This application combines the use of the React front end framework with Node.js and MongoDB on the back end. 
+This application combines the use of the React front end framework with Node.js and MongoDB on the back end.
 
 ## Getting started
 ### `Install`
@@ -47,12 +47,12 @@ Then open [`localhost:3000`](http://localhost:3000) in a browser.
 * Node.js
 * MongoDB
 * [Bcrypt](https://github.com/kelektiv/node.bcrypt.js)
-* 
 
 ## Next version
 Applications can always improve upon themselves. Areas that [First Memories] can improve are:
-* Video uploading 
+* Video uploading
 * Mobile friendly uploading capabilities
+* Make posts editable
 
 
 

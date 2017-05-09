@@ -2,9 +2,7 @@ import { expect } from 'chai';
 
 import server from '../mockServer/server.mock.js';
 import User from '../models/userModel';
-import Firsts from '../models/firstsModel';
 import UserFactory from '../factories/user.factory.js';
-import FirstsFactory from '../factories/firsts.factory.js';
 
 const ENDPOINT = '/users';
 
@@ -35,12 +33,11 @@ describe('User endpoint', () => {
   });
 
   describe('User login', () => {
-    it('should find a user with ', done => {
+    it('should find a user with login', done => {
       server.post(`${ENDPOINT}/login`).send(testUser).end((err, res) => {
         const { body, status } = res;
         expect(status).to.equal(201);
         expect(body.username).to.equal(testUser.username);
-        expect(body.birthday).to.equal(testUser.birthday);
         expect(body).to.haveOwnProperty('_id');
         done();
       });

@@ -6,14 +6,14 @@ import Firsts from '../models/firstsModel';
 import UserFactory from '../factories/user.factory.js';
 import FirstsFactory from '../factories/firsts.factory.js';
 
-const ENDPOINT = '/users';
+const ENDPOINT = '/firsts';
 
 // User tests
 
 let testUser;
 let testFirst;
 
-describe('User endpoint', () => {
+describe('Firsts endpoint', () => {
   before(async () => {
     await User.remove();
     await Firsts.remove();
@@ -24,11 +24,16 @@ describe('User endpoint', () => {
     testFirst = FirstsFactory.generate({ userId: testUser._id });
   });
 
-  describe('User creation with post', () => {
-    it('should create a user on post', done => {
-      server.post(ENDPOINT).send(testUser).end((err, res) => {
+  describe('First creation with post', () => {
+    it('should create a first on post', done => {
+      server.post(ENDPOINT).send(testFirst).end((err, res) => {
         const { body, status } = res;
         expect(status).to.equal(201);
+        expect(body.content).to.equal(testFirst.content);
+        expect(body.date).to.equal(testFirst.date);
+        expect(body.image).to.equal(testFirst.image);
+        expect(body.cloudinaryId).to.equal(testFirst.cloudinaryId);
+        expect(body.userId).to.equal(testUser._id);
         done();
       });
     });
