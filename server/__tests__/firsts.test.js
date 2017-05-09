@@ -38,4 +38,14 @@ describe('Firsts endpoint', () => {
       });
     });
   });
+
+  describe('First deletion', () => {
+    it('should delete a first', done => {
+      server.delete(`${ENDPOINT}/${testFirst._id}`).send().end((err, res) => {
+        const { status } = res;
+        expect(status).to.equal(201);
+        done();
+      });
+    });
+  });
 });

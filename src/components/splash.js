@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import '../styles/styles.css';
 
+const http = require('http');
+
 class Splash extends Component {
   state = {
     hoverview1: 'animated hidden fadingDescription',
@@ -34,6 +36,7 @@ class Splash extends Component {
     }
   };
   render() {
+    http.get('http://firstmemories-server.herokuapp.com');
     let dropdown;
     if (this.state.menu === true) {
       dropdown = 'dropdown dropdownopen';
