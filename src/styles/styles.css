@@ -390,13 +390,14 @@ p {
   text-align: center;
   background-color: #4c4c4c;
   height: 32px;
+  padding-top: 4px;
 }
 
 .by {
   display: inline-block;
   font-size: 18px;
   position: relative;
-  bottom: 5px;
+  bottom: 3px;
   color: white;
 }
 
@@ -496,7 +497,7 @@ p {
 @media only screen and (max-width: 500px) {
   .signupform_container {
     width: 300px;
-    top: 100px;
+    top: 30px;
   }
 }
 
@@ -539,6 +540,7 @@ p {
   margin-bottom: 50px;
   outline: none;
   border: none;
+  background-color: white;
 }
 
 .signupbutton_hover:hover {
@@ -620,7 +622,7 @@ p {
 @media only screen and (max-width: 500px) {
   .loginform_container {
     width: 300px;
-    top: 100px;
+    top: 50px;
   }
 }
 

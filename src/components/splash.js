@@ -14,13 +14,13 @@ class Splash extends Component {
     this.setState({
       [e.target.id]: 'animated fadeIn fadingDescription',
     });
-  }
+  };
 
   onMouseLeaveHandler = e => {
     this.setState({
       [e.target.id]: 'animated fadeOut fadingDescription',
     });
-  }
+  };
 
   handleMenuDrop = () => {
     if (this.state.menu === true) {
@@ -32,7 +32,7 @@ class Splash extends Component {
         menu: true,
       });
     }
-  }
+  };
   render() {
     let dropdown;
     if (this.state.menu === true) {
@@ -73,21 +73,44 @@ class Splash extends Component {
         <div className="splashSectionTwo">
           <p className="journal">A new kind of journal.</p>
           <ul className="icons">
-            <li className="hoverview1" id="hoverview1" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+            <li
+              className="hoverview1"
+              id="hoverview1"
+              onMouseEnter={this.onMouseEnterHandler}
+              onMouseLeave={this.onMouseLeaveHandler}
+            >
               <img src="./images/Pencil-48.png" id="hoverview1" alt="pencil" />
               <div className="smallscreen_instructions pencildiv_smallscreen">
                 <p>Record a moment in your own words.</p>
               </div>
             </li>
-            <li className="hoverview2" id="hoverview2" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
-              <img src="./images/camera2.png" id="hoverview2" alt="pictureframe" />
+            <li
+              className="hoverview2"
+              id="hoverview2"
+              onMouseEnter={this.onMouseEnterHandler}
+              onMouseLeave={this.onMouseLeaveHandler}
+            >
+              <img
+                src="./images/camera2.png"
+                id="hoverview2"
+                alt="pictureframe"
+              />
 
               <div className="smallscreen_instructions pictureframe_smallscreen">
                 <p>Add a picture.</p>
               </div>
             </li>
-            <li className="hoverview3" id="hoverview3" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
-              <img src="./images/beach-ball-clipart.jpg" id="hoverview3" alt="playground" />
+            <li
+              className="hoverview3"
+              id="hoverview3"
+              onMouseEnter={this.onMouseEnterHandler}
+              onMouseLeave={this.onMouseLeaveHandler}
+            >
+              <img
+                src="./images/beach-ball-clipart.jpg"
+                id="hoverview3"
+                alt="playground"
+              />
 
               <div className="smallscreen_instructions playground_smallscreen">
                 <p>Relive the experiences on a personalized timeline.</p>
