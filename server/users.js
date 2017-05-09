@@ -3,22 +3,9 @@ import User from './models/userModel';
 
 const { Router } = require('express');
 const bcryptjs = require('bcryptjs');
-// const passport = require('passport');
-// const BasicStrategy = require('passport-http');
 const cookieParser = require('cookie-parser');
 
 const router = new Router();
-
-router.use(cookieParser());
-
-router.get('/', async (req, res) => {
-  try {
-    const user = await User.find({});
-    res.status(201).json(user);
-  } catch (e) {
-    res.status(500).json(e);
-  }
-});
 
 router.get('/:id', async (req, res) => {
   try {
@@ -36,7 +23,6 @@ router.get('/:id', async (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  // res.clearCookie('babysfirst');
   res.status(201).json({ message: 'logging out' });
 });
 
@@ -108,13 +94,6 @@ router.delete('/:id', async (req, res) => {
       .status(500)
       .json({ message: `Could not delete user ${req.body.username}` });
   }
-  // User.findByIdAndRemove(req.params.id, (err, user) => {
-  //   if (err || !user) {
-  //     return console.error('Could not delete user', req.body.username);
-  //   }
-  //   console.log('Deleted user', user.result);
-  //   return res.status(201).json(user);
-  // });
 });
 
 module.exports = router;

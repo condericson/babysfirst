@@ -18,7 +18,7 @@ class UserFactory extends BaseFactory {
     return {
       username: faker.internet.userName(),
       password: 'password1',
-      birthday: '12/12/2012',
+      birthday: faker.date.past(),
       ...attrs,
     };
   }

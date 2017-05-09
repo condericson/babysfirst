@@ -39,5 +39,9 @@ module.exports = {
       description: 'Validate code by linting, type-checking.',
       default: series.nps('lint'),
     },
+    test: {
+      default: `${crossEnv('NODE_ENV=test')} mocha $(find __tests__ -name *.test.js) --colors --compilers js:babel-register`,
+      watch: series.nps('test -w'),
+    },
   },
 };
