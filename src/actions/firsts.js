@@ -24,9 +24,9 @@ export function getFirsts(userId, offset) {
   return async dispatch => {
     dispatch({ type: GET_FIRSTS });
     try {
-      const {
-        data,
-      } = await axios.get(`/firsts/${userId}?offset=${offset || 0}`);
+      const { data } = await axios.get(
+        `/firsts/${userId}?offset=${offset || 0}`,
+      );
       dispatch(getFirstsSuccess(data));
     } catch (e) {
       return dispatch(getFirstsError(e));
@@ -66,9 +66,9 @@ export function loadMore(userId, offset) {
   return async dispatch => {
     dispatch({ type: LOAD_MORE });
     try {
-      const {
-        data,
-      } = await axios.get(`/firsts/${userId}?offset=${offset || 0}`);
+      const { data } = await axios.get(
+        `/firsts/${userId}?offset=${offset || 0}`,
+      );
       if (data.length === 0) {
         dispatch(noMoreFirsts(data));
       } else {
