@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 // axios.defaults.baseURL = 'http://localhost:8080';
-axios.defaults.baseURL = 'https://blooming-cliffs-79966.herokuapp.com';
+axios.defaults.baseURL = 'http://firstmemories-server.herokuapp.com';
 
 export function fetchAPI(path, method, args) {
-  return fetch(`https://blooming-cliffs-79966.herokuapp.com/${path}`, {
+  return fetch(`http://firstmemories-server.herokuapp.com/${path}`, {
     method,
     headers: {
       Accept: 'application/json',

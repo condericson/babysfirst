@@ -103,7 +103,8 @@ p {
 
 /*section one*/
 .splashSectionOne {
-  background-image: url("https://image.ibb.co/kAjYLk/VCdMyVN.jpg");
+  /*background-image: url("https://image.ibb.co/kAjYLk/VCdMyVN.jpg");*/
+  background-image: url("http://image.ibb.co/fHOtLk/oPAcKHr.jpg");
   text-align: center;
   width: 100%;
   height: 100%;
@@ -301,7 +302,8 @@ p {
 
 
 .splashSectionThree {
-  background-image: url("https://image.ibb.co/k3CQmQ/nature_people_girl_forest_12165.jpg");
+  /*background-image: url("https://image.ibb.co/k3CQmQ/nature_people_girl_forest_12165.jpg");*/
+  background-image: url("https://image.ibb.co/kAjYLk/VCdMyVN.jpg");
   text-align: center;
   width: 100%;
   height: 760px;
@@ -840,17 +842,12 @@ p {
 .backgroundBlurredImage {
   height: 100%;
   width: 100%;
-  background-image: url(https://image.ibb.co/fHOtLk/oPAcKHr.jpg);
+  background-image: url(http://image.ibb.co/k3CQmQ/nature_people_girl_forest_12165.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50%;
   position: fixed;
-  -webkit-filter: blur(3px);
-  -moz-filter: blur(3px);
-  -o-filter: blur(3px);
-  -ms-filter: blur(3px);
-  filter: blur(3px);
 }
 
 .welcomeContainer {
@@ -859,7 +856,8 @@ p {
   margin: 0px auto;
   text-align: center;
   max-width: 600px;
-  padding: 0 10px;
+  padding: 40px;
+  background-color: rgba(16, 40, 16, 0.7);
 }
 .welcomeHeader {
   font-size: 50px;
@@ -891,17 +889,11 @@ p {
   line-height: 40px;
   border: none;
   text-decoration: none;
-  color: white;
+  color: black;
   font-size: 18px;
-  background-color: #61773a;
+  background-color: white;
   text-align: center;
   display: inline-block;
-}
-
-.journalButton:hover {
-  color: black;
-  background-color: #fdefdc;
-  transition-duration: 0.5s;
 }
 
 /*Nav and Buttons*/
@@ -944,11 +936,18 @@ p {
   text-align: center;
 }
 
-.enterAFirstButtonDesktop:hover, .timelineLogout:hover {
+.enterAFirstButtonDesktop:hover {
   color: white;
   background-color: #0b6380;
   transition-duration: 0.5s;
 }
+
+.timelineLogout:hover, .journalButton:hover {
+  color: white;
+  background-color: #97c472;
+  transition-duration: 0.5s;
+}
+
 
 .enterAFirstButtonMobile {
   display: none;
