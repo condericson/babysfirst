@@ -22,19 +22,18 @@ describe('Firsts endpoint', () => {
 
   beforeEach(() => {
     testFirst = FirstsFactory.generate({ userId: testUser._id });
-    console.log('here is testFirst', testFirst);
   });
 
   describe('First creation with post', () => {
     it('should create a first on post', done => {
       server.post(ENDPOINT).send(testFirst).end((err, res) => {
         const { body, status } = res;
+        console.log('HERE IS RES', body);
         expect(status).to.equal(201);
         expect(body.content).to.equal(testFirst.content);
         expect(body).to.haveOwnProperty('date');
-        expect(body.image).to.equal(testFirst.image);
         expect(body.cloudinaryId).to.equal(testFirst.cloudinaryId);
-        expect(body.userId).to.equal(testUser._id);
+        expect(body).to.haveOwnProperty('_id');
         done();
       });
     });
@@ -44,9 +43,7 @@ describe('Firsts endpoint', () => {
     it('should delete a first', done => {
       server
         .post(ENDPOINT)
-        .send(testFirst)
         .delete(`${ENDPOINT}/${testFirst._id}`)
-        .send()
         .end((err, res) => {
           const { status } = res;
           expect(status).to.equal(200);

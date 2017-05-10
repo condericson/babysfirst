@@ -87,7 +87,7 @@ router.delete('/:id', (req, res) => {
     cloudinary.uploader.destroy(first.cloudinaryId, result => {
       console.log(result);
     });
-    return res.status(200);
+    return res.sendStatus(200);
   });
 });
 

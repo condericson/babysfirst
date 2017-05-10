@@ -18,8 +18,7 @@ class FirstsFactory extends BaseFactory {
     return {
       content: faker.lorem.sentences(3),
       date: faker.date.recent(),
-      image: faker.image.imageUrl(),
-      cloudinaryId: '456def',
+      cloudinaryId: '',
       ...attrs,
     };
   }

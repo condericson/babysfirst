@@ -14,31 +14,12 @@ var _require = require('express');
 const Router = _require.Router;
 
 const bcryptjs = require('bcryptjs');
-// const passport = require('passport');
-// const BasicStrategy = require('passport-http');
 const cookieParser = require('cookie-parser');
 
 const router = new Router();
 
-router.use(cookieParser());
-
-router.get('/', (() => {
-  var _ref = _asyncToGenerator(function* (req, res) {
-    try {
-      const user = yield _userModel2.default.find({});
-      res.status(201).json(user);
-    } catch (e) {
-      res.status(500).json(e);
-    }
-  });
-
-  return function (_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-})());
-
 router.get('/:id', (() => {
-  var _ref2 = _asyncToGenerator(function* (req, res) {
+  var _ref = _asyncToGenerator(function* (req, res) {
     try {
       const user = yield _userModel2.default.find({});
       res.status(201).json(user);
@@ -53,13 +34,12 @@ router.get('/:id', (() => {
     });
   });
 
-  return function (_x3, _x4) {
-    return _ref2.apply(this, arguments);
+  return function (_x, _x2) {
+    return _ref.apply(this, arguments);
   };
 })());
 
 router.get('/logout', (req, res) => {
-  // res.clearCookie('babysfirst');
   res.status(201).json({ message: 'logging out' });
 });
 
@@ -114,24 +94,17 @@ router.post('/login', (req, res) => {
 });
 
 router.delete('/:id', (() => {
-  var _ref3 = _asyncToGenerator(function* (req, res) {
+  var _ref2 = _asyncToGenerator(function* (req, res) {
     try {
       const user = _userModel2.default.findByIdAndRemove(req.params.id);
       return res.status(201).json(user);
     } catch (e) {
       res.status(500).json({ message: `Could not delete user ${req.body.username}` });
     }
-    // User.findByIdAndRemove(req.params.id, (err, user) => {
-    //   if (err || !user) {
-    //     return console.error('Could not delete user', req.body.username);
-    //   }
-    //   console.log('Deleted user', user.result);
-    //   return res.status(201).json(user);
-    // });
   });
 
-  return function (_x5, _x6) {
-    return _ref3.apply(this, arguments);
+  return function (_x3, _x4) {
+    return _ref2.apply(this, arguments);
   };
 })());
 

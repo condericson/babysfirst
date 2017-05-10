@@ -25,7 +25,7 @@ describe('User endpoint', () => {
         const { body, status } = res;
         expect(status).to.equal(201);
         expect(body.username).to.equal(testUser.username);
-        expect(body.birthday).to.equal(testUser.birthday);
+        expect(body).to.haveOwnProperty('birthday');
         expect(body).to.haveOwnProperty('_id');
         done();
       });

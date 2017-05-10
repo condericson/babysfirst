@@ -107,21 +107,6 @@ router.put('/:id', (() => {
   };
 })());
 
-router.patch('/:id', (() => {
-  var _ref5 = _asyncToGenerator(function* (req, res) {
-    try {
-      const first = yield Firsts.findByIdAndUpdate(req.params.id, req.body);
-      return res.status(200).json(first);
-    } catch (e) {
-      return res.status(500).json({ message: 'Internal Server Error' });
-    }
-  });
-
-  return function (_x9, _x10) {
-    return _ref5.apply(this, arguments);
-  };
-})());
-
 router.delete('/:id', (req, res) => {
   Firsts.findByIdAndRemove(req.params.id, (err, first) => {
     if (err || !first) {
@@ -131,7 +116,7 @@ router.delete('/:id', (req, res) => {
     cloudinary.uploader.destroy(first.cloudinaryId, result => {
       console.log(result);
     });
-    return res.status(201).json(first);
+    return res.sendStatus(200);
   });
 });
 

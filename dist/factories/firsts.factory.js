@@ -15,24 +15,25 @@ var _base2 = _interopRequireDefault(_base);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * Create fake user for testing
+ * Create fake first entry for testing
  */
 
-class UserFactory extends _base2.default {
+class FirstsFactory extends _base2.default {
   /**
-   * Create a user
+   * Create a first
    *
    * @public
-   * @param {Object} attrs of user
-   * @returns {Object} a fake user
+   * @param {Object} attrs of first
+   * @returns {Object} a fake first
    */
   generate(attrs) {
     return Object.assign({
-      username: _faker2.default.internet.userName(),
-      password: 'password1',
-      birthday: _faker2.default.date.past()
+      content: _faker2.default.lorem.sentences(3),
+      date: _faker2.default.date.recent(),
+      image: _faker2.default.image.imageUrl(),
+      cloudinaryId: '456def'
     }, attrs);
   }
 }
 
-exports.default = new UserFactory();
+exports.default = new FirstsFactory();
