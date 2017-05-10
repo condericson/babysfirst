@@ -109,7 +109,7 @@ router.put('/:id', (() => {
 
 router.delete('/:id', (req, res) => {
   Firsts.findByIdAndRemove(req.params.id, (err, first) => {
-    console.log("here is the first that is being deleted", first);
+    console.log('here is the first that is being deleted', first);
     if (err || !first) {
       console.error('Could not delete first on ', req.body.date);
       return;
