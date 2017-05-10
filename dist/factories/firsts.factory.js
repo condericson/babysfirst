@@ -30,8 +30,7 @@ class FirstsFactory extends _base2.default {
     return Object.assign({
       content: _faker2.default.lorem.sentences(3),
       date: _faker2.default.date.recent(),
-      image: _faker2.default.image.imageUrl(),
-      cloudinaryId: '456def'
+      cloudinaryId: ''
     }, attrs);
   }
 }

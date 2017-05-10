@@ -22,6 +22,8 @@ describe('Firsts endpoint', () => {
 
   beforeEach(() => {
     testFirst = FirstsFactory.generate({ userId: testUser._id });
+    testFirst2 = FirstsFactory.generate({ userId: testUser._id });
+    server.post(testFirst2).end();
   });
 
   describe('First creation with post', () => {
@@ -41,14 +43,11 @@ describe('Firsts endpoint', () => {
 
   describe('First deletion', () => {
     it('should delete a first', done => {
-      server
-        .post(ENDPOINT)
-        .delete(`${ENDPOINT}/${testFirst._id}`)
-        .end((err, res) => {
-          const { status } = res;
-          expect(status).to.equal(200);
-          done();
-        });
+      server.delete(`${ENDPOINT}/${testFirst2._id}`).end((err, res) => {
+        const { status } = res;
+        expect(status).to.equal(200);
+        done();
+      });
     });
   });
 });

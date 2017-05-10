@@ -42,6 +42,8 @@ describe('Firsts endpoint', () => {
 
   beforeEach(() => {
     testFirst = _firstsFactory2.default.generate({ userId: testUser._id });
+    testFirst2 = _firstsFactory2.default.generate({ userId: testUser._id });
+    _serverMock2.default.post(testFirst2).end();
   });
 
   describe('First creation with post', () => {
@@ -50,13 +52,12 @@ describe('Firsts endpoint', () => {
         const body = res.body,
               status = res.status;
 
-        console.log("HERE IS RES", res);
+        console.log('HERE IS RES', body);
         (0, _chai.expect)(status).to.equal(201);
         (0, _chai.expect)(body.content).to.equal(testFirst.content);
         (0, _chai.expect)(body).to.haveOwnProperty('date');
-        (0, _chai.expect)(body.image).to.equal(testFirst.image);
         (0, _chai.expect)(body.cloudinaryId).to.equal(testFirst.cloudinaryId);
-        (0, _chai.expect)(body.userId).to.equal(testUser._id);
+        (0, _chai.expect)(body).to.haveOwnProperty('_id');
         done();
       });
     });
@@ -64,7 +65,7 @@ describe('Firsts endpoint', () => {
 
   describe('First deletion', () => {
     it('should delete a first', done => {
-      _serverMock2.default.post(ENDPOINT).delete(`${ENDPOINT}/${testFirst._id}`).end((err, res) => {
+      _serverMock2.default.delete(`${ENDPOINT}/${testFirst2._id}`).end((err, res) => {
         const status = res.status;
 
         (0, _chai.expect)(status).to.equal(200);

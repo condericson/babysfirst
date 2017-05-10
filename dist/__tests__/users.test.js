@@ -41,7 +41,7 @@ describe('User endpoint', () => {
 
         (0, _chai.expect)(status).to.equal(201);
         (0, _chai.expect)(body.username).to.equal(testUser.username);
-        (0, _chai.expect)(body.birthday).to.equal(testUser.birthday);
+        (0, _chai.expect)(body).to.haveOwnProperty('birthday');
         (0, _chai.expect)(body).to.haveOwnProperty('_id');
         done();
       });
