@@ -72,7 +72,7 @@
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "eject": "react-scripts eject",
     "test": "nps test",
-    "test:watch": "cross-env NODE_ENV=test mocha -w --colors --compilers js:babel-register $(find server/test -name '*.test.js')",
+    "test:watch": "cross-env NODE_ENV=test mocha -w --colors --compilers js:babel-register $(find server/__tests__ -name '*.test.js')",
     "mochatest": "mocha",
     "build:server": "nps buildServer",
     "prettier": "node ./scripts/prettier.js write",
