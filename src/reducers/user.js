@@ -34,6 +34,7 @@ export default (state = initialState, action) => {
         currentUserId: action.user._id,
         currentUserBirthday: action.user.birthday,
         logged: true,
+        signupError: null,
       };
     case LOGIN_ERROR:
       return {
@@ -62,6 +63,7 @@ export default (state = initialState, action) => {
         currentUserId: action.user._id,
         currentUserBirthday: action.user.birthday,
         logged: true,
+        signupError: null,
       };
     case SIGNUP_ERROR:
       return {

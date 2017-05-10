@@ -17,6 +17,7 @@ middlewares(app);
 // routers
 app.use('/firsts', firstRouter);
 app.use('/users', userRouter);
+app.use('/ping');
 
 if (!module.parent) {
   app.listen(constants.PORT, err => {

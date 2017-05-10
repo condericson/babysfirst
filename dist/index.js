@@ -35,6 +35,7 @@ const app = (0, _express2.default)();
 // routers
 app.use('/firsts', _firsts2.default);
 app.use('/users', _users2.default);
+app.use('/ping');
 
 if (!module.parent) {
   app.listen(_constants2.default.PORT, err => {

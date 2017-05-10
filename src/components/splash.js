@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import http from 'http';
 import '../styles/styles.css';
 
 class Splash extends Component {
@@ -9,6 +10,16 @@ class Splash extends Component {
     hoverview3: 'animated hidden fadingDescription',
     menu: false,
   };
+
+  componentWillMount() {
+    setTimeout(
+      http
+        .get(`http://firstmemories-server.herokuapp.com/ping`)
+        .on('error', err => {})
+        .end(),
+      1000,
+    );
+  }
 
   onMouseEnterHandler = e => {
     this.setState({
@@ -33,6 +44,7 @@ class Splash extends Component {
       });
     }
   };
+
   render() {
     let dropdown;
     if (this.state.menu === true) {
