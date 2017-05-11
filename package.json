@@ -5,6 +5,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "axios": "^0.16.1",
+    "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "cloudinary": "^1.8.0",
@@ -41,6 +42,7 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "chalk": "^1.1.3",
+    "cross-env": "^4.0.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
@@ -66,14 +68,22 @@
       "git add"
     ]
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/server/"
+    ]
+  },
   "scripts": {
     "dev:fe": "react-scripts start",
     "deploy:fe": "nps deployFE",
     "dev": "nps dev",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "eject": "react-scripts eject",
-    "test": "nps test",
-    "test:watch": "cross-env NODE_ENV=test mocha -w --colors --compilers js:babel-register $(find server/__tests__ -name '*.test.js')",
+    "test": "npm run fe && npm run be",
+    "fe": "cross-env CI=true react-scripts test --env=jsdom",
+    "be": "cross-env NODE_ENV=test mocha --colors --compilers js:babel-register server/tests -name '*.test.js')",
+    "test:server": "cross-env NODE_ENV=test mocha -w --colors --compilers js:babel-register $(find server/specs -name '*.specs.js')",
     "mochatest": "mocha",
     "build:server": "nps buildServer",
     "prettier": "node ./scripts/prettier.js write",

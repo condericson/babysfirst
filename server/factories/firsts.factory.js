@@ -18,7 +18,6 @@ class FirstsFactory extends BaseFactory {
     return {
       content: faker.lorem.sentences(3),
       date: faker.date.recent(),
-      cloudinaryId: '',
       ...attrs,
     };
   }

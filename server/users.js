@@ -28,61 +28,62 @@ router.get('/logout', (req, res) => {
 
 router.post('/', (req, res) => {
   const { password } = req.body;
-  bcryptjs.genSalt(10, (err, salt) => {
-    if (err) {
-      res.status(500).json({ message: 'Error with salt' });
-    }
-    bcryptjs.hash(password, salt, (err, hash) => {
-      if (err) {
-        return res.status(500).json({ message: 'Error with encryption' });
-      }
-      User.create(
-        {
-          username: req.body.username,
-          password: hash,
-          birthday: req.body.birthday,
-        },
-        (err, user) => {
-          if (err) {
-            console.log(err);
-            return res
-              .status(500)
-              .json({ message: 'Error with user creation' });
-          }
-          const returnedValues = {
-            username: user.username,
-            birthday: user.birthday,
-            _id: user._id,
-          };
-          return res.status(201).json(returnedValues);
-        },
-      );
-    });
-  });
-});
-
-router.post('/login', (req, res) => {
-  const enteredPassword = req.body.password;
-  User.findOne(
+  User.create(
     {
       username: req.body.username,
+      password: req.body.password,
+      birthday: req.body.birthday,
     },
     (err, user) => {
       if (err) {
-        console.log('error with post');
-        return res.status(500).json({ message: 'Error with post' });
+        console.log(err);
+        return res.status(500).json({ message: 'Error with user creation' });
       }
-      if (!user) {
-        console.log("user wasn't found");
-        return res
-          .status(500)
-          .json({ message: 'Incorrect username or password' });
-      }
-      if (bcryptjs.compareSync(enteredPassword, user.password)) {
-        return res.status(201).json(user);
-      }
+      const returnedValues = {
+        username: user.username,
+        birthday: user.birthday,
+        _id: user._id,
+      };
+      return res.status(201).json(returnedValues);
     },
   );
+});
+
+router.post('/login', async (req, res) => {
+  try {
+    const user = await User.findOne({
+      username: req.body.username,
+    });
+    if (!user) {
+      return res.status(400).json({ message: 'Incorrect username' });
+    } else if (!user.authenticateUser(req.body.password)) {
+      return res.status(400).json({ message: 'Incorrect password' });
+    }
+    return res.status(201).json(user);
+  } catch (e) {
+    return res.status(400).json(e.message);
+  }
+
+  //User.findOne(
+  //   {
+  //     username: req.body.username,
+  //   },
+  //   (err, user) => {
+  //     if (err) {
+  //       console.log('error with post');
+  //       return res.status(500).json({ message: 'Error with post' });
+  //     }
+  //     if (!user) {
+  //       console.log("user wasn't found");
+  //       return res
+  //         .status(500)
+  //         .json({ message: 'Incorrect username or password' });
+  //     }
+  //     if (user.authenticateUser(req.body.password)) {
+  //       return res.status(201).json(user);
+  //     }
+  //   },
+  // );
 });
 
 router.delete('/:id', async (req, res) => {

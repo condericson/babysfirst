@@ -19,4 +19,12 @@ const FirstsSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('firsts', FirstsSchema);
+let Firsts; // eslint-disable-line
+
+try {
+  Firsts = mongoose.model('Firsts');
+} catch (e) {
+  Firsts = mongoose.model('Firsts', FirstsSchema);
+}
+
+export default Firsts;

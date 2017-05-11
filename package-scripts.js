@@ -40,8 +40,9 @@ module.exports = {
       default: series.nps('lint'),
     },
     test: {
-      default: `${crossEnv('NODE_ENV=test')} mocha $(find __tests__ -name *.test.js) --colors --compilers js:babel-register`,
-      watch: series.nps('test -w'),
+      fe: 'cross-env CI=true react-scripts test --env=jsdom',
+      be: "cross-env NODE_ENV=test mocha --colors --compilers js:babel-register $(find server/specs -name '*.specs.js')",
+      default: series.nps('test.fe, test.be'),
     },
   },
 };

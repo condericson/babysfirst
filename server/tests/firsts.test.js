@@ -12,29 +12,29 @@ const ENDPOINT = '/firsts';
 
 let testUser;
 let testFirst;
+let testFirst2;
 
 describe('Firsts endpoint', () => {
   before(async () => {
     await User.remove();
     await Firsts.remove();
     testUser = await User.create(UserFactory.generate());
+    testFirst2 = await Firsts.create(
+      FirstsFactory.generate({ userId: testUser._id }),
+    );
   });
 
   beforeEach(() => {
     testFirst = FirstsFactory.generate({ userId: testUser._id });
-    testFirst2 = FirstsFactory.generate({ userId: testUser._id });
-    server.post(testFirst2).end();
   });
 
   describe('First creation with post', () => {
     it('should create a first on post', done => {
       server.post(ENDPOINT).send(testFirst).end((err, res) => {
         const { body, status } = res;
-        console.log('HERE IS RES', body);
         expect(status).to.equal(201);
         expect(body.content).to.equal(testFirst.content);
         expect(body).to.haveOwnProperty('date');
-        expect(body.cloudinaryId).to.equal(testFirst.cloudinaryId);
         expect(body).to.haveOwnProperty('_id');
         done();
       });
