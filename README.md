@@ -1,7 +1,7 @@
 
 
 # First Memories
-[First Memories] is a online journaling application for parents that want a way to record pictures and journal entries about their child from anywhere.
+[First Memories] is an online journaling application for parents that want a way to record pictures and journal entries about their child from anywhere.
 
 ![screenshots](http://i.imgur.com/H1VfI4s.jpg "Screenshots")
 
