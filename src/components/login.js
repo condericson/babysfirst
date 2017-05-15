@@ -52,6 +52,11 @@ class Login extends Component {
           <Link to="/" className="login_tohome">Home</Link>
           <Link to="/signup" className="login_tosignup">Sign up</Link>
         </nav>
+        <div className="democontainer">
+          <p>To view a demo of the app:</p>
+          <p>username: demo</p>
+          <p>password: Password1</p>
+        </div>
         <div className="loginform_container">
           <form className="loginform" onSubmit={this.submitForm}>
             <header className="loginheader">Log in</header>

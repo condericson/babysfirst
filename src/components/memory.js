@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteFirsts } from '../actions/firsts';
+import { getFirsts } from '../actions/firsts';
 
 const moment = require('moment');
 
@@ -14,6 +15,7 @@ class Memory extends Component {
       areyousure: false,
     });
     this.props.deleteFirsts(this.props._id);
+    this.props.getFirsts(this.props.currentUserId);
   };
 
   areyousureSetState = () => {
@@ -87,8 +89,9 @@ class Memory extends Component {
 export default connect(
   state => ({
     birthday: state.user.currentUserBirthday,
+    currentUserId: state.user.currentUserId,
   }),
-  { deleteFirsts },
+  { deleteFirsts, getFirsts },
 )(Memory);
 
 // for testing:
