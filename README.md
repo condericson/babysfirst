@@ -22,7 +22,6 @@ This application combines the use of the React front end framework with Node.js 
 ### `Launch`
 ```
 >   npm run dev:fe
->   npm run dev
 ```
 Then open [`localhost:3000`](http://localhost:3000) in a browser.
 ### `Test`
@@ -51,8 +50,9 @@ Then open [`localhost:3000`](http://localhost:3000) in a browser.
 ## Next version
 Applications can always improve upon themselves. Areas that [First Memories] can improve are:
 * Video uploading
-* Mobile friendly uploading capabilities
+* Mobile friendly and drag and down photo uploading capabilities
 * Make posts editable
+* Make accounts deletable
 
 
 
