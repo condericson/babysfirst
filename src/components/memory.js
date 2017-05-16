@@ -10,12 +10,13 @@ class Memory extends Component {
     areyousure: false,
   };
 
-  deleteClickedMemory = () => {
+  deleteClickedMemory = async () => {
     this.setState({
       areyousure: false,
     });
-    this.props.deleteFirsts(this.props._id);
-    this.props.getFirsts(this.props.currentUserId);
+    console.log('this.props', this.props);
+    await this.props.deleteFirsts(this.props._id);
+    return this.props.getFirsts(this.props.currentUserId);
   };
 
   areyousureSetState = () => {

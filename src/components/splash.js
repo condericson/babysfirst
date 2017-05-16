@@ -81,9 +81,10 @@ class Splash extends Component {
         </nav>
         <div className="splashSectionOne">
           <h1 className="appTitle">First Memories</h1>
+          <p className="tagLine">Never forget a single first.</p>
         </div>
         <div className="splashSectionTwo">
-          <p className="journal">A new kind of journal.</p>
+          <p className="journal">A journal you take everywhere.</p>
           <ul className="icons">
             <li
               className="hoverview1"

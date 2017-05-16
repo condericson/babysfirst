@@ -74,7 +74,7 @@ export default (state = initialState, action) => {
     case ADD_FIRST_SUCCESS:
       return {
         ...state,
-        firsts: action.firsts,
+        firsts: [...state.firsts, ...action.first],
         loading: false,
         errorMessage: false,
       };
@@ -91,11 +91,8 @@ export default (state = initialState, action) => {
         loading: true,
       };
     case DELETE_FIRST_SUCCESS:
-      const firstId = action.data._id;
-      const firsts = state.firsts.filter(first => first._id !== firstId);
       return {
         ...state,
-        firsts,
         loading: false,
       };
     case DELETE_FIRST_ERROR:

@@ -51,7 +51,7 @@ class Timeline extends Component {
         </div>
       );
     }
-    if (!this.props.firsts.length) {
+    if (this.props.firsts.length < 1) {
       return (
         <div className="getStarted">
           <div className="backgroundBlurredImage" />
@@ -66,29 +66,33 @@ class Timeline extends Component {
         </div>
       );
     }
-    return (
-      <div className="timeline">
-        <div className="backgroundBlurredImageTimeline" />
-        <nav className="timelineNav">
-          <Link className="enterAFirstButtonDesktop" to="/firstentry">
-            Journal
-          </Link>
-          <Link className="timelineLogout" to="/">Log out</Link>
-        </nav>
+    if (this.props.firsts) {
+      console.log(this.props.firsts);
+      console.log(this.props);
+      return (
+        <div className="timeline">
+          <div className="backgroundBlurredImageTimeline" />
+          <nav className="timelineNav">
+            <Link className="enterAFirstButtonDesktop" to="/firstentry">
+              Journal
+            </Link>
+            <Link className="timelineLogout" to="/">Log out</Link>
+          </nav>
 
-        <Link className="enterAFirstButtonMobile" to="/firstentry">+</Link>
+          <Link className="enterAFirstButtonMobile" to="/firstentry">+</Link>
 
-        <div className="timelineContainer">
-          {this.props.firsts.map((first, i) => (
-            <Memory key={i} i={i} {...first} />
-          ))}
-          <div className="buttonDiv">
-            {loadMoreButton}
+          <div className="timelineContainer">
+            {this.props.firsts.map((first, i) => (
+              <Memory key={i} i={i} {...first} />
+            ))}
+            <div className="buttonDiv">
+              {loadMoreButton}
+            </div>
           </div>
-        </div>
 
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
 
